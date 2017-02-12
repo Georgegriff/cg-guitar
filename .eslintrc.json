@@ -1,16 +1,17 @@
 {
-  "extends": ["eslint:recommended", "google"],
-  "env": {
-    "browser": true
-  },
-  "plugins": [
-    "html"
-  ],
-  "rules": {
-    "no-var": "off",
-    "new-cap": ["error", { "capIsNewExceptions": ["Polymer"] }]
-  },
-  "globals": {
-    "Polymer": true
-  }
+    "extends": ["eslint:recommended", "google"],
+    "env": {
+        "browser": true
+    },
+    "plugins": [
+        "html"
+    ],
+    "rules": {
+        "no-var": "off",
+        "linebreak-style": "windows",
+        "new-cap": ["error", { "capIsNewExceptions": ["Polymer"] }]
+    },
+    "globals": {
+        "Polymer": true
+    }
 }
