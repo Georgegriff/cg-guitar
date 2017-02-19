@@ -27,22 +27,21 @@
                 color: black;
                 font-weight: bold;
             }
+            
         </style>
          
         <cg-social></cg-social>
-            <iron-selector selected="[[page]]" attr-for-selected="name" class="drawer-list" role="navigation">
-                <div role="listbox">
-                    <cg-links text="About" href="/about" name="about" icon="home"></cg-links>
-                    <cg-links text="Lessons" href="/view2" name="view2" icon="social:school"></cg-links>
-                    <cg-links text="Contact" href="/view3" name="view3" icon="communication:contact-phone"></cg-links>
-                    <cg-links text="Photos" href="/photos" name="photos" icon="image:photo-library"></cg-links>
-                    <cg-links text="Videos" href="/videos" name="videos" icon="av:videocam"></cg-links>
-                    <cg-links text="Testimonials" href="/testimonials" name="testimonials" icon="social:sentiment-satisfied"></cg-links>
-                    <cg-links text="Band/Session Work" href="/session" name="session" icon="image:audiotrack"></cg-links>
+            <iron-selector id="pagesSelector" selected="[[page]]" attr-for-selected="name" class="drawer-list" role="navigation">
+                <div id="pages" role="listbox">
+                    <cg-links active="[[page]]" text="Guitar Lessons" href="/lessons" name="lessons" src="../images/logo_black.png"></cg-links>
+                    <cg-links active="[[page]]" text="About" href="/about" name="about" icon="info"></cg-links>
+                    <cg-links active="[[page]]" text="Contact" href="/view3" name="view3" icon="communication:contact-phone"></cg-links>
+                    <cg-links active="[[page]]" text="Photos" href="/photos" name="photos" icon="image:photo-library"></cg-links>
+                    <cg-links active="[[page]]" text="Videos" href="/videos" name="videos" icon="av:videocam"></cg-links>
+                    <cg-links active="[[page]]" text="Testimonials" href="/testimonials" name="testimonials" icon="social:sentiment-satisfied"></cg-links>
+                    <cg-links active="[[page]]" text="Band/Session Work" href="/session" name="session" icon="image:audiotrack"></cg-links>
                 </div>
             
-
-
             
 
 
@@ -51,7 +50,45 @@
     </template>
     <script>
         Polymer({
-            is: 'cg-sidebar'
+            is: 'cg-sidebar',
+            properties: {
+                page: {
+                    type: String,
+                    reflectToAttribute: true,
+                    notify: true
+                },
+                _names: {
+                    type: Array,
+                    value: []
+                }
+            },
+            nextPage: function() {
+                var current = this._names.indexOf(this.page),
+                    newIndex = current + 1,
+                    newPage = this._names[newIndex];
+                if (newPage > this._names.length - 1) {
+                    return current;
+
+                }
+                return current;
+            },
+            previousPage: function() {
+                var current = this._names.indexOf(this.page),
+                    newIndex = current - 1,
+                    newPage = this._names[newIndex];
+                if (newPage < 0) {
+                    return current;
+                }
+                return newPage;
+
+            },
+            ready: function() {
+                var pages = this.$.pages.querySelectorAll('cg-links');
+                pages.forEach(function(page) {
+                    this._names.push(page.getAttribute('name'));
+                }.bind(this));
+
+            }
         });
     </script>
 </dom-module>

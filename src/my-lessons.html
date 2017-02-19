@@ -1,0 +1,163 @@
+<!--
+@license
+Copyright (c) 2016 The Polymer Project Authors. All rights reserved.
+This code may only be used under the BSD style license found at http://polymer.github.io/LICENSE.txt
+The complete set of authors may be found at http://polymer.github.io/AUTHORS.txt
+The complete set of contributors may be found at http://polymer.github.io/CONTRIBUTORS.txt
+Code distributed by Google as part of the polymer project is also
+subject to an additional IP rights grant found at http://polymer.github.io/PATENTS.txt
+-->
+
+<link rel="import" href="../bower_components/polymer/polymer.html">
+<link rel="import" href="../bower_components/paper-card/paper-card.html">
+<link rel="import" href="../bower_components/paper-button/paper-button.html">
+
+
+<link rel="import" href="shared-styles.html">
+
+<dom-module id="my-lessons">
+    <template>
+    <style include="shared-styles">
+      :host {
+        display: block;
+
+        padding: 10px;
+      }
+
+        paper-card {
+      max-width: 500px;
+        }
+        .contact-btn {
+          background:var(--app-primary-color);
+          color: white;
+        }
+        .card-header { @apply(--paper-font-headline); }
+        .card-light { color: var(--paper-grey-600); }
+        .card-location {
+      float: right;
+      font-size: 15px;
+      vertical-align: middle;
+        }
+      .wrap {
+        display:flex;
+       flex-direction: row;
+       flex-wrap: wrap;
+       justify-content: center; 
+      }
+
+      .levels {
+        display:flex;
+        flex-direction:column;
+        margin:10px;
+        height:660px;
+        justify-content: center;
+      }
+      .lvl-title {
+        padding-bottom:10px;
+      }
+      paper-card {
+        margin:10px;
+      }
+      paper-card {
+        min-width:500px;
+      }
+      .big-card {
+        height:660px;
+      }
+      .big-card {
+        --paper-card-actions : {
+          position:absolute;
+          bottom:0;
+          margin-bottom:10px;
+        };
+      
+      }
+      .btn-cnt {
+        margin-bottom:10px;
+      }
+  </style>
+
+  <div class="wrap">
+
+    <div class="levels">
+      <div class="lvl-title">
+        Here's an idea of some of things that I can help you with:
+      </div>
+
+    <paper-card heading="Beginner" class="text-card" animated-shadow="false">
+      <div class="card-actions">
+    
+        <p class="card-light">
+        Kick starting your guitar playing with enjoyable and frustration free methods to get you playing music from the first lesson.
+        <p>
+      </div>
+    </paper-card>
+
+    <paper-card heading="Intermediate" class="text-card" animated-shadow="false">
+      <div class="card-actions">
+    
+        <p class="card-light">
+          Effective practice regimes, building a solid foundation of technique and repertoire, acquiring your guitar grades.        <p>
+      </div>
+    </paper-card>
+
+    <paper-card heading="Advanced" class="text-card" animated-shadow="false">
+      <div class="card-actions">
+    
+        <p class="card-light">
+          Help with preparing to study music/guitar in further education, improving technique, improvising, preparation for a performance, music theory.        <p>
+      </div>
+    </paper-card>
+
+        </div>
+
+     <paper-card class="big-card" id="sign" image="../images/lessons.jpg">
+          <div class="card-content">
+            <div class="card-header">Kickstart your guitar lessons now!</div>
+            <p class="card-light">
+              
+         
+
+            Private lessons are currently held at the students' houses or on Skype and are for 30 minutes. If you'd like to try a longer lesson time then there is room for discussion.  
+            <br/><br/>
+            I'm also available for session work, for details please visit my Band/Session page.
+
+          </div>
+          <div class="card-actions">
+            <div class="horizontal justified">
+              <div class="btn-cnt">
+                  See what my students are saying about me.
+              </div>
+              <paper-button class="contact-btn">Testimonials</paper-button>
+            </div>  
+          </div>
+    </paper-card>
+    
+    
+    <paper-card class="big-card" id="sign" image="../images/sheets.png">
+          <div class="card-content">
+            <div class="card-header">Sign up now</div>
+            <p class="card-light">
+              
+              Whether you're a beginner, intermediate or advanced player, Acoustic, Electric or Bass Guitar, all are welcome. 
+              </p>
+          </div>
+          <div class="card-actions">
+            <div class="horizontal justified">
+              <div class="btn-cnt">
+                If you wish to enquire about guitar lessons please contact me.
+              </div>
+              <paper-button class="contact-btn">Contact</paper-button>
+            </div>  
+          </div>
+    </paper-card>
+
+    </div>
+  </template>
+
+    <script>
+        Polymer({
+            is: 'my-lessons',
+        });
+    </script>
+</dom-module>

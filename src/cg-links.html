@@ -23,12 +23,38 @@
             iron-icon {
                 color:black;
             }
+            #item {
+                border-top: solid 1px transparent;
+                border-bottom: solid 1px transparent;
+
+                --paper-item-focused-before :{
+                  background:  #fdfcfb !important;
+                  border-color: #ddd;
+                  
+                };
+                --paper-item-selected : {
+                  background:  #fdfcfb !important;
+                  border-color: #ddd;
+
+                };
+                --paper-item-focused : {
+                    background:  #fdfcfb !important;
+                    border-color: #ddd;
+
+                };
+              
+            }
+            #item.active-link, #item:focus, #item:active {
+                background: #fdfcfb !important;
+                border-top: solid 1px #ddd;
+                border-bottom: solid 1px #ddd;
+            }
            
         </style>
         <div class="wrap">
              <a class="paper-item-link" tab-index="-1" name="[[name]]" href="[[href]]">
-            <paper-icon-item>
-                <iron-icon icon="[[icon]]" item-icon></iron-icon>
+            <paper-icon-item id="item">
+                <iron-icon src$="[[src]]" icon$="[[icon]]" item-icon></iron-icon>
                [[text]]
             </paper-icon-item>
             </a>
@@ -52,8 +78,22 @@
                 },
                 icon: {
                     type: String,
-                    value: "link"
+                    value: ""
+                },
+                src: {
+                    type: String,
+                    value: ""
+                },
+                active: {
+                    type: Boolean,
+                    value: false,
+                    notify: true,
+                    reflectToAttribute: true,
+                    observer: '_toggleActive'
                 }
+            },
+            _toggleActive: function() {
+                this.$.item.toggleClass('active-link', this.name === this.active);
             }
         });
     </script>

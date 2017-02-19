@@ -1,0 +1,71 @@
+0 info it worked if it ends with ok
+1 verbose cli [ 'C:\\Program Files\\nodejs\\node.exe',
+1 verbose cli   'C:\\Program Files\\nodejs\\node_modules\\npm\\bin\\npm-cli.js',
+1 verbose cli   'install',
+1 verbose cli   'paper-card',
+1 verbose cli   '--save' ]
+2 info using npm@3.10.7
+3 info using node@v6.5.0
+4 silly loadCurrentTree Starting
+5 silly install loadCurrentTree
+6 silly install readLocalPackageData
+7 silly fetchPackageMetaData paper-card
+8 silly fetchNamedPackageData paper-card
+9 silly mapToRegistry name paper-card
+10 silly mapToRegistry using default registry
+11 silly mapToRegistry registry http://20repository1:8081/artifactory/api/npm/idbs-npm
+12 silly mapToRegistry data Result {
+12 silly mapToRegistry   raw: 'paper-card',
+12 silly mapToRegistry   scope: null,
+12 silly mapToRegistry   escapedName: 'paper-card',
+12 silly mapToRegistry   name: 'paper-card',
+12 silly mapToRegistry   rawSpec: '',
+12 silly mapToRegistry   spec: 'latest',
+12 silly mapToRegistry   type: 'tag' }
+13 silly mapToRegistry uri http://20repository1:8081/artifactory/api/npm/idbs-npm/paper-card
+14 verbose request uri http://20repository1:8081/artifactory/api/npm/idbs-npm/paper-card
+15 verbose request always-auth set; sending authorization
+16 info attempt registry request try #1 at 1:13:23 PM
+17 verbose request id abf71e3bfa0fc956
+18 http request GET http://20repository1:8081/artifactory/api/npm/idbs-npm/paper-card
+19 info retry will retry, error on last attempt: Error: getaddrinfo ENOTFOUND 20repository1 20repository1:8081
+20 info attempt registry request try #2 at 1:13:35 PM
+21 http request GET http://20repository1:8081/artifactory/api/npm/idbs-npm/paper-card
+22 info retry will retry, error on last attempt: Error: getaddrinfo ENOTFOUND 20repository1 20repository1:8081
+23 info attempt registry request try #3 at 1:14:37 PM
+24 http request GET http://20repository1:8081/artifactory/api/npm/idbs-npm/paper-card
+25 silly fetchPackageMetaData Error: getaddrinfo ENOTFOUND 20repository1 20repository1:8081
+25 silly fetchPackageMetaData     at errnoException (dns.js:28:10)
+25 silly fetchPackageMetaData     at GetAddrInfoReqWrap.onlookup [as oncomplete] (dns.js:76:26)
+25 silly fetchPackageMetaData  error for paper-card { Error: getaddrinfo ENOTFOUND 20repository1 20repository1:8081
+25 silly fetchPackageMetaData     at errnoException (dns.js:28:10)
+25 silly fetchPackageMetaData     at GetAddrInfoReqWrap.onlookup [as oncomplete] (dns.js:76:26)
+25 silly fetchPackageMetaData   code: 'ENOTFOUND',
+25 silly fetchPackageMetaData   errno: 'ENOTFOUND',
+25 silly fetchPackageMetaData   syscall: 'getaddrinfo',
+25 silly fetchPackageMetaData   hostname: '20repository1',
+25 silly fetchPackageMetaData   host: '20repository1',
+25 silly fetchPackageMetaData   port: '8081' }
+26 silly rollbackFailedOptional Starting
+27 silly rollbackFailedOptional Finishing
+28 silly runTopLevelLifecycles Finishing
+29 silly install printInstalled
+30 verbose stack Error: getaddrinfo ENOTFOUND 20repository1 20repository1:8081
+30 verbose stack     at errnoException (dns.js:28:10)
+30 verbose stack     at GetAddrInfoReqWrap.onlookup [as oncomplete] (dns.js:76:26)
+31 verbose cwd C:\EWB\Code\Experiments\cg-guitar2017
+32 error Windows_NT 10.0.14393
+33 error argv "C:\\Program Files\\nodejs\\node.exe" "C:\\Program Files\\nodejs\\node_modules\\npm\\bin\\npm-cli.js" "install" "paper-card" "--save"
+34 error node v6.5.0
+35 error npm  v3.10.7
+36 error code ENOTFOUND
+37 error errno ENOTFOUND
+38 error syscall getaddrinfo
+39 error network getaddrinfo ENOTFOUND 20repository1 20repository1:8081
+40 error network This is most likely not a problem with npm itself
+40 error network and is related to network connectivity.
+40 error network In most cases you are behind a proxy or have bad network settings.
+40 error network
+40 error network If you are behind a proxy, please make sure that the
+40 error network 'proxy' config is set properly.  See: 'npm help config'
+41 verbose exit [ 1, true ]
