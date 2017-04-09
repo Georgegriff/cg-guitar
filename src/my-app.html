@@ -46,9 +46,7 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
       app-header paper-icon-button {
         --paper-icon-button-ink-color: white;
       }
-
-     
-
+      
       /** title */
       app-header {
         color: #fff;
@@ -146,10 +144,12 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
             fallback-selection="view404"
             entry-animation="slide-from-right-animation" exit-animation="slide-left-animation"
             role="main">
-          <my-lessons name="lessons"></my-lessons>
-          <my-about name="about"></my-about>
-          <my-view3 name="view3"></my-view3>
-          <my-view404 name="view404"></my-view404>
+          <my-lessons id="lessons" name="lessons"></my-lessons>
+          <my-about id="about" name="about"></my-about>
+          <my-testimonials id="testimonials" name="testimonials"></my-contact>
+          <my-contact id="contact" name="contact"></my-contact>
+
+          <my-view404 id="view404" name="view404"></my-view404>
         </neon-animated-pages>
       </app-header-layout>
     </app-drawer-layout>
@@ -194,13 +194,19 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
                 this.scrollArea = 'document';
             },
             _scrollHandler: function() {
-                var scrollTop = this._scrollTop,
-                    pages = this.$.sidebar;
-                if (scrollTop === 0) {
-                    this.page = pages.previousPage();
-                } else if (scrollTop >= this._scrollTargetHeight) {
-                    this.page = this.pages.nextPage();
-                }
+                // var scrollTop = this._scrollTop,
+                //     scrollHeight = window.document.body.scrollHeight,
+                //     isScrollHeight = Math.round(this._scrollTargetHeight + scrollTop),
+                //     pages = this.$.sidebar;
+                // if (scrollTop === 0) {
+                //     if (pages.previousPage()) {
+                //         this.page = pages.previousPage();
+                //     }
+                // } else if (isScrollHeight >= scrollHeight) {
+                //     if (pages.nextPage()) {
+                //         this.page = pages.nextPage();
+                //     }
+                // }
             }
 
         });

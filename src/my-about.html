@@ -9,53 +9,133 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
 -->
 
 <link rel="import" href="../bower_components/polymer/polymer.html">
+<link rel="import" href="../bower_components/paper-card/paper-card.html">
+<link rel="import" href="../bower_components/paper-button/paper-button.html">
 <link rel="import" href="shared-styles.html">
 
 
 <dom-module id="my-about">
     <template>
-    <style include="shared-styles">
+   <style include="shared-styles">
       :host {
         display: block;
-
         padding: 10px;
       }
-    </style>
 
-    <div class="card">
-      <div class="circle">1</div>
-      <h1>View One</h1>
-      <p>Ut labores minimum atomorum pro. Laudem tibique ut has.</p>
-      <p>Lorem ipsum dolor sit amet, per in nusquam nominavi periculis, sit elit oportere ea.Lorem ipsum dolor sit amet, per in nusquam nominavi periculis, sit elit oportere ea.Cu mei vide viris gloriatur, at populo eripuit sit.</p>
-    </div>
+        paper-card {
+            max-width:800px;
+          }
+        .contact-btn {
+          background:var(--app-primary-color);
+          color: white;
+        }
+        .card-header { @apply(--paper-font-headline); }
+        .card-light { color: var(--paper-grey-600); }
+        .card-location {
+      float: right;
+      font-size: 15px;
+      vertical-align: middle;
+        }
+      
+      .wrap {
+        display:flex;
+       flex-direction: row;
+       flex-wrap: wrap;
+       justify-content: center; 
+       padding-bottom:10%;
+      }
 
-    <div class="card">
-      <div class="circle">1</div>
-      <h1>View One</h1>
-      <p>Ut labores minimum atomorum pro. Laudem tibique ut has.</p>
-      <p>Lorem ipsum dolor sit amet, per in nusquam nominavi periculis, sit elit oportere ea.Lorem ipsum dolor sit amet, per in nusquam nominavi periculis, sit elit oportere ea.Cu mei vide viris gloriatur, at populo eripuit sit.</p>
-    </div>
+      .levels {
+        display:flex;
+        flex-direction:column;
+        margin:10px;
+        height:660px;
+        justify-content: center;
+      }
+      .lvl-title {
+        padding-bottom:10px;
+      }
+      paper-card {
+        margin:10px;
+      }
+      paper-card {
+        min-width:500px;
+      }
+      .big-card {
+        height:750px;
+      }
+      .big-card {
+        --paper-card-actions : {
+          position:absolute;
+          bottom:0;
+          margin-bottom:10px;
+        };
+      
+      }
+      .btn-cnt {
+        margin-bottom:10px;
+      }
+  </style>
+  <div id="scroller">
+     <div class="wrap">
 
-    <div class="card">
-      <div class="circle">1</div>
-      <h1>View One</h1>
-      <p>Ut labores minimum atomorum pro. Laudem tibique ut has.</p>
-      <p>Lorem ipsum dolor sit amet, per in nusquam nominavi periculis, sit elit oportere ea.Lorem ipsum dolor sit amet, per in nusquam nominavi periculis, sit elit oportere ea.Cu mei vide viris gloriatur, at populo eripuit sit.</p>
-    </div>
+    <div class="levels">
+  
+    <paper-card heading="Who is CG Guitar?" class="text-card" animated-shadow="false">
+      <div class="card-actions">
+    
+        <p class="card-light">
+       CG Guitar is the creation of guitarist Charlie Griffiths.
+        <br/>
+        Charlie has been playing guitar since the age of 13, since then he has performed in a number of bands that have required him to play a variety of styles of music, blues, jazz, soul, funk, rock, all the way to the extreme sides of metal.
+        <p>
+      </div>
+    </paper-card>
 
-    <div class="card">
-      <div class="circle">1</div>
-      <h1>View One</h1>
-      <p>Ut labores minimum atomorum pro. Laudem tibique ut has.</p>
-      <p>Lorem ipsum dolor sit amet, per in nusquam nominavi periculis, sit elit oportere ea.Lorem ipsum dolor sit amet, per in nusquam nominavi periculis, sit elit oportere ea.Cu mei vide viris gloriatur, at populo eripuit sit.</p>
-    </div>
+    <paper-card class="text-card" animated-shadow="false">
+      <div class="card-actions">
+    
+        <p class="card-light">
+         Charlie graduated from The Academy of Contemporary Music as a Bachelor of Music with a First Class Honours in Professional Music Performance in 2013.
+         <br/>
+         During his degree in 2012 he started teaching at Goodall Guitar School in Farnborough which has now led him on to running his own teaching and guitar related business, CG Guitar.     <p>
+      </div>
+    </paper-card>
 
-    <div class="card">
-      <div class="circle">1</div>
-      <h1>View One</h1>
-      <p>Ut labores minimum atomorum pro. Laudem tibique ut has.</p>
-      <p>Lorem ipsum dolor sit amet, per in nusquam nominavi periculis, sit elit oportere ea.Lorem ipsum dolor sit amet, per in nusquam nominavi periculis, sit elit oportere ea.Cu mei vide viris gloriatur, at populo eripuit sit.</p>
+    <paper-card heading="Looking for Lessons?" class="text-card" animated-shadow="false">
+      <div class="card-actions">
+    
+        <p class="card-light">
+          I offer lessons to students of all standards, find more information on my Lessons page. 
+          <br/>
+          If you'd like to hear what my students have to say about me, please visit the Testimonials page.     
+</div>
+    </paper-card>
+
+        </div>
+
+     <paper-card class="big-card" id="sign" image="../images/lessons.jpg">
+          <div class="card-content">
+            <div class="card-header">Band & Session Work</div>
+            <p class="card-light">
+                I'm available for session work, for details please visit my <a href="/session">Band/Session</a> page. 
+          </div>
+          <div class="card-actions">
+            <div class="horizontal justified">
+              <div class="btn-cnt">
+                  Please don't hesitate to get in touch.
+              </div>
+              
+                  <paper-button class="contact-btn"><a href="/contact">Contact</a></paper-button>
+            </div>  
+          </div>
+    </paper-card>
+    
+
+
     </div>
+  </div>
+   
   </template>
 
     <script>

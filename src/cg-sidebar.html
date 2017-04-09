@@ -35,7 +35,7 @@
                 <div id="pages" role="listbox">
                     <cg-links active="[[page]]" text="Guitar Lessons" href="/lessons" name="lessons" src="../images/logo_black.png"></cg-links>
                     <cg-links active="[[page]]" text="About" href="/about" name="about" icon="info"></cg-links>
-                    <cg-links active="[[page]]" text="Contact" href="/view3" name="view3" icon="communication:contact-phone"></cg-links>
+                    <cg-links active="[[page]]" text="Contact" href="/contact" name="contact" icon="communication:contact-phone"></cg-links>
                     <cg-links active="[[page]]" text="Photos" href="/photos" name="photos" icon="image:photo-library"></cg-links>
                     <cg-links active="[[page]]" text="Videos" href="/videos" name="videos" icon="av:videocam"></cg-links>
                     <cg-links active="[[page]]" text="Testimonials" href="/testimonials" name="testimonials" icon="social:sentiment-satisfied"></cg-links>
@@ -66,17 +66,17 @@
                 var current = this._names.indexOf(this.page),
                     newIndex = current + 1,
                     newPage = this._names[newIndex];
-                if (newPage > this._names.length - 1) {
+                if (newIndex > this._names.length - 1) {
                     return current;
 
                 }
-                return current;
+                return newPage;
             },
             previousPage: function() {
                 var current = this._names.indexOf(this.page),
                     newIndex = current - 1,
                     newPage = this._names[newIndex];
-                if (newPage < 0) {
+                if (newIndex < 0) {
                     return current;
                 }
                 return newPage;

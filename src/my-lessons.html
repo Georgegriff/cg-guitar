@@ -20,7 +20,6 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
     <style include="shared-styles">
       :host {
         display: block;
-
         padding: 10px;
       }
 
@@ -38,6 +37,7 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
       font-size: 15px;
       vertical-align: middle;
         }
+       
       .wrap {
         display:flex;
        flex-direction: row;
@@ -76,8 +76,8 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
         margin-bottom:10px;
       }
   </style>
-
-  <div class="wrap">
+  <div id="scroller">
+     <div class="wrap">
 
     <div class="levels">
       <div class="lvl-title">
@@ -88,7 +88,7 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
       <div class="card-actions">
     
         <p class="card-light">
-        Kick starting your guitar playing with enjoyable and frustration free methods to get you playing music from the first lesson.
+        Kick start your guitar playing with enjoyable and frustration free methods to get you playing music from the first lesson.
         <p>
       </div>
     </paper-card>
@@ -115,12 +115,7 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
           <div class="card-content">
             <div class="card-header">Kickstart your guitar lessons now!</div>
             <p class="card-light">
-              
-         
-
-            Private lessons are currently held at the students' houses or on Skype and are for 30 minutes. If you'd like to try a longer lesson time then there is room for discussion.  
-            <br/><br/>
-            I'm also available for session work, for details please visit my Band/Session page.
+            I'm also available for session work, for details please visit my <a href="/session">Band/Session</a> page.
 
           </div>
           <div class="card-actions">
@@ -128,7 +123,7 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
               <div class="btn-cnt">
                   See what my students are saying about me.
               </div>
-              <paper-button class="contact-btn">Testimonials</paper-button>
+              <paper-button class="contact-btn"><a href="/testimonials">Testimonials</a></paper-button>
             </div>  
           </div>
     </paper-card>
@@ -147,12 +142,14 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
               <div class="btn-cnt">
                 If you wish to enquire about guitar lessons please contact me.
               </div>
-              <paper-button class="contact-btn">Contact</paper-button>
+              <paper-button class="contact-btn"><a href="/contact">Contact</a></paper-button>
             </div>  
           </div>
     </paper-card>
 
     </div>
+  </div>
+ 
   </template>
 
     <script>
