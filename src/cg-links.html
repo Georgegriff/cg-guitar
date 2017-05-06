@@ -49,6 +49,9 @@
                 border-top: solid 1px #ddd;
                 border-bottom: solid 1px #ddd;
             }
+            :host([is-active]) iron-icon, :host([is-active]) a {
+                color: var(--app-primary-color, black);
+            }
            
         </style>
         <div class="wrap">
@@ -85,6 +88,12 @@
                     value: ""
                 },
                 active: {
+                    type: String,
+                    value: false,
+                    notify: true,
+                    observer: '_toggleActive'
+                },
+                isActive: {
                     type: Boolean,
                     value: false,
                     notify: true,
@@ -93,7 +102,8 @@
                 }
             },
             _toggleActive: function() {
-                this.$.item.toggleClass('active-link', this.name === this.active);
+                this.isActive = this.name === this.active;
+                this.$.item.toggleClass('active-link', this.isActive);
             }
         });
     </script>
