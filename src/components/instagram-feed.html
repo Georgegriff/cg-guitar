@@ -1,0 +1,148 @@
+<!--
+@license
+Copyright (c) 2016 The Polymer Project Authors. All rights reserved.
+This code may only be used under the BSD style license found at http://polymer.github.io/LICENSE.txt
+The complete set of authors may be found at http://polymer.github.io/AUTHORS.txt
+The complete set of contributors may be found at http://polymer.github.io/CONTRIBUTORS.txt
+Code distributed by Google as part of the polymer project is also
+subject to an additional IP rights grant found at http://polymer.github.io/PATENTS.txt
+-->
+<script src="../../bower_components/instafeed.js/instafeed.min.js"></script>
+<link rel="import" href="../../bower_components/polymer/polymer.html">
+
+<dom-module id="instagram-feed">
+    <template>
+    <style>
+      :host {
+       display: block;
+       height:100%;
+       width:100%;
+      
+      }
+      #instafeed {
+        width:100%;
+        display: flex;
+        flex:1;
+        flex-wrap: wrap;
+        justify-content: center;
+
+      }
+      .instafeed-wrap {
+        width: var(--instagram-width, 230px);
+        height: var(--intagram-feed-height, auto);
+        margin: 10px;
+        padding: 10px;
+        color: #757575;
+        border-radius: 5px;
+        background-color: #fff;
+        box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.14), 0 1px 5px 0 rgba(0, 0, 0, 0.12), 0 3px 1px -2px rgba(0, 0, 0, 0.2);
+        @apply instagram-wrapper;
+      }
+      .instafeed-wrap img {
+        width:100%;
+      }
+      .instafeed-wrap .instas {
+          position:relative;
+      }
+      .instafeed-wrap .description {
+          margin: 0;
+        font-size: 12px;
+        padding-top:5px;
+        background: transparent;
+        overflow: hidden;
+        white-space: nowrap;
+        text-overflow: ellipsis;
+      }
+      .instas a {
+          position: relative;
+          display: block;
+          height:240px;
+      }
+      .instas a img{
+          position: absolute;
+          top:0;
+      }
+      .instafeed-wrap .likes {
+          display:flex;
+          justify-content: center;
+          align-items: center;
+          height:100%;
+          color: var(--instagram-feed-heart-color, #fff);
+          text-align: center;
+      }
+      .like-wrap {
+          position:relative;
+          width:75px;
+          height:75px;
+      }
+      .instafeed-wrap .like-wrap .heart {
+        position:absolute;
+        display:flex;
+        justify-content: center;
+        align-items: center;
+        font-size:75px;
+        width:75px;
+        height:75px;
+        z-index:99;
+      }
+      .instafeed-wrap .like-wrap * {
+          opacity:0;
+      }
+       .instafeed-wrap:hover .like-wrap * {
+            transition: opacity .3s ease-in-out;   
+            opacity:0.7;
+      }
+       .instafeed-wrap .like-wrap .number {
+          position: absolute;
+          z-index:100;
+            width:75px;
+          height:75px;
+          color: var(--instagram-feed-likes-color, #757575);
+          display: flex;
+          justify-content: center;
+          align-items: center;
+          letter-spacing: 2px;
+          font-size:20px;
+          font-weight: 800;
+      }
+     
+    </style>
+
+    <div id="instafeed"></div>
+
+
+  </template>
+
+    <script>
+        Polymer({
+            is: 'instagram-feed',
+            getInstagramFeed: function getInstagramFeed() {
+                var feed = new Instafeed({
+                    resolution: 'standard_resolution',
+                    get: "user",
+                    target: this.$.instafeed,
+                    userId: 227312307,
+                    accessToken: "227312307.1677ed0.f3dd75e5e7a341458803d2db31dfab7c",
+                    after: this.instagramAfter,
+                    template: '<div class="instafeed-wrap"><div class="instas"><a target="_blank" href="{{link}}"><div id="{{id}}" class="likes"><div class="like-wrap"><div class="number">{{likes}}</div><div class="heart">&#10084;</div></div></div><img src="{{image}}" /></a><h3 class="description">{{caption}}</h3></div></div>'
+                });
+                return feed;
+            },
+            ready: function() {
+                this.feed = this.getInstagramFeed();
+                this.feed.run();
+            },
+            run: function() {
+                this.feed.run();
+            },
+            next: function() {
+                try {
+                    this.feed.next();
+                } catch (e) {
+
+                }
+            }
+
+        });
+    </script>
+</dom-module>

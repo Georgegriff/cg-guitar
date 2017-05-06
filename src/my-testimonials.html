@@ -41,7 +41,6 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
         display:flex;
        flex-direction: row;
        flex-wrap: wrap;
-       justify-content: center; 
        padding-bottom:10%;
       }
 
@@ -71,15 +70,16 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
         margin:10px;
       }
       paper-card {
-        width:500px;
-        min-height:200px;
+       width:100%;
+       height:auto;
+       min-height:auto;
+       max-width:initial;
       }
      
       .btn-cnt {
         margin-bottom:10px;
       }
   </style>
-  <div id="scroller">
      <div class="wrap">
   <div class="lvl-title">
           What do people say about CG Guitar?
@@ -97,12 +97,6 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
         </paper-card>
 
       </template>
-
-
-
-
-
-    </div>
     </div>
 
     </template>

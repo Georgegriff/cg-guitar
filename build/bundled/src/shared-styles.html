@@ -2,8 +2,12 @@
 
 
 </head><body><dom-module id="shared-styles">
-  <template>
+    <template>
     <style>
+      * {
+          font-family: Roboto,Noto,sans-serif;
+
+      }
       .card {
         margin: 24px;
         padding: 16px;
@@ -30,7 +34,13 @@
         color: #212121;
         font-size: 22px;
       }
+      a {
+        color: var(--app-primary-color);
+      }
+      paper-button a {
+        color:white;
+        text-decoration: none;
+      }
     </style>
   </template>
-</dom-module>
-</body></html>
+</dom-module></body></html>

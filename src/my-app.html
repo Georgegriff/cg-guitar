@@ -146,8 +146,11 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
             role="main">
           <my-lessons id="lessons" name="lessons"></my-lessons>
           <my-about id="about" name="about"></my-about>
-          <my-testimonials id="testimonials" name="testimonials"></my-contact>
+          <my-session id="session" name="session"></my-session>
+          <my-testimonials id="testimonials" name="testimonials"></my-testimonials>
           <my-contact id="contact" name="contact"></my-contact>
+          <my-photos scroll-pos="{{scrollPos}}"id="photos" name="photos"></my-photos>
+          <my-videos id="videos" name="videos"></my-videos>
 
           <my-view404 id="view404" name="view404"></my-view404>
         </neon-animated-pages>
@@ -165,6 +168,20 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
                     reflectToAttribute: true,
                     observer: '_pageChanged',
                 },
+                scrollPos: {
+                    type: String,
+                    notify: true
+                },
+                isScrollBottom: {
+                    type: Boolean,
+                    notify: true,
+                    observer: '_isTopOrBottom'
+                },
+                isScrollTop: {
+                    type: Boolean,
+                    notify: true,
+                    observer: '_isTopOrBottom'
+                }
             },
             behaviors: [
                 Polymer.IronScrollTargetBehavior
@@ -194,19 +211,27 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
                 this.scrollArea = 'document';
             },
             _scrollHandler: function() {
-                // var scrollTop = this._scrollTop,
-                //     scrollHeight = window.document.body.scrollHeight,
-                //     isScrollHeight = Math.round(this._scrollTargetHeight + scrollTop),
-                //     pages = this.$.sidebar;
-                // if (scrollTop === 0) {
-                //     if (pages.previousPage()) {
-                //         this.page = pages.previousPage();
-                //     }
-                // } else if (isScrollHeight >= scrollHeight) {
-                //     if (pages.nextPage()) {
-                //         this.page = pages.nextPage();
-                //     }
-                // }
+                var scrollArea = this.scrollTarget.querySelector('body'),
+                    scrollTop = scrollArea.scrollTop,
+                    windowHeight = scrollArea.offsetHeight,
+                    scrollHeight = scrollArea.scrollHeight,
+                    position = scrollTop + windowHeight;
+
+                if (position >= scrollHeight) {
+                    this.isScrollBottom = true;
+                    this.isScrollTop = false;
+                } else if (scrollTop === 0) {
+                    this.isScrollTop = true;
+                    this.isScrollBottom = false;
+                } else {
+                    this.isScrollBottom = false;
+                    this.isScrollTop = false;
+                    this.scrollPos = position / scrollHeight;
+                }
+
+            },
+            _isTopOrBottom: function() {
+                this.scrollPos = this.isScrollBottom ? 'bottom' : this.isScrollTop ? 'top' : this.scrollPos;
             }
 
         });
