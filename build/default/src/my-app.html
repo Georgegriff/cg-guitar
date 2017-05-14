@@ -1,0 +1,227 @@
+<!--
+@license
+Copyright (c) 2016 The Polymer Project Authors. All rights reserved.
+This code may only be used under the BSD style license found at http://polymer.github.io/LICENSE.txt
+The complete set of authors may be found at http://polymer.github.io/AUTHORS.txt
+The complete set of contributors may be found at http://polymer.github.io/CONTRIBUTORS.txt
+Code distributed by Google as part of the polymer project is also
+subject to an additional IP rights grant found at http://polymer.github.io/PATENTS.txt
+--><html><head><link rel="import" href="../bower_components/polymer/polymer.html">
+<link rel="import" href="../bower_components/app-layout/app-drawer/app-drawer.html">
+<link rel="import" href="../bower_components/app-layout/app-toolbar/app-toolbar.html">
+
+<link rel="import" href="../bower_components/app-layout/app-drawer-layout/app-drawer-layout.html">
+<link rel="import" href="../bower_components/app-layout/app-header/app-header.html">
+<link rel="import" href="../bower_components/app-layout/app-header-layout/app-header-layout.html">
+<link rel="import" href="../bower_components/app-layout/app-scroll-effects/app-scroll-effects.html">
+<link rel="import" href="../bower_components/app-route/app-location.html">
+<link rel="import" href="../bower_components/app-route/app-route.html">
+<link rel="import" href="../bower_components/app-layout/app-scrollpos-control/app-scrollpos-control.html">
+
+<link rel="import" href="../bower_components/neon-animation/neon-animated-pages.html">
+<link rel="import" href="../bower_components/neon-animation/neon-animations.html">
+<link rel="import" href="../bower_components/iron-scroll-target-behavior/iron-scroll-target-behavior.html">
+<link rel="import" href="../bower_components/iron-selector/iron-selector.html">
+<link rel="import" href="../bower_components/paper-icon-button/paper-icon-button.html">
+<link rel="import" href="cg-sidebar.html">
+
+<link rel="import" href="my-icons.html">
+
+</head><body><dom-module id="my-app">
+    <template>
+    <style>
+      :host {
+        --app-primary-color: #990033;
+        --app-secondary-color: #ddd;
+
+        display: block;
+      }
+
+      app-header {
+        color: #fff;
+        background-color: var(--app-primary-color);
+      }
+      app-header paper-icon-button {
+        --paper-icon-button-ink-color: white;
+      }
+      
+      /** title */
+      app-header {
+        color: #fff;
+        background-color:var(--app-primary-color);
+      }
+      app-toolbar {
+        height: 120px;
+      }
+      [condensed-title] {
+        position: absolute;
+        top: 0;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        background-image: url('../images/cgguitar2.png');
+        background-repeat: no-repeat;
+        background-position: center center;
+        background-size: 350px;
+        /* The difference in font size is used to calculate the scale of the title in the transition. */
+        font-size: 16px;
+      }
+      [main-title] {
+        position: absolute;
+        top: -120px;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        background-image: url('../images/cgguitar.png');
+        background-repeat: no-repeat;
+        background-position: center center;
+        background-size: 895px;
+        -webkit-transform-origin: center top !important;
+        transform-origin: center top !important;
+        /* The difference in font size is used to calculate the scale of the title in the transition. */
+        font-size: 32px;
+      }
+    
+       @media (max-width: 719px) {
+      app-toolbar {
+        height: 60px;
+      }
+      [condensed-title] {
+        background-image: url('../images/cgguitar2.png');
+        background-size: 170px;
+      }
+      [main-title] {
+        top: -60px;
+        background-image: url('../images/cgguitar.png');
+        background-size: 400px;
+      }
+      .content {
+        max-width: 400px;
+      }
+      .card-container {
+        width: 100%;
+      }
+      
+    }
+    </style>
+
+    <app-location route="{{route}}"></app-location>
+    <app-route route="{{route}}" pattern="/:page" data="{{routeData}}" tail="{{subroute}}"></app-route>
+
+    <app-drawer-layout fullbleed="">
+      <!-- Drawer content -->
+       <app-drawer id="drawer">
+         <cg-sidebar id="sidebar" page="[[page]]"></cg-sidebar>
+
+       </app-drawer>
+
+       <app-scrollpos-control id="scrollPos" selected="{{page}}"></app-scrollpos-control>
+
+      <!-- Main content -->
+      <app-header-layout id="layout">
+
+       <app-header effects="resize-title" condenses="" fixed="">
+        <app-toolbar class="top-toolbar">
+          <div condensed-title=""></div>
+          <paper-icon-button icon="my-icons:menu" drawer-toggle=""></paper-icon-button>
+
+        </app-toolbar>
+        <app-toolbar class="bottom-toolbar">
+          <div main-title=""></div>
+        </app-toolbar>
+      </app-header>
+
+        <neon-animated-pages id="animPages" selected="[[page]]" attr-for-selected="name" fallback-selection="view404" entry-animation="slide-from-right-animation" exit-animation="slide-left-animation" role="main">
+          <my-lessons id="lessons" name="lessons"></my-lessons>
+          <my-about id="about" name="about"></my-about>
+          <my-session id="session" name="session"></my-session>
+          <my-testimonials id="testimonials" name="testimonials"></my-testimonials>
+          <my-contact id="contact" name="contact"></my-contact>
+          <my-photos scroll-pos="{{scrollPos}}" id="photos" name="photos"></my-photos>
+          <my-videos id="videos" name="videos"></my-videos>
+
+          <my-view404 id="view404" name="view404"></my-view404>
+        </neon-animated-pages>
+      </app-header-layout>
+    </app-drawer-layout>
+  </template>
+
+    <script>
+        Polymer({
+            is: 'my-app',
+
+            properties: {
+                page: {
+                    type: String,
+                    reflectToAttribute: true,
+                    observer: '_pageChanged',
+                },
+                scrollPos: {
+                    type: String,
+                    notify: true
+                },
+                isScrollBottom: {
+                    type: Boolean,
+                    notify: true,
+                    observer: '_isTopOrBottom'
+                },
+                isScrollTop: {
+                    type: Boolean,
+                    notify: true,
+                    observer: '_isTopOrBottom'
+                }
+            },
+            behaviors: [
+                Polymer.IronScrollTargetBehavior
+            ],
+            observers: [
+                '_routePageChanged(routeData.page)',
+            ],
+
+            _routePageChanged: function(page) {
+                this.page = page || 'lessons';
+
+                if (!this.$.drawer.persistent) {
+                    this.$.drawer.close();
+                }
+            },
+
+            _pageChanged: function(page) {
+                // Load page import on demand. Show 404 page if fails
+                var resolvedPageUrl = this.resolveUrl('my-' + page + '.html');
+                this.importHref(resolvedPageUrl, null, this._showPage404, true);
+            },
+
+            _showPage404: function() {
+                this.page = 'view404';
+            },
+            ready: function() {
+                this.scrollArea = 'document';
+            },
+            _scrollHandler: function() {
+                var scrollArea = this.scrollTarget.querySelector('body'),
+                    scrollTop = scrollArea.scrollTop,
+                    windowHeight = scrollArea.offsetHeight,
+                    scrollHeight = scrollArea.scrollHeight,
+                    position = scrollTop + windowHeight;
+
+                if (position >= scrollHeight) {
+                    this.isScrollBottom = true;
+                    this.isScrollTop = false;
+                } else if (scrollTop === 0) {
+                    this.isScrollTop = true;
+                    this.isScrollBottom = false;
+                } else {
+                    this.isScrollBottom = false;
+                    this.isScrollTop = false;
+                    this.scrollPos = position / scrollHeight;
+                }
+
+            },
+            _isTopOrBottom: function() {
+                this.scrollPos = this.isScrollBottom ? 'bottom' : this.isScrollTop ? 'top' : this.scrollPos;
+            }
+
+        });
+    </script>
+</dom-module></body></html>

@@ -1,19 +1,31 @@
 {
+    "builds" :[{
+    "bundle" : true,
+    "js": {"minify": true},
+    "css": {"minify": true},
+    "html": {"minify": true}
+    }],
     "entrypoint": "index.html",
     "shell": "src/my-app.html",
     "fragments": [
         "src/my-about.html",
-        "src/my-view2.html",
-        "src/my-view3.html",
+        "src/my-lessons.html",
+        "src/my-contact.html",
+        "src/my-videos.html",
+        "src/my-testimonials.html",
+		"src/my-photos.html",
+        "src/my-session.html",
         "src/my-view404.html"
     ],
-    "sourceGlobs": [
+    "sources": [
         "src/**/*",
         "images/**/*",
         "bower.json"
     ],
-    "includeDependencies": [
+    "extraDependencies": [
         "manifest.json",
         "bower_components/webcomponentsjs/webcomponents-lite.min.js"
     ]
+    
+   
 }

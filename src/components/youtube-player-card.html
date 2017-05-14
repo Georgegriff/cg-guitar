@@ -1,0 +1,302 @@
+<link rel="import" href="../polymer/polymer.html">
+<link rel="import" href="../google-apis/google-youtube-api.html">
+<link rel="import" href="../paper-card/paper-card.html">
+<link rel="import" href="../iron-icon/iron-icon.html">
+<link rel="import" href="../iron-icons/iron-icons.html">
+<link rel="import" href="../iron-icons/av-icons.html">
+
+<dom-module id="youtube-player-card">
+    <template>
+        <style>
+             :host {
+                display: block;
+          
+            }
+            :host #card {
+                width: var(--youtube-player-video-width, 320px);
+            }
+           .card-content {
+            width: var(--youtube-player-video-width, 320px);
+            height: var(--youtube-player-video-height, 240px);
+            padding:0;
+            position:relative;
+            display:flex;
+            justify-content: center;
+            align-items: center;
+            overflow: hidden;
+           }
+           button.play-btn {
+              background: var(--youtube-player-play-background-color, #757575);
+              border:none;
+              outline:none;
+              width:75px;
+              height:75px;
+              display:flex;
+              justify-content: center;
+              align-items: center;
+              z-index:99;
+              border-radius: 100%;
+              opacity:0;
+              cursor:pointer;
+            transition: opacity .3s ease-in-out;    
+
+           }
+           :host #contentVideo:hover .play-btn{
+                opacity:0.5;
+           }
+           :host .play-button {
+             color: var(--youtube-player-play-button-color, white);
+             width:54px;
+             height:54px;
+             z-index:100;
+           }
+           :host .video {
+
+           }
+         
+           #video {
+             position:absolute;
+             top:0;
+           }
+
+           .thumbnail {
+             position:absolute;
+             top:0;
+             left:0;
+            width: var(--youtube-player-video-width, 320px);
+            height: var(--youtube-player-video-height, 240px);
+            transition: opacity .3s ease-in-out;    
+
+           }
+           :host .video-title {
+            font-size: 24px;
+            font-weight: 400;
+            letter-spacing: -.012em;
+            line-height: 32px;
+            flex:1;
+            margin-right:5px;
+              overflow: hidden;
+        white-space: nowrap;
+        text-overflow: ellipsis;
+           }
+           .title-wrap {
+             display:flex;
+             align-items: center;
+             padding-bottom:5px;
+           }
+           .actions-top {
+             padding:3%;
+           }
+           .card-actions {
+             padding:0;
+           }
+           .actions {
+             display: flex;
+             color:#757575;
+            padding: 5px 16px;
+           }
+           .open-yt {
+               border:none;
+               outline:none;
+               background:none;
+               cursor:pointer;
+               padding:6px;
+           }
+           .duration {
+               display:flex;
+               flex-direction: row-reverse;
+               align-items: center;
+           }
+           .duration iron-icon {
+               margin-left:3px;
+           }
+           .views {
+               display:flex;
+               align-items:center;
+            border-top: 1px solid #e8e8e8;
+            padding:2%;
+
+           }
+           .views .view {
+               flex:1;
+           }
+           .duration {
+               font-size: 14px;
+           }
+           .views, .open-yt, .duration {
+             color:#757575;
+           }
+        </style>
+        <google-youtube-api id="yapi"></google-youtube-api>
+            <!-- Make title click able -->
+            <paper-card  id="card" elevation="1" animated-shadow="false">
+                <div class="card-content" id="contentVideo">
+                  <button id="playBtn" on-click="playVideo" class="play-btn">
+                      <iron-icon class="play-button" icon="av:play-arrow"></iron-icon>
+                  </button>
+                  
+                  <img id="imageThumb" class="thumbnail" src="[[thumbnail]]" alt=""/>
+                  <div class="video" id="video"></div>
+                </div>
+                <div class="card-actions">
+                  <div class="actions-top">
+                    <div class="title-wrap">
+                      <div class="video-title">
+                      [[videoTitle]]
+                      </div>
+    <template is="dom-if" if="[[duration]]">
+
+    <div class="duration">
+        <iron-icon icon="icons:query-builder"></iron-icon>
+        [[convertDuration(duration)]]
+    </div>
+        </template>
+
+    </div>
+
+
+
+    </div>
+    <div class="views">
+        <div class="view">
+            <template is="dom-if" if="[[viewCount]]">
+                          
+                            <iron-icon icon="icons:visibility"></iron-icon>
+                            [[viewCount]] views
+
+                       
+                                        </template>
+        </div>
+
+        <a target="_blank" title="Open in YouTube" class="open-yt">
+            <iron-icon icon="icons:exit-to-app"></iron-icon>
+        </a>
+    </div>
+    </div>
+    </paper-card>
+
+    </template>
+    <script>
+        Polymer({
+            is: 'youtube-player-card',
+            properties: {
+                YT: {
+                    type: Object,
+                    value: null
+                },
+                videoTitle: {
+                    type: String,
+                    value: ''
+                },
+                description: {
+                    type: String,
+                    value: ''
+                },
+                thumbnail: {
+                    type: String,
+                    value: ''
+                },
+                videoId: {
+                    type: String,
+                    value: ''
+                },
+                player: {
+                    type: Object,
+                    value: null
+                },
+                viewCount: {
+                    type: Number,
+                    value: 0
+                }
+            },
+            getVideo: function() {
+                return fetch('https://www.googleapis.com/youtube/v3/search?part=snippet&channelId=' + this.channelId + '&maxResults=25&key=' + this.apiKey);
+            },
+            convertDuration: function(input) {
+                var reptms = /^PT(?:(\d+)H)?(?:(\d+)M)?(?:(\d+)S)?$/;
+                var hours = 0,
+                    minutes = 0,
+                    seconds = 0,
+                    timeString = '';
+
+                if (reptms.test(input)) {
+                    var matches = reptms.exec(input);
+                    if (matches[1]) hours = Number(matches[1]);
+                    if (matches[2]) minutes = Number(matches[2]);
+                    if (matches[3]) seconds = Number(matches[3]);
+                }
+                if (hours) {
+                    hours = hours < 10 ? '0' + hours : hours;
+                    timeString += hours + ':';
+                }
+                minutes = minutes < 10 ? '0' + minutes : minutes;
+                timeString += minutes + ':';
+                seconds = seconds < 10 ? '0' + seconds : seconds;
+                timeString += seconds;
+                return timeString;
+            },
+            loadVideo: function(type, width, height, callback) {
+                // check if ready first...
+                this.player = new this.YT.Player('video', {
+                    height: height,
+                    width: width,
+                    playerVars: {
+                        'autoplay': 0,
+                        'controls': 1,
+                        hd: 1,
+                        'showinfo': 0
+                    },
+                    events: {
+                        'onReady': function(e) {
+                            if (type === 'playlist') {
+                                this.player.cuePlaylist({
+                                    listType: "playlist",
+                                    list: this.videoId
+                                });
+                            } else {
+                                this.player.loadVideoById(this.videoId);
+                            }
+                        }.bind(this),
+                        'onStateChange': function(e) {
+                            this.onPlayerStateChange(e, function(url) {
+                                return callback(url);
+                            });
+                        }.bind(this)
+                    },
+                });
+            },
+            onPlayerStateChange: function onPlayerStateChange(event, callback) {
+                if (event.data === YT.PlayerState.CUED) {
+                    var url = event.target.getVideoUrl();
+                    if (callback) {
+                        return callback(url);
+                    }
+                }
+            },
+            getPlayerSize: function() {
+                var video = getComputedStyle(this.$.contentVideo);
+                if (video) {
+                    return {
+                        width: video.width,
+                        height: video.height
+                    }
+                }
+            },
+            playVideo: function() {
+                this.$.imageThumb.style.opacity = 0;
+                this.$.playBtn.style.opacity = 0;
+                var size = this.getPlayerSize();
+                this.loadVideo('video', size.width, size.height, function() {
+                    console.log('stopped');
+                });
+            },
+            ready: function() {
+                var size;
+                this.$.yapi.addEventListener('api-load', function() {
+                    this.YT = this.$.yapi.api;
+                }.bind(this));
+            }
+
+        });
+    </script>
+</dom-module>

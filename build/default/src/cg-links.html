@@ -1,4 +1,4 @@
-<link rel="import" href="../bower_components/polymer/polymer.html">
+<html><head><link rel="import" href="../bower_components/polymer/polymer.html">
 <link rel="import" href="../bower_components/paper-item/paper-icon-item.html">
 <link rel="import" href="../bower_components/iron-icon/iron-icon.html">
 <link rel="import" href="../bower_components/iron-icons/iron-icons.html">
@@ -11,7 +11,7 @@
 
 <!-- CREATE AN ICON SET -->
 
-<dom-module id="cg-links">
+</head><body><dom-module id="cg-links">
     <template>
         <style>
             :host {
@@ -58,7 +58,7 @@
         <div class="wrap">
              <a class="paper-item-link" tab-index="-1" name="[[name]]" href="[[href]]">
             <paper-icon-item id="item">
-                <iron-icon src$="[[src]]" icon$="[[icon]]" item-icon></iron-icon>
+                <iron-icon src$="[[src]]" icon$="[[icon]]" item-icon=""></iron-icon>
                [[text]]
             </paper-icon-item>
             </a>
@@ -108,4 +108,4 @@
             }
         });
     </script>
-</dom-module>
+</dom-module></body></html>

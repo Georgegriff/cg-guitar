@@ -9,29 +9,49 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
 -->
 
 <link rel="import" href="../bower_components/polymer/polymer.html">
-<link rel="import" href="shared-styles.html">
+<link rel="import" href="../../bower_components/paper-card/paper-card.html">
+<link rel="import" href="./components/contact-form.html">
+
 
 <dom-module id="my-contact">
-    <template>
-    <style include="shared-styles">
-      :host {
+  <template>
+    <style>
+       :host {
         display: block;
-
+        position: relative;
         padding: 10px;
       }
-    </style>
 
-    <div class="card">
-      <div class="circle">3</div>
-      <h1>Contact</h1>
-      <p>Modus commodo minimum eum te, vero utinam assueverit per eu.</p>
-      <p>Ea duis bonorum nec, falli paulo aliquid ei eum.Has at minim mucius aliquam, est id tempor laoreet.Pro saepe pertinax ei, ad pri animal labores suscipiantur.</p>
+      .contact-container {
+        margin: 10px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        height: 100%;
+      }
+
+      .contact-card {
+        width: 100%;
+        max-width: 900px;
+      }
+    </style>
+    <div class="wrap">
+
+      <div class="contact-container">
+        <paper-card heading="Contact" class="contact-card" animated-shadow="false">
+          <div class="card-actions">
+
+            <contact-form api=""></contact-form>
+        </paper-card>
+        </div>
+
+      </div>
     </div>
   </template>
 
-    <script>
-        Polymer({
-            is: 'my-contact',
-        });
-    </script>
+  <script>
+    Polymer({
+      is: 'my-contact'
+    });
+  </script>
 </dom-module>

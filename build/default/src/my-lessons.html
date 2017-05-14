@@ -6,17 +6,14 @@ The complete set of authors may be found at http://polymer.github.io/AUTHORS.txt
 The complete set of contributors may be found at http://polymer.github.io/CONTRIBUTORS.txt
 Code distributed by Google as part of the polymer project is also
 subject to an additional IP rights grant found at http://polymer.github.io/PATENTS.txt
--->
-
-<link rel="import" href="../bower_components/polymer/polymer.html">
+--><html><head><link rel="import" href="../bower_components/polymer/polymer.html">
 <link rel="import" href="../bower_components/paper-card/paper-card.html">
 <link rel="import" href="../bower_components/paper-button/paper-button.html">
-<link rel="import" href="./components/app-link.html">
 
 
 <link rel="import" href="shared-styles.html">
 
-<dom-module id="my-lessons">
+</head><body><dom-module id="my-lessons">
   <template>
     <style include="shared-styles">
        :host {
@@ -39,8 +36,8 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
 
             <p class="card-light">
               Kick start your guitar playing with enjoyable and frustration free methods to get you playing music from the first lesson.
-              <p>
-          </div>
+              </p><p>
+          </p></div>
         </paper-card>
 
         <paper-card heading="Intermediate" class="text-card" animated-shadow="false">
@@ -48,8 +45,8 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
 
             <p class="card-light">
               Effective practice regimes, building a solid foundation of technique and repertoire, acquiring your guitar grades.
-              <p>
-          </div>
+              </p><p>
+          </p></div>
         </paper-card>
 
         <paper-card heading="Advanced" class="text-card" animated-shadow="false">
@@ -58,8 +55,8 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
             <p class="card-light">
               Help with preparing to study music/guitar in further education, improving technique, improvising, preparation for a performance,
               music theory.
-              <p>
-          </div>
+              </p><p>
+          </p></div>
         </paper-card>
 
         <div class="flex-cont">
@@ -76,19 +73,18 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
         <p class="card-light">
           I'm also available for session work, for details please visit my <a href="/session">Band/Session</a> page.
 
-      </div>
+      </p></div>
       <div class="card-actions">
         <div class="horizontal justified">
           <div class="btn-cnt">
             If you wish to enquire about guitar lessons please contact me.
           </div>
-          <app-link href="/contact" text="Contact">
-          </app-link>
+          <paper-button class="contact-btn"><a href="/contact">Contact</a></paper-button>
         </div>
       </div>
     </paper-card>
     </div>
-    </div>
+    
 
   </template>
 
@@ -97,4 +93,4 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
       is: 'my-lessons',
     });
   </script>
-</dom-module>
+</dom-module></body></html>

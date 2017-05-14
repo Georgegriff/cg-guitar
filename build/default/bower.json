@@ -22,7 +22,8 @@
     "paper-card": "PolymerElements/paper-card#^1.1.4",
     "neon-animation": "PolymerElements/neon-animation#^1.2.4",
     "iron-scroll-target-behavior": "PolymerElements/iron-scroll-target-behavior#^1.1.1",
-    "instafeed.js": "^1.4.1"
+    "instafeed.js": "^1.4.1",
+    "google-apis": "GoogleWebComponents/google-apis#^1.1.7"
   },
   "devDependencies": {
     "web-component-tester": "^4.0.0"

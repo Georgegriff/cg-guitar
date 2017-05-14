@@ -1,0 +1,30 @@
+<link rel="import" href="../../bower_components/paper-button/paper-button.html">
+<link rel="import" href="../../bower_components/polymer/polymer.html">
+<link rel="import" href="../shared-styles.html">
+
+<dom-module id="app-link">
+    <template>
+        <style include="shared-styles">
+             :host {
+                display: block;
+            }
+        </style>
+        <a href="[[href]]"><paper-button class="contact-btn">[[text]]</paper-button></a>
+
+    </template>
+    <script>
+        Polymer({
+            properties :{
+                href :{
+                    type: String,
+                    value :''
+                },
+                text : {
+                    type : String,
+                    value :''
+                }
+            },
+            is: 'app-link'
+        });
+    </script>
+</dom-module>

@@ -1,0 +1,93 @@
+<link rel="import" href="../../bower_components/polymer/polymer.html">
+<link rel="import" href="../../bower_components/iron-form/iron-form.html">
+<link rel="import" href="../../bower_components/paper-input/paper-input.html">
+<link rel="import" href="../../bower_components/paper-input/paper-textarea.html">
+<link rel="import" href="../../bower_components/paper-button/paper-button.html">
+
+<link rel="import" href="../shared-styles.html">
+
+<dom-module id="contact-form" include="shared-styles">
+    <template>
+        <style>
+             :host {
+                display: block;
+                padding: 10px;
+                width: 100%;
+            }
+        </style>
+
+        <form is="iron-form" method="post" action="[[api]]" id="contactForm" content-type="application/json">
+            <paper-input name="name" label="Name" required auto-validate></paper-input>
+            <paper-input  id="email" on-change="_emailMatch" name="email" label="Email" type="email" required ></paper-input>
+            <paper-input id="cEmail" on-change="_emailMatch" name="confirm-email" label="Confirm Email" type="email" required ></paper-input>
+            <paper-textarea max-rows="10" label="Your Message"></paper-textarea>
+            <paper-button raised on-click="_submit" disabled id="contactFormSubmit">
+                <paper-spinner id="spinner" hidden></paper-spinner>Submit</paper-button>
+            <paper-button raised on-click="_reset">Reset</paper-button>
+            <div class="output"></div>
+        </form>
+
+
+    </template>
+    <script>
+        Polymer({
+            is: 'contact-form',
+            properties: {
+                api: {
+                    type: String,
+                    value: ''
+                },
+                _invalidEmails : {
+                    type : Boolean,
+                    value : false
+                }
+            },
+            _emailMatch: function () {
+                var emailVal = this.$.email.value,
+                    cEmailValue = this.$.cEmail.value,
+                    invalid = emailVal !== cEmailValue,
+                    invalidE = !(!invalid && this.$.email.validate()),
+                    invalidC = !(!invalid && this.$.cEmail.validate());
+                
+                this.$.email.invalid = invalidE;
+                this.$.cEmail.invalid = invalidC
+
+                this._invalidEmails = (invalidE || invalidC);
+                
+
+
+            },
+            _validateTelephone : function(){
+                this.$.telephone.invalid = false;
+            },
+            _validateForm: function (form) {
+                form.addEventListener('change', function (event) {
+                    // Validate the entire form to see if we should enable the `Submit` button.
+                    var isValid = this.$.contactForm.validate();
+                    this._emailMatch();
+                    this.$.contactFormSubmit.disabled = !( isValid&&  !this._invalidEmails);
+                }.bind(this));
+            },
+            _submit : function(){
+                this.$.contactForm.submit();
+            },
+            _onSubmit: function (e) {
+                spinner.active = false;
+                spinner.hidden = true;
+                this$.contactFormSubmit.disabled = false;
+                console.log(e.detail);
+                this.querySelector('.output').innerHTML = JSON.stringify(event.detail);
+            },
+            ready: function () {
+                var form = this.$.contactForm;
+                this._validateForm(form);
+                form.addEventListener('iron-form-submit', this._onSubmit);
+            },
+            _reset: function (event) {
+                var form = Polymer.dom(event).localTarget.parentElement
+                form.reset();
+                form.querySelector('.output').innerHTML = '';
+            }
+        });
+    </script>
+</dom-module>
