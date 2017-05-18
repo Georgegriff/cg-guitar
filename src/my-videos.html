@@ -60,10 +60,13 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
       fetchData: function (part, videoId) {
         return fetch('https://www.googleapis.com/youtube/v3/videos?part=' + part + '&id=' + videoId + '&key=' + this.apiKey).then(function(res){return res.json()});
       },
-      fetchStats :  function(){
-          return this.fetchData('statistics', this.videoId)
+	  fetchChannel : function(){
+		return fetch('https://www.googleapis.com/youtube/v3/search?key=' + this.apiKey + '&channelId=' + this.channelId + '&part=snippet,id&order=date&maxResults=20');
+	  },
+      fetchStats :  function(videoId){
+          return this.fetchData('statistics', videoId)
           .then(function(data){
-        
+                 return response.json();
           }.bind(this));
       },
       ready: function () {
@@ -80,7 +83,10 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
             this.items.concat(data.items);
             data.items.forEach(function(item){
                 if(item && item.snippet){
-                  this.createYoutubePlayer(item.snippet)
+				  var itemId = item.id,
+						id = itemId.videoId || itemId.playlistId;
+				  this.fetchStats(id);
+                  this.createYoutubePlayer(item.snippet);
                 }
             }.bind(this));
           }
