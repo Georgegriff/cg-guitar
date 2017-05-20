@@ -1,0 +1,338 @@
+0 info it worked if it ends with ok
+1 verbose cli [ 'C:\\Program Files\\nodejs\\node.exe',
+1 verbose cli   'C:\\Program Files\\nodejs\\node_modules\\npm\\bin\\npm-cli.js',
+1 verbose cli   'i' ]
+2 info using npm@3.10.7
+3 info using node@v6.5.0
+4 silly loadCurrentTree Starting
+5 silly install loadCurrentTree
+6 silly install readLocalPackageData
+7 silly install normalizeTree
+8 silly loadCurrentTree Finishing
+9 silly loadIdealTree Starting
+10 silly install loadIdealTree
+11 silly cloneCurrentTree Starting
+12 silly install cloneCurrentTreeToIdealTree
+13 silly cloneCurrentTree Finishing
+14 silly loadShrinkwrap Starting
+15 silly install loadShrinkwrap
+16 silly loadShrinkwrap Finishing
+17 silly loadAllDepsIntoIdealTree Starting
+18 silly install loadAllDepsIntoIdealTree
+19 silly fetchNamedPackageData eslint
+20 silly mapToRegistry name eslint
+21 silly mapToRegistry using default registry
+22 silly mapToRegistry registry http://20repository1:8081/artifactory/api/npm/idbs-npm
+23 silly mapToRegistry data Result {
+23 silly mapToRegistry   raw: 'eslint',
+23 silly mapToRegistry   scope: null,
+23 silly mapToRegistry   escapedName: 'eslint',
+23 silly mapToRegistry   name: 'eslint',
+23 silly mapToRegistry   rawSpec: '',
+23 silly mapToRegistry   spec: 'latest',
+23 silly mapToRegistry   type: 'tag' }
+24 silly mapToRegistry uri http://20repository1:8081/artifactory/api/npm/idbs-npm/eslint
+25 silly fetchNamedPackageData eslint-config-google
+26 silly mapToRegistry name eslint-config-google
+27 silly mapToRegistry using default registry
+28 silly mapToRegistry registry http://20repository1:8081/artifactory/api/npm/idbs-npm
+29 silly mapToRegistry data Result {
+29 silly mapToRegistry   raw: 'eslint-config-google',
+29 silly mapToRegistry   scope: null,
+29 silly mapToRegistry   escapedName: 'eslint-config-google',
+29 silly mapToRegistry   name: 'eslint-config-google',
+29 silly mapToRegistry   rawSpec: '',
+29 silly mapToRegistry   spec: 'latest',
+29 silly mapToRegistry   type: 'tag' }
+30 silly mapToRegistry uri http://20repository1:8081/artifactory/api/npm/idbs-npm/eslint-config-google
+31 silly fetchNamedPackageData eslint-plugin-html
+32 silly mapToRegistry name eslint-plugin-html
+33 silly mapToRegistry using default registry
+34 silly mapToRegistry registry http://20repository1:8081/artifactory/api/npm/idbs-npm
+35 silly mapToRegistry data Result {
+35 silly mapToRegistry   raw: 'eslint-plugin-html',
+35 silly mapToRegistry   scope: null,
+35 silly mapToRegistry   escapedName: 'eslint-plugin-html',
+35 silly mapToRegistry   name: 'eslint-plugin-html',
+35 silly mapToRegistry   rawSpec: '',
+35 silly mapToRegistry   spec: 'latest',
+35 silly mapToRegistry   type: 'tag' }
+36 silly mapToRegistry uri http://20repository1:8081/artifactory/api/npm/idbs-npm/eslint-plugin-html
+37 verbose request uri http://20repository1:8081/artifactory/api/npm/idbs-npm/eslint-config-google
+38 verbose request no auth needed
+39 info attempt registry request try #1 at 12:16:18 PM
+40 verbose request id b57f1efabbd6fc84
+41 http request GET http://20repository1:8081/artifactory/api/npm/idbs-npm/eslint-config-google
+42 verbose request uri http://20repository1:8081/artifactory/api/npm/idbs-npm/eslint-plugin-html
+43 verbose request no auth needed
+44 info attempt registry request try #1 at 12:16:18 PM
+45 verbose etag d247e05883b296970a50dd83c8705e07efa22e2b
+46 http request GET http://20repository1:8081/artifactory/api/npm/idbs-npm/eslint-plugin-html
+47 verbose request uri http://20repository1:8081/artifactory/api/npm/idbs-npm/eslint
+48 verbose request no auth needed
+49 info attempt registry request try #1 at 12:16:18 PM
+50 verbose etag cd62930abc88f8052748b6832875485c33191c2b
+51 http request GET http://20repository1:8081/artifactory/api/npm/idbs-npm/eslint
+52 info retry will retry, error on last attempt: Error: getaddrinfo ENOTFOUND 20repository1 20repository1:8081
+53 info retry will retry, error on last attempt: Error: getaddrinfo ENOTFOUND 20repository1 20repository1:8081
+54 info retry will retry, error on last attempt: Error: getaddrinfo ENOTFOUND 20repository1 20repository1:8081
+55 info attempt registry request try #2 at 12:16:31 PM
+56 http request GET http://20repository1:8081/artifactory/api/npm/idbs-npm/eslint-config-google
+57 info attempt registry request try #2 at 12:16:31 PM
+58 verbose etag d247e05883b296970a50dd83c8705e07efa22e2b
+59 http request GET http://20repository1:8081/artifactory/api/npm/idbs-npm/eslint-plugin-html
+60 info attempt registry request try #2 at 12:16:31 PM
+61 verbose etag cd62930abc88f8052748b6832875485c33191c2b
+62 http request GET http://20repository1:8081/artifactory/api/npm/idbs-npm/eslint
+63 info retry will retry, error on last attempt: Error: getaddrinfo ENOTFOUND 20repository1 20repository1:8081
+64 info retry will retry, error on last attempt: Error: getaddrinfo ENOTFOUND 20repository1 20repository1:8081
+65 info retry will retry, error on last attempt: Error: getaddrinfo ENOTFOUND 20repository1 20repository1:8081
+66 info attempt registry request try #3 at 12:17:33 PM
+67 verbose etag d247e05883b296970a50dd83c8705e07efa22e2b
+68 http request GET http://20repository1:8081/artifactory/api/npm/idbs-npm/eslint-plugin-html
+69 info attempt registry request try #3 at 12:17:33 PM
+70 http request GET http://20repository1:8081/artifactory/api/npm/idbs-npm/eslint-config-google
+71 info attempt registry request try #3 at 12:17:33 PM
+72 verbose etag cd62930abc88f8052748b6832875485c33191c2b
+73 http request GET http://20repository1:8081/artifactory/api/npm/idbs-npm/eslint
+74 silly get cb [ 304, undefined ]
+75 verbose etag http://20repository1:8081/artifactory/api/npm/idbs-npm/eslint-plugin-html from cache
+76 verbose get saving eslint-plugin-html to C:\Users\ggriffiths\AppData\Roaming\npm-cache\20repository1_8081\artifactory\api\npm\idbs-npm\eslint-plugin-html\.cache.json
+77 verbose correctMkdir C:\Users\ggriffiths\AppData\Roaming\npm-cache correctMkdir not in flight; initializing
+78 silly fetchPackageMetaData Error: getaddrinfo ENOTFOUND 20repository1 20repository1:8081
+78 silly fetchPackageMetaData     at errnoException (dns.js:28:10)
+78 silly fetchPackageMetaData     at GetAddrInfoReqWrap.onlookup [as oncomplete] (dns.js:76:26)
+78 silly fetchPackageMetaData  error for eslint-config-google@^0.7.1 { Error: getaddrinfo ENOTFOUND 20repository1 20repository1:8081
+78 silly fetchPackageMetaData     at errnoException (dns.js:28:10)
+78 silly fetchPackageMetaData     at GetAddrInfoReqWrap.onlookup [as oncomplete] (dns.js:76:26)
+78 silly fetchPackageMetaData   code: 'ENOTFOUND',
+78 silly fetchPackageMetaData   errno: 'ENOTFOUND',
+78 silly fetchPackageMetaData   syscall: 'getaddrinfo',
+78 silly fetchPackageMetaData   hostname: '20repository1',
+78 silly fetchPackageMetaData   host: '20repository1',
+78 silly fetchPackageMetaData   port: '8081' }
+79 silly resolveWithNewModule eslint-plugin-html@1.7.0 checking installable status
+80 silly cache add args [ 'eslint-plugin-html@^1.7.0', null ]
+81 verbose cache add spec eslint-plugin-html@^1.7.0
+82 silly cache add parsed spec Result {
+82 silly cache add   raw: 'eslint-plugin-html@^1.7.0',
+82 silly cache add   scope: null,
+82 silly cache add   escapedName: 'eslint-plugin-html',
+82 silly cache add   name: 'eslint-plugin-html',
+82 silly cache add   rawSpec: '^1.7.0',
+82 silly cache add   spec: '>=1.7.0 <2.0.0',
+82 silly cache add   type: 'range' }
+83 silly addNamed eslint-plugin-html@>=1.7.0 <2.0.0
+84 verbose addNamed ">=1.7.0 <2.0.0" is a valid semver range for eslint-plugin-html
+85 silly addNameRange { name: 'eslint-plugin-html',
+85 silly addNameRange   range: '>=1.7.0 <2.0.0',
+85 silly addNameRange   hasData: false }
+86 silly mapToRegistry name eslint-plugin-html
+87 silly mapToRegistry using default registry
+88 silly mapToRegistry registry http://20repository1:8081/artifactory/api/npm/idbs-npm
+89 silly mapToRegistry data Result {
+89 silly mapToRegistry   raw: 'eslint-plugin-html',
+89 silly mapToRegistry   scope: null,
+89 silly mapToRegistry   escapedName: 'eslint-plugin-html',
+89 silly mapToRegistry   name: 'eslint-plugin-html',
+89 silly mapToRegistry   rawSpec: '',
+89 silly mapToRegistry   spec: 'latest',
+89 silly mapToRegistry   type: 'tag' }
+90 silly mapToRegistry uri http://20repository1:8081/artifactory/api/npm/idbs-npm/eslint-plugin-html
+91 verbose addNameRange registry:http://20repository1:8081/artifactory/api/npm/idbs-npm/eslint-plugin-html not in flight; fetching
+92 verbose get http://20repository1:8081/artifactory/api/npm/idbs-npm/eslint-plugin-html not expired, no request
+93 silly addNameRange number 2 { name: 'eslint-plugin-html',
+93 silly addNameRange   range: '>=1.7.0 <2.0.0',
+93 silly addNameRange   hasData: true }
+94 silly addNameRange versions [ 'eslint-plugin-html',
+94 silly addNameRange   [ '2.0.0',
+94 silly addNameRange     '2.0.1',
+94 silly addNameRange     '2.0.0-beta.0',
+94 silly addNameRange     '2.0.2',
+94 silly addNameRange     '2.0.3',
+94 silly addNameRange     '1.0.3',
+94 silly addNameRange     '1.3.0',
+94 silly addNameRange     '1.0.4',
+94 silly addNameRange     '1.4.0',
+94 silly addNameRange     '1.5.0',
+94 silly addNameRange     '1.5.1',
+94 silly addNameRange     '1.6.0',
+94 silly addNameRange     '1.5.2',
+94 silly addNameRange     '1.7.0',
+94 silly addNameRange     '1.5.3',
+94 silly addNameRange     '1.5.4',
+94 silly addNameRange     '1.5.5',
+94 silly addNameRange     '1.0.0',
+94 silly addNameRange     '1.1.0',
+94 silly addNameRange     '1.0.2',
+94 silly addNameRange     '1.2.0' ] ]
+95 silly addNamed eslint-plugin-html@1.7.0
+96 verbose addNamed "1.7.0" is a plain semver version for eslint-plugin-html
+97 silly cache afterAdd eslint-plugin-html@1.7.0
+98 verbose afterAdd C:\Users\ggriffiths\AppData\Roaming\npm-cache\eslint-plugin-html\1.7.0\package\package.json not in flight; writing
+99 verbose correctMkdir C:\Users\ggriffiths\AppData\Roaming\npm-cache correctMkdir not in flight; initializing
+100 verbose afterAdd C:\Users\ggriffiths\AppData\Roaming\npm-cache\eslint-plugin-html\1.7.0\package\package.json written
+101 silly get cb [ 304, undefined ]
+102 verbose etag http://20repository1:8081/artifactory/api/npm/idbs-npm/eslint from cache
+103 verbose get saving eslint to C:\Users\ggriffiths\AppData\Roaming\npm-cache\20repository1_8081\artifactory\api\npm\idbs-npm\eslint\.cache.json
+104 verbose correctMkdir C:\Users\ggriffiths\AppData\Roaming\npm-cache correctMkdir not in flight; initializing
+105 silly resolveWithNewModule eslint@3.19.0 checking installable status
+106 silly cache add args [ 'eslint@^3.12.0', null ]
+107 verbose cache add spec eslint@^3.12.0
+108 silly cache add parsed spec Result {
+108 silly cache add   raw: 'eslint@^3.12.0',
+108 silly cache add   scope: null,
+108 silly cache add   escapedName: 'eslint',
+108 silly cache add   name: 'eslint',
+108 silly cache add   rawSpec: '^3.12.0',
+108 silly cache add   spec: '>=3.12.0 <4.0.0',
+108 silly cache add   type: 'range' }
+109 silly addNamed eslint@>=3.12.0 <4.0.0
+110 verbose addNamed ">=3.12.0 <4.0.0" is a valid semver range for eslint
+111 silly addNameRange { name: 'eslint', range: '>=3.12.0 <4.0.0', hasData: false }
+112 silly mapToRegistry name eslint
+113 silly mapToRegistry using default registry
+114 silly mapToRegistry registry http://20repository1:8081/artifactory/api/npm/idbs-npm
+115 silly mapToRegistry data Result {
+115 silly mapToRegistry   raw: 'eslint',
+115 silly mapToRegistry   scope: null,
+115 silly mapToRegistry   escapedName: 'eslint',
+115 silly mapToRegistry   name: 'eslint',
+115 silly mapToRegistry   rawSpec: '',
+115 silly mapToRegistry   spec: 'latest',
+115 silly mapToRegistry   type: 'tag' }
+116 silly mapToRegistry uri http://20repository1:8081/artifactory/api/npm/idbs-npm/eslint
+117 verbose addNameRange registry:http://20repository1:8081/artifactory/api/npm/idbs-npm/eslint not in flight; fetching
+118 verbose get http://20repository1:8081/artifactory/api/npm/idbs-npm/eslint not expired, no request
+119 silly addNameRange number 2 { name: 'eslint', range: '>=3.12.0 <4.0.0', hasData: true }
+120 silly addNameRange versions [ 'eslint',
+120 silly addNameRange   [ '0.6.0',
+120 silly addNameRange     '0.6.1',
+120 silly addNameRange     '0.6.2',
+120 silly addNameRange     '2.0.0-alpha-1',
+120 silly addNameRange     '0.24.0',
+120 silly addNameRange     '0.24.1',
+120 silly addNameRange     '0.2.0',
+120 silly addNameRange     '0.10.0-alpha',
+120 silly addNameRange     '2.0.0-alpha-2',
+120 silly addNameRange     '3.11.1',
+120 silly addNameRange     '3.7.0',
+120 silly addNameRange     '3.7.1',
+120 silly addNameRange     '3.11.0',
+120 silly addNameRange     '3.3.0',
+120 silly addNameRange     '3.3.1',
+120 silly addNameRange     '0.16.2',
+120 silly addNameRange     '0.16.1',
+120 silly addNameRange     '2.1.0',
+120 silly addNameRange     '0.16.0',
+120 silly addNameRange     '1.0.0-rc-1',
+120 silly addNameRange     '3.8.1',
+120 silly addNameRange     '3.16.0',
+120 silly addNameRange     '3.16.1',
+120 silly addNameRange     '0.12.0',
+120 silly addNameRange     '1.0.0-rc-3',
+120 silly addNameRange     '3.12.2',
+120 silly addNameRange     '1.0.0-rc-2',
+120 silly addNameRange     '2.5.3',
+120 silly addNameRange     '2.9.0',
+120 silly addNameRange     '2.5.1',
+120 silly addNameRange     '2.5.2',
+120 silly addNameRange     '2.5.0',
+120 silly addNameRange     '2.12.0',
+120 silly addNameRange     '1.3.0',
+120 silly addNameRange     '1.3.1',
+120 silly addNameRange     '1.7.0',
+120 silly addNameRange     '1.7.1',
+120 silly addNameRange     '1.7.2',
+120 silly addNameRange     '1.7.3',
+120 silly addNameRange     '2.0.0-rc.1',
+120 silly addNameRange     '2.0.0-rc.0',
+120 silly addNameRange     '0.5.1',
+120 silly addNameRange     '0.1.3',
+120 silly addNameRange     '0.1.4',
+120 silly addNameRange     '0.5.0',
+120 silly addNameRange     '0.9.1',
+120 silly addNameRange     '0.9.2',
+120 silly addNameRange     '0.9.0',
+120 silly addNameRange     '0.23.0',
+120 silly addNameRange     '0.1.1',
+120 silly addNameRange     '0.1.2',
+120 silly addNameRange     '0.1.0',
+120 silly addNameRange     '2.13.1',
+120 silly addNameRange     '2.13.0',
+120 silly addNameRange     '3.0.0',
+120 silly addNameRange     '3.10.2',
+120 silly addNameRange     '3.10.0',
+120 silly addNameRange     '3.8.0',
+120 silly addNameRange     '3.10.1',
+120 silly addNameRange     '3.0.1',
+120 silly addNameRange     '3.4.0',
+120 silly addNameRange     '0.15.1',
+120 silly addNameRange     '0.15.0',
+120 silly addNameRange     '3.19.0',
+120 silly addNameRange     '3.9.0',
+120 silly addNameRange     '3.9.1',
+120 silly addNameRange     '0.11.0',
+120 silly addNameRange     '3.15.0',
+120 silly addNameRange     '2.6.0',
+120 silly addNameRange     '2.2.0',
+120 silly addNameRange     '0.19.0',
+120 silly addNameRange     '0.10.0-alpha.1',
+120 silly addNameRange     '1.4.0',
+120 silly addNameRange     '1.4.1',
+120 silly addNameRange     '1.4.2',
+120 silly addNameRange     '1.4.3',
+120 silly addNameRange     '1.8.0',
+120 silly addNameRange     '0.10.0-alpha.2',
+120 silly addNameRange     '1.0.0',
+120 silly addNameRange     '0.0.6',
+120 silly addNameRange     '0.4.2',
+120 silly addNameRange     '0.0.7',
+120 silly addNameRange     '0.4.3',
+120 silly addNameRange     '0.0.4',
+120 silly addNameRange     '0.4.0',
+120 silly addNameRange     '1.10.0',
+120 silly addNameRange     '0.0.5',
+120 silly addNameRange     '0.4.1',
+120 silly addNameRange     '1.10.1',
+120 silly addNameRange     '0.8.2',
+120 silly addNameRange     '0.4.4',
+120 silly addNameRange     '0.8.0',
+120 silly addNameRange     '0.4.5',
+120 silly addNameRange     '0.8.1',
+120 silly addNameRange     '0.22.0',
+120 silly addNameRange     '0.22.1',
+120 silly addNameRange     '0.10.0',
+120 silly addNameRange     '3.5.0',
+120 silly addNameRange     '3.13.0',
+120 silly addNameRange     '3.1.0',
+120 silly addNameRange     ... 58 more items ] ]
+121 silly addNamed eslint@3.19.0
+122 verbose addNamed "3.19.0" is a plain semver version for eslint
+123 silly cache afterAdd eslint@3.19.0
+124 verbose afterAdd C:\Users\ggriffiths\AppData\Roaming\npm-cache\eslint\3.19.0\package\package.json not in flight; writing
+125 verbose correctMkdir C:\Users\ggriffiths\AppData\Roaming\npm-cache correctMkdir not in flight; initializing
+126 verbose afterAdd C:\Users\ggriffiths\AppData\Roaming\npm-cache\eslint\3.19.0\package\package.json written
+127 silly rollbackFailedOptional Starting
+128 silly rollbackFailedOptional Finishing
+129 silly runTopLevelLifecycles Finishing
+130 silly install printInstalled
+131 verbose stack Error: getaddrinfo ENOTFOUND 20repository1 20repository1:8081
+131 verbose stack     at errnoException (dns.js:28:10)
+131 verbose stack     at GetAddrInfoReqWrap.onlookup [as oncomplete] (dns.js:76:26)
+132 verbose cwd C:\EWB\Code\Experiments\cg-guitar2017\src
+133 error Windows_NT 10.0.14393
+134 error argv "C:\\Program Files\\nodejs\\node.exe" "C:\\Program Files\\nodejs\\node_modules\\npm\\bin\\npm-cli.js" "i"
+135 error node v6.5.0
+136 error npm  v3.10.7
+137 error code ENOTFOUND
+138 error errno ENOTFOUND
+139 error syscall getaddrinfo
+140 error network getaddrinfo ENOTFOUND 20repository1 20repository1:8081
+141 error network This is most likely not a problem with npm itself
+141 error network and is related to network connectivity.
+141 error network In most cases you are behind a proxy or have bad network settings.
+141 error network
+141 error network If you are behind a proxy, please make sure that the
+141 error network 'proxy' config is set properly.  See: 'npm help config'
+142 verbose exit [ 1, true ]

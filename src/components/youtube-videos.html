@@ -1,0 +1,203 @@
+<link rel="import" href="../../bower_components/polymer/polymer.html">
+
+<link rel="import" href="../../bower_components/iron-ajax/iron-ajax.html">
+<link rel="import" href="./youtube-player-card.html">
+
+<dom-module id="youtube-videos">
+    <template>
+        <style>
+             :host {
+                display: block;
+            }
+
+             :host .video-cards {
+                display: flex;
+                flex-wrap: wrap;
+            }
+
+             :host .flex-wrapper {
+                display: flex;
+                align-items: center;
+            }
+
+             :host youtube-player-card {
+                margin: 10px;
+            }
+        </style>
+        <!-- Make search reuqest first, then modify request and execute /videos""-->
+        <iron-ajax id="ajaxRequest" auto url="[[searchUrl]]" params='[[_buildParams(pageToken,_part,apiKey,channelId,query,order,types,maxResults)]]'
+            handle-as="json"></iron-ajax>
+        <iron-ajax id="ajaxVideos" url="[[videoUrl]]" params='[[_buildVideoParams(_videoIds,_part,apiKey,types)]]' handle-as="json"></iron-ajax>
+        <div class="flex-wrapper">
+            <div class="video-cards">
+                <template is="dom-repeat" items="{{videos}}">
+                    <youtube-player-card duration="[[item.contentDetails.duration]]" view-count="[[item.statistics.viewCount]]" video-title="[[item.snippet.title]]" channel-title="[[item.snippet.channelTitle]]" thumbnail="[[item.snippet.thumbnails.medium.url]]"
+                        video-id="[[item.id]]"></youtube-player-card>
+                </template>
+            </div>
+        </div>
+    </template>
+    <script>
+        Polymer({
+            is: 'youtube-videos',
+            properties: {
+                videos: {
+                    type: Array,
+                    value: [],
+                    notify: true
+                },
+                searchUrl: {
+                    type: String,
+                    value: 'https://www.googleapis.com/youtube/v3/search'
+                },
+                videoUrl: {
+                    type: String,
+                    value: 'https://www.googleapis.com/youtube/v3/videos'
+                },
+                apiKey: {
+                    type: String,
+                    value: ''
+                },
+                channelId: {
+                    type: String,
+                    value: ''
+                },
+                query: {
+                    type: String,
+                    value: ''
+                },
+                order: {
+                    type: String,
+                    value: 'date'
+                },
+                types: {
+                    type: String,
+                    value: 'video'
+                },
+                _part: {
+                    type: String,
+                    value: 'snippet'
+                },
+                maxResults: {
+                    type: String,
+                    value: '20'
+                },
+                pageToken: {
+                    type: String,
+                    value: ''
+                },
+                noGetStats: {
+                    type: Boolean,
+                    value: false
+                }
+            },
+            _handleResponse: function (response) {
+                var noStats;
+                if (response && response.items) {
+                    this._noStats = this.videos;
+                    // fill in most o the data and then lazy load stats
+                    this.videos = this.videos.concat(response.items);
+                    if (!this.noGetStats) {
+                        // update new videos videos with stats info
+                        this._videoIds = this._extractId(response.items);
+                        this.$.ajaxVideos.generateRequest();
+
+                    }
+                }
+            },
+            _extractId: function (items) {
+                // need to update for playlists
+                var ids = '';
+                if (items && items.length) {
+                    items.forEach(function (item) {
+                        // wont work for playlists
+                        ids += item.id.videoId + ','
+                    });
+                    ids = ids.slice(0,-1);
+                }
+                return ids;
+
+            },
+            _buildVideoParams: function () {
+                if (this.apiKey) {
+                    let output = {
+                        'key': this.apiKey,
+                        'part': 'snippet, statistics, contentDetails',
+                        'type': this.types,
+                        'id': this._videoIds
+                    };
+                    return output;
+                } else {
+                    console.warn('No attribute "key" provided: API Key');
+                }
+            },
+            _buildParams: function () {
+                if (this.apiKey) {
+                    let output = {
+                        'key': this.apiKey,
+                        'part': this._part,
+                        'type': this.types,
+                        'order': this.order,
+                        'maxResults': this.maxResults
+                    };
+                    if (this.query) {
+                        output.query = this.query;
+                    }
+                    if (this.channelId) {
+                        output.channelId = this.channelId;
+                    }
+                    if (this.pageToken) {
+                        output.pageToken = this.pageToken
+                    }
+                    return output;
+                } else {
+                    console.warn('No attribute "key" provided: API Key');
+                }
+            },
+            loadMore: function () {
+                this.nextPage();
+            },
+            nextPage: function () {
+                this.pageToken = this._nextPageToken;
+            },
+            previousPage: function () {
+                this.pageToken = this._prevPageToken;
+            },
+            attached: function () {
+                this.listen(this.$.ajaxRequest, 'iron-ajax-response', '_onResponse');
+                this.listen(this.$.ajaxVideos, 'iron-ajax-response', '_updateWithStats');
+
+            },
+            detached: function () {
+                this.unlisten(this.$.ajaxRequest, 'iron-ajax-response', '_onResponse');
+                this.unlisten(this.$.ajaxVideoss, 'iron-ajax-response', '_updateWithStats');
+
+
+            },
+            _updateWithStats: function (e) {
+                var response = e.target.lastResponse;
+                if (response && response.items) {
+                    this.videos = this._noStats.concat(response.items);
+                }
+            },
+            _onResponse: function (e) {
+                var response = e.target.lastResponse;
+                if (response) {
+                    this._handleResponse(response);
+                    if (response.nextPageToken || response.prevPageToken) {
+                        this._nextPageToken = response.nextPageToken;
+                        this._prevPageToken = response.prevPageToken;
+                    }
+                }
+            }
+        });
+
+        // need to search to get Ids
+        // then pass to statistics api
+        // need to handle playlists
+
+        // need to handle paging
+
+        // push data to the card
+    </script>
+</dom-module>

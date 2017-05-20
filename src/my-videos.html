@@ -10,7 +10,7 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
 
 <link rel="import" href="../bower_components/polymer/polymer.html">
 
-<link rel="import" href="./components/youtube-player-card.html">
+<link rel="import" href="./components/youtube-videos.html">
 
 
 <link rel="import" href="shared-styles.html">
@@ -27,18 +27,13 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
     <div id="videos">
 
     </div>
-    <youtube-player-card duration="PT3M22S" view-count="1000" video-id="Df0kmqGAasg" video-title="My Video with a long title should cut out" thumbnail="https://i.ytimg.com/vi/9co6x4-Z984/hqdefault.jpg"  description="http://www.cgguitar.co.uk Lesson on how to play the guitar solo from Blac Sabbath"></youtube-player-card>
+    <youtube-videos channel-id="UCReQS8UwfrhDRGTowiXqVKg"></youtube-videos>
   </template>
 
   <script>
     Polymer({
       is: 'my-videos',
       properties: {
-
-        players: {
-          type: Array,
-          value: []
-        },
         channelId: {
           type: String,
           value: 'UCReQS8UwfrhDRGTowiXqVKg'
@@ -61,7 +56,7 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
         return fetch('https://www.googleapis.com/youtube/v3/videos?part=' + part + '&id=' + videoId + '&key=' + this.apiKey).then(function(res){return res.json()});
       },
 	  fetchChannel : function(){
-		return fetch('https://www.googleapis.com/youtube/v3/search?key=' + this.apiKey + '&channelId=' + this.channelId + '&part=snippet,id&order=date&maxResults=20');
+		return fetch('https://www.googleapis.com/youtube/v3/search?key=' + this.apiKey + '&channelId=' + this.channelId + '&part=id&order=date&maxResults=20&type=video,playlist');
 	  },
       fetchStats :  function(videoId){
           return this.fetchData('statistics', videoId)
