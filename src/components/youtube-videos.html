@@ -13,6 +13,7 @@
              :host .video-cards {
                 display: flex;
                 flex-wrap: wrap;
+                justify-content: center;
             }
 
              :host .flex-wrapper {
@@ -20,19 +21,23 @@
                 align-items: center;
             }
 
+            youtube-player-card {
+                --youtube-player-card-width: var(--youtube-videos-width, 264px);
+                --youtube-player-card-height: var(--youtube-videos-height, 149px);
+            }
+
              :host youtube-player-card {
                 margin: 10px;
             }
         </style>
-        <!-- Make search reuqest first, then modify request and execute /videos""-->
-        <iron-ajax id="ajaxRequest" auto url="[[searchUrl]]" params='[[_buildParams(pageToken,_part,apiKey,channelId,query,order,types,maxResults)]]'
+        <iron-ajax id="ajaxRequest" auto url="[[searchUrl]]" params='[[_buildParams(pageToken,_part,apiKey,channelId,query,order,types,maxResults, playlistId)]]'
             handle-as="json"></iron-ajax>
         <iron-ajax id="ajaxVideos" url="[[videoUrl]]" params='[[_buildVideoParams(_videoIds,_part,apiKey,types)]]' handle-as="json"></iron-ajax>
         <div class="flex-wrapper">
             <div class="video-cards">
                 <template is="dom-repeat" items="{{videos}}">
-                    <youtube-player-card duration="[[item.contentDetails.duration]]" view-count="[[item.statistics.viewCount]]" video-title="[[item.snippet.title]]" channel-title="[[item.snippet.channelTitle]]" thumbnail="[[item.snippet.thumbnails.medium.url]]"
-                        video-id="[[item.id]]"></youtube-player-card>
+                    <youtube-player-card duration="[[item.contentDetails.duration]]" view-count="[[item.statistics.viewCount]]" video-title="[[item.snippet.title]]"
+                        channel-title="[[item.snippet.channelTitle]]" thumbnail="[[item.snippet.thumbnails.medium.url]]" video-id="[[item.id]]"></youtube-player-card>
                 </template>
             </div>
         </div>
@@ -54,6 +59,14 @@
                     type: String,
                     value: 'https://www.googleapis.com/youtube/v3/videos'
                 },
+                playlistUrl: {
+                    type: String,
+                    value: 'https://www.googleapis.com/youtube/v3/playlistItems'
+                },
+                playlistId: {
+                    type: String,
+                    value: ''
+                },
                 apiKey: {
                     type: String,
                     value: ''
@@ -72,7 +85,7 @@
                 },
                 types: {
                     type: String,
-                    value: 'video'
+                    value: 'video, playlist'
                 },
                 _part: {
                     type: String,
@@ -92,14 +105,16 @@
                 }
             },
             _handleResponse: function (response) {
-                var noStats;
-                if (response && response.items) {
+                var noStats,
+                    items;
+                if (response && (response.items || response.snippet)) {
+                    items = response.items ? response.items : response.snippet;
                     this._noStats = this.videos;
                     // fill in most o the data and then lazy load stats
-                    this.videos = this.videos.concat(response.items);
+                    this.videos = this.videos.concat(items);
                     if (!this.noGetStats) {
                         // update new videos videos with stats info
-                        this._videoIds = this._extractId(response.items);
+                        this._videoIds = this._extractId(items);
                         this.$.ajaxVideos.generateRequest();
 
                     }
@@ -107,13 +122,28 @@
             },
             _extractId: function (items) {
                 // need to update for playlists
-                var ids = '';
+                var idOutput = {},
+                    ids = '';
+
                 if (items && items.length) {
                     items.forEach(function (item) {
                         // wont work for playlists
-                        ids += item.id.videoId + ','
+                        if(item.snippet){
+                            item = item.snippet;
+                        }
+                        if (item.id && item.id.videoId) {
+                            ids += item.id.videoId + ',';
+                            idOutput.type = 'playlist';
+
+                        } else if (item.id && item.id.playlistId) {
+                            ids += item.id.playlistId + ',';
+                            idOutput.type = 'playlist';
+                        }else if(item.resourceId && item.resourceId.videoId){
+                            ids += item.resourceId.videoId + ',';
+                        }
                     });
-                    ids = ids.slice(0,-1);
+                    ids = ids.slice(0, -1);
+                    idOutput.ids = ids;
                 }
                 return ids;
 
@@ -140,6 +170,9 @@
                         'order': this.order,
                         'maxResults': this.maxResults
                     };
+                    if (this.playlistId) {
+                        output.playlistId = this.playlistId;
+                    }
                     if (this.query) {
                         output.query = this.query;
                     }
@@ -191,13 +224,5 @@
                 }
             }
         });
-
-        // need to search to get Ids
-        // then pass to statistics api
-        // need to handle playlists
-
-        // need to handle paging
-
-        // push data to the card
     </script>
 </dom-module>

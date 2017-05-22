@@ -24,10 +24,8 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
       }
     </style>
 
-    <div id="videos">
-
     </div>
-    <youtube-videos channel-id="UCReQS8UwfrhDRGTowiXqVKg"></youtube-videos>
+    <youtube-videos id="videos" order="viewCount" channel-id="UCReQS8UwfrhDRGTowiXqVKg" api-key="[[apiKey]]" max-results="30"></youtube-videos>
   </template>
 
   <script>
@@ -46,53 +44,20 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
           type: String,
           value: ''
         },
-        items: {
-          type: Array,
-          value: []
-        }
-
-      },
-      fetchData: function (part, videoId) {
-        return fetch('https://www.googleapis.com/youtube/v3/videos?part=' + part + '&id=' + videoId + '&key=' + this.apiKey).then(function(res){return res.json()});
-      },
-	  fetchChannel : function(){
-		return fetch('https://www.googleapis.com/youtube/v3/search?key=' + this.apiKey + '&channelId=' + this.channelId + '&part=id&order=date&maxResults=20&type=video,playlist');
-	  },
-      fetchStats :  function(videoId){
-          return this.fetchData('statistics', videoId)
-          .then(function(data){
-                 return response.json();
-          }.bind(this));
-      },
-      ready: function () {
-        this.fetchChannel()
-          .then(function(response){
-            return response.json();
-          })
-          .then(this.processResults.bind(this))
-      },
-      processResults: function (data) {
-        if (data && data.items) {
-          this.nextPageToken = data.nextPageToken;
-          if (data.items && data.items.length) {
-            this.items.concat(data.items);
-            data.items.forEach(function(item){
-                if(item && item.snippet){
-				  var itemId = item.id,
-						id = itemId.videoId || itemId.playlistId;
-				  this.fetchStats(id);
-                  this.createYoutubePlayer(item.snippet);
-                }
-            }.bind(this));
-          }
-
+        scrollPos: {
+          type: String,
+          value: null,
+          notify: true,
+          observer: '_loadMore'
         }
       },
-      createYoutubePlayer: function (snippet) {
-        var video = document.createElement('youtube-player-card');
-        video.videoTitle = snippet.title;
-        this.$.videos.appendChild(video);
+      _loadMore: function () {
+        if (this.feed && this.scrollPos >= 0.7 || this.scrollPos === 'bottom') {
+          this.$.videos.loadMore();
+        }
       }
+
+
 
     });
   </script>
