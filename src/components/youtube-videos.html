@@ -1,5 +1,6 @@
 <link rel="import" href="../../bower_components/polymer/polymer.html">
-
+<link rel="import" href="../../bower_components/paper-icon-button/paper-icon-button.html">
+<link rel="import" href="../../bower_components/iron-icons/av-icons.html">
 <link rel="import" href="../../bower_components/iron-ajax/iron-ajax.html">
 <link rel="import" href="./youtube-player-card.html">
 
@@ -11,6 +12,7 @@
             }
 
              :host .video-cards {
+                max-width: var(--youtube-videos-container-max-width, 100%);
                 display: flex;
                 flex-wrap: wrap;
                 justify-content: center;
@@ -26,29 +28,93 @@
                 --youtube-player-card-height: var(--youtube-videos-height, 149px);
             }
 
-             :host youtube-player-card {
-                margin: 10px;
+
+
+             :host([has-navigation]) .video-wrap {
+                height: var(--youtube-video-navigator-height, 263px);
+                overflow: hidden;
+            }
+
+             :host .nav-wrap {
+                display: flex;
+                justify-content: center;
+                align-items: center;
+            }
+
+             :host .nav-text {
+                text-align: center;
+            }
+
+            .video-transition {
+                transition: transform var(--youtube-videos-transition-speed, 800ms) cubic-bezier(0.26, 0.86, 0.44, 0.985) 0s;
+                transform: translateY(var(--youtube-videos-translatey, 0px));
+            }
+
+            a:not([disabled]) {
+                cursor: pointer;
+            }
+
+            a[disabled] {
+                opacity: 0.3;
+            }
+
+            a:not([disabled]):hover {
+                text-decoration: underline;
             }
         </style>
-        <iron-ajax id="ajaxRequest" auto url="[[searchUrl]]" params='[[_buildParams(pageToken,_part,apiKey,channelId,query,order,types,maxResults, playlistId)]]'
-            handle-as="json"></iron-ajax>
-        <iron-ajax id="ajaxVideos" url="[[videoUrl]]" params='[[_buildVideoParams(_videoIds,_part,apiKey,types)]]' handle-as="json"></iron-ajax>
-        <div class="flex-wrapper">
-            <div class="video-cards">
-                <template is="dom-repeat" items="{{videos}}">
-                    <youtube-player-card duration="[[item.contentDetails.duration]]" view-count="[[item.statistics.viewCount]]" video-title="[[item.snippet.title]]"
-                        channel-title="[[item.snippet.channelTitle]]" thumbnail="[[item.snippet.thumbnails.medium.url]]" video-id="[[item.id]]"></youtube-player-card>
-                </template>
+        <div class="video-wrap">
+            <div id="videoAnim" class="video-transition">
+                <iron-ajax id="ajaxRequest" auto url="[[searchUrl]]" params='[[_buildParams(pageToken,_part,apiKey,channelId,query,order,types,maxResults, playlistId)]]'
+                    handle-as="json"></iron-ajax>
+                <iron-ajax id="ajaxVideos" url="[[videoUrl]]" params='[[_buildVideoParams(_videoIds,_part,apiKey,types)]]' handle-as="json"></iron-ajax>
+                <div class="flex-wrapper">
+                    <div class="video-cards">
+                        <template is="dom-repeat" items="{{videos}}">
+                            <youtube-player-card duration="[[item.contentDetails.duration]]" view-count="[[item.statistics.viewCount]]" video-title="[[item.snippet.title]]"
+                                channel-title="[[item.snippet.channelTitle]]" thumbnail="[[item.snippet.thumbnails.medium.url]]"
+                                video-id="[[item.id]]"></youtube-player-card>
+                        </template>
+                    </div>
+                </div>
             </div>
         </div>
+        <template is="dom-if" if={{hasNavigation}}>
+            <div class="nav-wrap">
+                <paper-icon-button disabled$=[[_atTop]] on-click="_showPrevious" icon="av:skip-previous" title="Previous"></paper-icon-button>
+                <a disabled$=[[_atTop]] on-click="_showPrevious" class="nav-text">[[previousText]]</a>
+                <span>&nbsp; | &nbsp; </span>
+                <a disabled$=[[_atBottom]] on-click="_showNext" class="nav-text">[[nextText]]</a>
+                <paper-icon-button disabled$=[[_atBottom]] on-click="_showNext" icon="av:skip-next" title="Next"></paper-icon-button>
+
+
+            </div>
+        </template>
+
+
+
+
     </template>
     <script>
         Polymer({
             is: 'youtube-videos',
             properties: {
+                hasNavigation: {
+                    type: Boolean,
+                    value: false,
+                    reflectToAttribute: true,
+                    observer: '_onHasNav'
+                },
+                previousText: {
+                    type: String,
+                    value: 'Previous'
+                },
+                nextText: {
+                    type: String,
+                    value: 'Next'
+                },
                 videos: {
                     type: Array,
-                    value: [],
+                    value: null,
                     notify: true
                 },
                 searchUrl: {
@@ -102,14 +168,77 @@
                 noGetStats: {
                     type: Boolean,
                     value: false
+                },
+                _atTop: {
+                    type: Boolean,
+                    value: true
+                },
+                _atBottom: {
+                    type: Boolean,
+                    value: false
                 }
+            },
+            _onHasNav: function () {
+                if (this.hasNavigation) {
+                    // need to force for decent lazy loading of pages
+                    this.maxResults = '10';
+                }
+            },
+            _showNext: function () {
+                if (!this._atBottom) {
+                    //TODO:: when resize window reset transform
+                    var height = this.$$('youtube-player-card').offsetHeight,
+                        animateHeight = this.$.videoAnim.offsetHeight,
+                        THRESHOLD = height * 2;
+                    var currentTranslate = parseInt(this.customStyle['--youtube-videos-translatey'], 10);
+                    currentTranslate = !currentTranslate ? 0 : currentTranslate;
+                    currentTranslate -= height;
+                    this._atTop = false;
+                    if (Math.abs(currentTranslate) >= animateHeight) {
+                        if (!this._nextPageToken) {
+                            this._atBottom = true;
+                            return;
+                        }
+                    }
+                    if (Math.abs(currentTranslate) + THRESHOLD >= animateHeight) {
+                        this.loadMore();
+                        this._navigate(currentTranslate);
+                    }
+                    else {
+                        // if the translate would be bigger than height, load more, lazy load ?
+                        this._atBottom = false;
+                        this._navigate(currentTranslate);
+                    }
+                }
+
+            },
+            _showPrevious: function () {
+                if (!this._atTop) {
+                    this._atBottom = false;
+                    var height = this.$$('youtube-player-card').offsetHeight;
+                    var currentTranslate = parseInt(this.customStyle['--youtube-videos-translatey'], 10);
+                    currentTranslate = !currentTranslate ? 0 : currentTranslate;
+                    currentTranslate = !currentTranslate ? 0 : currentTranslate + height;
+                    if (currentTranslate === 0) {
+                        this._atTop = true;
+                    }
+                    this._navigate(currentTranslate);
+                }
+
+
+            },
+            _navigate: function (updated) {
+                this.customStyle['--youtube-videos-translatey'] = updated + 'px';
+                this.updateStyles();
             },
             _handleResponse: function (response) {
                 var noStats,
                     items;
                 if (response && (response.items || response.snippet)) {
                     items = response.items ? response.items : response.snippet;
-                    this._noStats = this.videos;
+                    this.videos = this.videos || [];
+
+                    this._noStats = this.videos || [];
                     // fill in most o the data and then lazy load stats
                     this.videos = this.videos.concat(items);
                     if (!this.noGetStats) {
@@ -122,28 +251,24 @@
             },
             _extractId: function (items) {
                 // need to update for playlists
-                var idOutput = {},
-                    ids = '';
+                ids = '';
 
                 if (items && items.length) {
                     items.forEach(function (item) {
-                        // wont work for playlists
-                        if(item.snippet){
-                            item = item.snippet;
-                        }
                         if (item.id && item.id.videoId) {
                             ids += item.id.videoId + ',';
-                            idOutput.type = 'playlist';
-
                         } else if (item.id && item.id.playlistId) {
                             ids += item.id.playlistId + ',';
-                            idOutput.type = 'playlist';
-                        }else if(item.resourceId && item.resourceId.videoId){
-                            ids += item.resourceId.videoId + ',';
+                        } else {
+                            if (item.snippet) {
+                                item = item.snippet;
+                                if (item.resourceId && item.resourceId.videoId) {
+                                    ids += item.resourceId.videoId + ',';
+                                }
+                            }
                         }
                     });
                     ids = ids.slice(0, -1);
-                    idOutput.ids = ids;
                 }
                 return ids;
 
@@ -194,6 +319,7 @@
                 this.pageToken = this._nextPageToken;
             },
             previousPage: function () {
+                // doesnt work properly
                 this.pageToken = this._prevPageToken;
             },
             attached: function () {
@@ -209,7 +335,7 @@
             },
             _updateWithStats: function (e) {
                 var response = e.target.lastResponse;
-                if (response && response.items) {
+                if (response && response.items && response.items.length) {
                     this.videos = this._noStats.concat(response.items);
                 }
             },
