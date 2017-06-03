@@ -24,9 +24,9 @@
     "iron-scroll-target-behavior": "PolymerElements/iron-scroll-target-behavior#^1.1.1",
     "instafeed.js": "^1.4.1",
     "google-apis": "GoogleWebComponents/google-apis#^1.1.7",
-    "aws-app": "PolymerAWS/polymeraws#^1.0.3",
     "iron-form": "^1.1.4",
-    "paper-input": "^1.1.24"
+    "paper-input": "^1.1.24",
+    "paper-radio-group": "^1.0.0"
   },
   "devDependencies": {
     "web-component-tester": "^4.0.0"

@@ -9,13 +9,14 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
 -->
 
 <link rel="import" href="../bower_components/polymer/polymer.html">
-<link rel="import" href="../../bower_components/paper-card/paper-card.html">
+<link rel="import" href="../bower_components/paper-card/paper-card.html">
 <link rel="import" href="./components/contact-form.html">
+<link rel="import" href="shared-styles.html">
 
 
 <dom-module id="my-contact">
   <template>
-    <style>
+    <style include="shared-styles">
        :host {
         display: block;
         position: relative;
@@ -25,6 +26,7 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
       .contact-container {
         margin: 10px;
         display: flex;
+        width: 100%;
         align-items: center;
         justify-content: center;
         height: 100%;
@@ -32,11 +34,16 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
 
       .contact-card {
         width: 100%;
-        max-width: 900px;
+        max-width: 90%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-direction: column;
       }
     </style>
     <div class="wrap">
-
+      <p class="quote">If you'd wish to contact Charlie regarding lessons or session work please use the contact form below. <br/>Alternatively
+        you can email <a href="mailto:cgguitar@outlook.com">cgguitar@outlook.com</a> or call 07861538564.</p>
       <div class="contact-container">
         <paper-card heading="Contact" class="contact-card" animated-shadow="false">
           <div class="card-actions">

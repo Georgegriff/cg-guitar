@@ -3,6 +3,7 @@
 <link rel="import" href="../../bower_components/paper-input/paper-input.html">
 <link rel="import" href="../../bower_components/paper-input/paper-textarea.html">
 <link rel="import" href="../../bower_components/paper-button/paper-button.html">
+<link rel="import" href="../../bower_components/paper-radio-group/paper-radio-group.html">
 
 <link rel="import" href="../shared-styles.html">
 
@@ -11,19 +12,39 @@
         <style>
              :host {
                 display: block;
-                padding: 10px;
                 width: 100%;
+            }
+
+            #prefer,
+            .buttons {
+                margin-top: 10px;
+            }
+
+            .buttons {
+                display: flex;
+                justify-content: center;
             }
         </style>
 
         <form is="iron-form" method="post" action="[[api]]" id="contactForm" content-type="application/json">
             <paper-input name="name" label="Name" required auto-validate></paper-input>
-            <paper-input  id="email" on-change="_emailMatch" name="email" label="Email" type="email" required ></paper-input>
-            <paper-input id="cEmail" on-change="_emailMatch" name="confirm-email" label="Confirm Email" type="email" required ></paper-input>
-            <paper-textarea max-rows="10" label="Your Message"></paper-textarea>
-            <paper-button raised on-click="_submit" disabled id="contactFormSubmit">
-                <paper-spinner id="spinner" hidden></paper-spinner>Submit</paper-button>
-            <paper-button raised on-click="_reset">Reset</paper-button>
+            <paper-input id="email" on-change="_emailMatch" name="email-address" label="Email" type="email" required></paper-input>
+            <paper-input id="cEmail" on-change="_emailMatch" name="confirm-email-address" label="Confirm Email" type="email" required></paper-input>
+            <paper-input id="telephone" on-change="_validateTelephone" name="telephone-no" label="Telephone" type="telephone"></paper-input>
+
+            <paper-textarea rows="3" max-rows="6" label="Your Message" name="message"></paper-textarea>
+            <label id="prefer">How would you prefer to be contacted?</label>
+            <input style="display:none" name="telephonePreferred" name="" value="[[_isPhonePreferred]]">
+            <paper-radio-group id="preferSelect" on-selected-changed="_isTelephonePreferred" aria-labelledby="prefer" selected="email">
+                <paper-radio-button name="email">Email</paper-radio-button>
+                <paper-radio-button name="telephone">Telephone</paper-radio-button>
+            </paper-radio-group>
+            <div class="buttons">
+                <paper-button raised on-click="_submit" disabled id="contactFormSubmit">
+                    <paper-spinner id="spinner" hidden></paper-spinner>Submit</paper-button>
+                <paper-button raised on-click="_reset">Reset</paper-button>
+            </div>
+            
             <div class="output"></div>
         </form>
 
@@ -37,10 +58,29 @@
                     type: String,
                     value: ''
                 },
-                _invalidEmails : {
-                    type : Boolean,
-                    value : false
+                _invalidEmails: {
+                    type: Boolean,
+                    value: false
+                },
+                _invalidTelephone: {
+                    type: Boolean,
+                    value: false
+                },
+                _isPhonePreferred: {
+                    type: Boolean,
+                    value: false
                 }
+            },
+            _isTelephonePreferred: function (e) {
+                var preferred = e.detail.value === 'telephone';
+                if (preferred) {
+                    this._isPhonePreferred = true;
+                    this.$.telephone.invalid = !this._validateTelephone() && preferred;
+                } else {
+                    this._isPhonePreferred = false;
+                    this.$.telephone.invalid = (!this.$.telephone.value) ? false : !this._validateTelephone();
+                }
+                this._validate();
             },
             _emailMatch: function () {
                 var emailVal = this.$.email.value,
@@ -48,44 +88,79 @@
                     invalid = emailVal !== cEmailValue,
                     invalidE = !(!invalid && this.$.email.validate()),
                     invalidC = !(!invalid && this.$.cEmail.validate());
-                
+
                 this.$.email.invalid = invalidE;
                 this.$.cEmail.invalid = invalidC
 
                 this._invalidEmails = (invalidE || invalidC);
-                
+
 
 
             },
-            _validateTelephone : function(){
-                this.$.telephone.invalid = false;
+            _validateTelephone: function () {
+                var input = this.$.telephone.value;
+                var valid = false;
+                var phones = {
+                    'zh-CN': /^(\+?0?86\-?)?1[345789]\d{9}$/,
+                    'zh-TW': /^(\+?886\-?|0)?9\d{8}$/,
+                    'en-ZA': /^(\+?27|0)\d{9}$/,
+                    'en-AU': /^(\+?61|0)4\d{8}$/,
+                    'en-HK': /^(\+?852\-?)?[569]\d{3}\-?\d{4}$/,
+                    'fr-FR': /^(\+?33|0)[67]\d{8}$/,
+                    'pt-PT': /^(\+351)?9[1236]\d{7}$/,
+                    'el-GR': /^(\+30)?((2\d{9})|(69\d{8}))$/,
+                    'en-GB': /^(\+?44|0)7\d{9}$/,
+                    'en-US': /^(\+?1)?[2-9]\d{2}[2-9](?!11)\d{6}$/,
+                    'en-ZM': /^(\+26)?09[567]\d{7}$/,
+                    'ru-RU': /^(\+?7|8)?9\d{9}$/
+                };
+                var keys = Object.keys(phones);
+
+                for (var i = 0; i < keys.length; i++) {
+                    var key = keys[i];
+                    if (key in phones) {
+                        var regex = new RegExp(phones[key]);
+                        if (regex.test(input)) {
+                            valid = true;
+                        }
+                    }
+                }
+                this._invalidTelephone = !input && !this._isPhonePreferred ? false : !valid;
+                this.$.telephone.invalid = this._invalidTelephone;
+                return valid
+
+            },
+            _validate: function () {
+                // Validate the entire form to see if we should enable the `Submit` button.
+                var isValid = this.$.contactForm.validate();
+                this._emailMatch();
+                this._validateTelephone();
+                this.$.contactFormSubmit.disabled = !(isValid && !this._invalidEmails && !this._invalidTelephone);
             },
             _validateForm: function (form) {
                 form.addEventListener('change', function (event) {
-                    // Validate the entire form to see if we should enable the `Submit` button.
-                    var isValid = this.$.contactForm.validate();
-                    this._emailMatch();
-                    this.$.contactFormSubmit.disabled = !( isValid&&  !this._invalidEmails);
+                    this._validate();
                 }.bind(this));
             },
-            _submit : function(){
+            _submit: function () {
                 this.$.contactForm.submit();
             },
             _onSubmit: function (e) {
-                spinner.active = false;
-                spinner.hidden = true;
-                this$.contactFormSubmit.disabled = false;
+                this.$.spinner.active = false;
+                this.$.spinner.hidden = true;
+                this.$.contactFormSubmit.disabled = false;
                 console.log(e.detail);
                 this.querySelector('.output').innerHTML = JSON.stringify(event.detail);
             },
             ready: function () {
                 var form = this.$.contactForm;
                 this._validateForm(form);
-                form.addEventListener('iron-form-submit', this._onSubmit);
+                form.addEventListener('iron-form-submit', this._onSubmit.bind(this));
             },
             _reset: function (event) {
-                var form = Polymer.dom(event).localTarget.parentElement
+                var form = Polymer.dom(event).localTarget.parentElement.parentElement;
                 form.reset();
+                this.$.preferSelect.selected = 'email';
                 form.querySelector('.output').innerHTML = '';
             }
         });
