@@ -41,9 +41,11 @@
                 align-items: center;
                 justify-content: center;
                 flex-direction: column;
+                line-height: 2em;
             }
 
-            .email a {
+            .email a,
+            .tele a {
                 text-decoration: none;
                 color: var(--app-primary-color);
                 font-weight: normal;
@@ -54,11 +56,11 @@
                 align-items: center;
                 flex-direction: column;
                 justify-content: center;
-                margin-bottom:10px;
+                margin-bottom: 10px;
             }
 
             .side-bar-image {
-                margin:10px 0 0 10px;
+                margin: 10px 0 0 10px;
                 width: 150px;
                 height: 150px;
                 border: solid 2px white;
@@ -82,8 +84,8 @@
             </div>
             <div class="info">
                 <div class="name">Charlie Griffiths</div>
-                <div class="email"><a href="mailto:example@email.com" target="_top">cgguitar@outlook.com</a></div>
-                <div class="tele">++447861538564</div>
+                <div class="email"><a href="mailto:cgguitar@outlook.com" target="_top">cgguitar@outlook.com</a></div>
+                <div class="tele"><a href="tel:++447861538564">++447861538564</a></div>
             </div>
         </div>
 
@@ -140,10 +142,12 @@
 
             },
             ready: function () {
-                var pages = this.$.pages.querySelectorAll('cg-links');
-                pages.forEach(function (page) {
+                var pages = this.$.pages.querySelectorAll('cg-links'),page;
+
+                for (i = 0; i < pages.length; ++i) {
+                    page = pages[i];
                     this._names.push(page.getAttribute('name'));
-                }.bind(this));
+                }
 
             }
         });

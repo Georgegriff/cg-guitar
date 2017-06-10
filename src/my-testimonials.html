@@ -16,90 +16,82 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
 
 <dom-module id="my-testimonials">
     <template>
-   <style include="shared-styles">
-      :host {
-        display: block;
-        padding: 10px;
-      }
+        <style include="shared-styles">
+             :host {
+                display: block;
+            }
 
-        .levels paper-card {
-            max-width:90%;
-          }
-        .contact-btn {
-          background:var(--app-primary-color);
-          color: white;
-        }
-        .card-header { @apply(--paper-font-headline); }
-        .card-light { color: var(--paper-grey-600); }
-        .card-location {
-      float: right;
-      font-size: 15px;
-      vertical-align: middle;
-        }
-      
-      .t-wrap {
-        display:flex;
-       flex-direction: column;
-       flex-wrap: wrap;
-       padding-bottom:10%;
-      }
+            .levels paper-card {
+                max-width: 90%;
+            }
 
-      .levels {
-          height:auto;
-        display: -webkit-flex;
-   display: flex;
-   -webkit-align-items: center;
-   align-items: center;
- 
-   /* You can set flex-wrap and flex-direction individually */
-   -webkit-flex-direction: row;
-   flex-direction: row;
-   -webkit-flex-wrap: wrap;
-   flex-wrap: wrap;
-   /* Or do it all in one line with flex flow */
-   -webkit-flex-flow: row wrap;
-   flex-flow: row wrap;
-   /* tweak the where items line up on the row */
-   /* valid values are: flex-start, flex-end, space-between, space-around, stretch */
-   -webkit-align-content: flex-end;
-   align-content: flex-end;
-      }
-      .lvl-title {
-        padding-bottom:10px;
-      }
-      paper-card {
-        margin:10px;
-      }
-      paper-card {
-       width:100%;
-       height:auto;
-       min-height:auto;
-       max-width:initial;
-      }
-     
-      .btn-cnt {
-        margin-bottom:10px;
-      }
-     
-  </style>
-     <div class="t-wrap">
-  <div class="lvl-title">
-          What do people say about CG Guitar?
-      </div>
-    <div class="levels">
-     
-      <template is="dom-repeat" items="{{testimonials}}">
-        <paper-card heading="{{item.author}}" class="text-card" animated-shadow="true">
-              <div class="card-actions">
-            
-                <p class="card-light">
-                  {{item.text}}
-                <p>
-              </div>
-        </paper-card>
+            .contact-btn {
+                background: var(--app-primary-color);
+                color: white;
+            }
 
-      </template>
-    </div>
+            .card-header {
+                @apply(--paper-font-headline);
+            }
+
+            .card-light {
+                color: var(--paper-grey-600);
+            }
+
+            .card-location {
+                float: right;
+                font-size: 15px;
+                vertical-align: middle;
+            }
+
+            .t-wrap {
+                display: flex;
+                flex-direction: column;
+                flex-wrap: wrap;
+                padding-bottom: 10%;
+            }
+
+
+            .lvl-title {
+                padding-bottom: 10px;
+            }
+
+            paper-card {
+                margin: 10px;
+            }
+
+            paper-card {
+                width: 100%;
+                height: auto;
+                min-height: auto;
+                max-width: initial;
+            }
+
+            .btn-cnt {
+                margin-bottom: 10px;
+            }
+        </style>
+        <div id="scroller">
+            <div class="wrap">
+
+                <div class="levels">
+                    <div class="lvl-title">
+                        What do people say about CG Guitar?
+                    </div>
+                    <template is="dom-repeat" items="{{testimonials}}">
+                        <paper-card heading="{{item.author}}" class="text-card" animated-shadow="true">
+                            <div class="card-actions">
+
+                                <p class="card-light">
+                                    {{item.text}}
+                                    <p>
+                            </div>
+                        </paper-card>
+
+                    </template>
+                </div>
+            </div>
+        </div>
 
     </template>
 
