@@ -12,130 +12,186 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
 
 <dom-module id="instagram-feed">
     <template>
-    <style>
-      :host {
-       display: block;
-       height:100%;
-       width:100%;
-      
-      }
-      #instafeed {
-        width:100%;
-        display: flex;
-        flex:1;
-        flex-wrap: wrap;
-        justify-content: center;
+        <style>
+             :host {
+                display: block;
+                height: 100%;
+                width: 100%;
+            }
 
-      }
-      .instafeed-wrap {
-        width: var(--instagram-width, 230px);
-        height: var(--intagram-feed-height, auto);
-        margin: 10px;
-        padding: 10px;
-        color: #757575;
-        border-radius: 5px;
-        background-color: #fff;
-        box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.14), 0 1px 5px 0 rgba(0, 0, 0, 0.12), 0 3px 1px -2px rgba(0, 0, 0, 0.2);
-        @apply instagram-wrapper;
-      }
-      .instafeed-wrap img {
-        width:100%;
-      }
-      .instafeed-wrap .instas {
-          position:relative;
-      }
-      .instafeed-wrap .description {
-          margin: 0;
-        font-size: 12px;
-        padding-top:5px;
-        background: transparent;
-        overflow: hidden;
-        white-space: nowrap;
-        text-overflow: ellipsis;
-      }
-      .instas a {
-          position: relative;
-          display: block;
-          height:240px;
-      }
-      .instas a img{
-          position: absolute;
-          top:0;
-      }
-      .instafeed-wrap .likes {
-          display:flex;
-          justify-content: center;
-          align-items: center;
-          height:100%;
-          color: var(--instagram-feed-heart-color, #fff);
-          text-align: center;
-      }
-      .like-wrap {
-          position:relative;
-          width:75px;
-          height:75px;
-      }
-      .instafeed-wrap .like-wrap .heart {
-        position:absolute;
-        display:flex;
-        justify-content: center;
-        align-items: center;
-        font-size:75px;
-        width:75px;
-        height:75px;
-        z-index:99;
-      }
-      .instafeed-wrap .like-wrap * {
-          opacity:0;
-      }
-       .instafeed-wrap:hover .like-wrap * {
-            transition: opacity .3s ease-in-out;   
-            opacity:0.7;
-      }
-       .instafeed-wrap .like-wrap .number {
-          position: absolute;
-          z-index:100;
-            width:75px;
-          height:75px;
-          color: var(--instagram-feed-likes-color, #757575);
-          display: flex;
-          justify-content: center;
-          align-items: center;
-          letter-spacing: 2px;
-          font-size:20px;
-          font-weight: 800;
-      }
-     
-    </style>
+            #instafeed {
+                width: 100%;
+                display: flex;
+                flex: 1;
+                flex-wrap: wrap;
+                justify-content: center;
+            }
 
-    <div id="instafeed"></div>
+             :host .instafeed-wrap {
+                width: var(--instagram-width, 230px);
+                height: var(--intagram-feed-height, auto);
+                margin: 10px;
+                padding: 10px;
+                color: #757575;
+                border-radius: 5px;
+                background-color: #fff;
+                box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.14), 0 1px 5px 0 rgba(0, 0, 0, 0.12), 0 3px 1px -2px rgba(0, 0, 0, 0.2);
+            }
+
+             :host .instafeed-wrap img {
+                width: 100%;
+            }
+
+             :host .instafeed-wrap .instas {
+                position: relative;
+            }
+
+             :host .instafeed-wrap .description {
+                margin: 0;
+                font-size: 12px;
+                padding-top: 5px;
+                background: transparent;
+                overflow: hidden;
+                white-space: nowrap;
+                text-overflow: ellipsis;
+            }
+
+            .instas a {
+                position: relative;
+                display: block;
+                height: 240px;
+            }
+
+            .instas a img {
+                position: absolute;
+                top: 0;
+            }
+
+             :host .instafeed-wrap .likes {
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                height: 100%;
+                color: var(--instagram-feed-heart-color, #fff);
+                text-align: center;
+            }
+
+            .like-wrap {
+                position: relative;
+                width: 75px;
+                height: 75px;
+            }
+
+             :host .instafeed-wrap .like-wrap .heart {
+                position: absolute;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                font-size: 75px;
+                width: 75px;
+                height: 75px;
+                z-index: 99;
+            }
+
+             :host .instafeed-wrap .like-wrap * {
+                opacity: 0;
+            }
+
+             :host .instafeed-wrap:hover .like-wrap * {
+                transition: opacity .3s ease-in-out;
+                opacity: 0.7;
+            }
+
+             :host .instafeed-wrap .like-wrap .number {
+                position: absolute;
+                z-index: 100;
+                width: 75px;
+                height: 75px;
+                color: var(--instagram-feed-likes-color, #757575);
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                letter-spacing: 2px;
+                font-size: 20px;
+                font-weight: 800;
+                ins
+            }
+        </style>
+        <div id="instafeed">
+            <template is="dom-repeat" items="[[_photos]]">
+
+                <div class="instafeed-wrap">
+                    <div class="instas">
+                        <a target="_blank" href="{{item.link}}">
+                            <div id="{{item.id}}" style="background:url([[_getImage(item.images)]]); background-size: cover;" class="likes">
+                                <div class="like-wrap">
+                                    <div class="number">{{item.likes.count}}</div>
+                                    <div class="heart">&#10084;</div>
+                                </div>
+                            </div>
+                        </a>
+                        <h3 class="description">{{item.caption.text}}</h3>
+                    </div>
+                </div>
+            </template>
+        </div>
 
 
-  </template>
+
+    </template>
 
     <script>
         Polymer({
             is: 'instagram-feed',
+            properties: {
+                _photos: {
+                    type: Array,
+                    value: null
+                },
+                resolution: {
+                    type: String,
+                    value: 'standard_resolution'
+                },
+                _ids: {
+                    type: Array,
+                    value: []
+                }
+            },
+            _getImage: function (images) {
+                return images[this.resolution].url;
+            },
             getInstagramFeed: function getInstagramFeed() {
                 var feed = new Instafeed({
-                    resolution: 'standard_resolution',
+                    resolution: this.resolution,
                     get: "user",
-                    target: this.$.instafeed,
+                    mock: true,
                     userId: 227312307,
                     accessToken: "227312307.1677ed0.f3dd75e5e7a341458803d2db31dfab7c",
-                    after: this.instagramAfter,
-                    template: '<div class="instafeed-wrap"><div class="instas"><a target="_blank" href="{{link}}"><div id="{{id}}" style="background:url({{image}}); background-size: cover;" class="likes"><div class="like-wrap"><div class="number">{{likes}}</div><div class="heart">&#10084;</div></div></div></a><h3 class="description">{{caption}}</h3></div></div>'
+                    success: this.onLoad.bind(this)
                 });
                 return feed;
             },
-            ready: function() {
+            onLoad: function (e) {
+                this._photos = this._photos ? this._photos : [];
+                if (e.data && e.data.length) {
+                    for (var i = 0; i < e.data.length; i++) {
+                        if (this._ids.indexOf(e.data[i].id) <= -1) {
+                            this._ids.push(e.data[i].id);
+                            this.push('_photos', e.data[i]);
+
+                        }
+                    }
+                }
+
+            },
+            ready: function () {
                 this.feed = this.getInstagramFeed();
                 this.feed.run();
             },
-            run: function() {
+            run: function () {
                 this.feed.run();
             },
-            next: function() {
+            next: function () {
                 try {
                     this.feed.next();
                 } catch (e) {
