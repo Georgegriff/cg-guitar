@@ -35,6 +35,8 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
              :host {
                 --app-primary-color: #990033;
                 --app-secondary-color: #ddd;
+                --primary-text-color: #000;
+                --primary-color : #990033;
 
                 display: block;
             }
@@ -213,7 +215,7 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
                 // annoying cross browser scroll wierdness.
                 if (!scrollTop) {
                     scrollArea = scrollArea.parentElement;
-                    scrollTop =scrollArea.scrollTop || 0;
+                    scrollTop = scrollArea.scrollTop || 0;
                 }
                 windowHeight = scrollArea.offsetHeight;
                 scrollHeight = scrollArea.scrollHeight;

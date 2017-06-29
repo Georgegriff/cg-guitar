@@ -15,82 +15,87 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
 
 
 <dom-module id="my-about">
-    <template>
-   <style include="shared-styles">
-     :host {
+  <template>
+    <style include="shared-styles">
+       :host {
         display: block;
         padding: 10px;
       }
+
       br {}
-    
-  </style>
-  <div id="scroller">
-     <div class="wrap">
+    </style>
+    <div id="scroller">
+      <div class="wrap">
 
-    <div class="levels">
-  
-    <paper-card heading="Who is CG Guitar?" class="text-card" animated-shadow="false">
-      <div class="card-actions">
-    
-        <p class="card-light">
-       CG Guitar is the creation of guitarist Charlie Griffiths.
-        </p>
-        <p class="card-light">
-        Charlie has been playing guitar since the age of 13, since then he has performed in a number of bands that have required him to play a variety of styles of music, blues, jazz, soul, funk, rock, all the way to the extreme sides of metal.
-        <p>
-      </div>
-    </paper-card>
+        <div class="levels">
+          <div class="text-flex-cards">
+            <paper-card heading="Who is CG Guitar?" class="text-card" animated-shadow="false">
+              <div class="card-actions">
 
-    <paper-card heading="A little bit of more..." class="text-card" animated-shadow="false">
-      <div class="card-actions">
-    
-        <p class="card-light">
-         Charlie graduated from The Academy of Contemporary Music as a Bachelor of Music with a First Class Honours in Professional Music Performance in 2013.
-        </p>
-          <p class="card-light">
-         During his degree in 2012 he started teaching at Goodall Guitar School in Farnborough which has now led him on to running his own teaching and guitar related business, CG Guitar.     <p>
-      </div>
-    </paper-card>
+                <p class="card-light">
+                  CG Guitar is the creation of guitarist Charlie Griffiths.
+                </p>
+                <p class="card-light">
+                  Charlie has been playing guitar since the age of 13, since then he has performed in a number of bands that have required
+                  him to play a variety of styles of music, blues, jazz, soul, funk, rock, all the way to the extreme sides
+                  of metal.
+                  <p>
+              </div>
+            </paper-card>
 
-    <paper-card heading="Looking for Lessons?" class="text-card" animated-shadow="false">
-      <div class="card-actions">
-    
-        <p class="card-light">
-          I offer lessons to students of all standards, find more information on my <a href="/lessons">Lessons</a> page. 
-          <br/>
-          If you'd like to hear what my students have to say about me, please visit the <a href="/testimonials">Testimonials</a> page.     
-</div>
-    </paper-card>
+            <paper-card heading="A little bit of more..." class="text-card" animated-shadow="false">
+              <div class="card-actions">
+
+                <p class="card-light">
+                  Charlie graduated from The Academy of Contemporary Music as a Bachelor of Music with a First Class Honours in Professional
+                  Music Performance in 2013.
+                </p>
+                <p class="card-light">
+                  During his degree in 2012 he started teaching at Goodall Guitar School in Farnborough which has now led him on to running
+                  his own teaching and guitar related business, CG Guitar.
+                  <p>
+              </div>
+            </paper-card>
+
+            <paper-card heading="Looking for Lessons?" class="text-card" animated-shadow="false">
+              <div class="card-actions">
+
+                <p class="card-light">
+                  I offer lessons to students of all standards, find more information on my <a href="/lessons">Lessons</a>                  page.
+                  <br/> If you'd like to hear what my students have to say about me, please visit the <a href="/testimonials">Testimonials</a>                  page.
+              </div>
+            </paper-card>
+          </div>
 
         </div>
 
-     <paper-card class="big-card" id="sign" image="images/lessons.jpg">
+        <paper-card class="big-card" id="sign" image="images/lessons.jpg">
           <div class="card-content">
             <div class="card-header">Band & Session Work</div>
             <p class="card-light">
-                I'm available for session work, for details please visit my <a href="/session">Band/Session</a> page. 
+              I'm available for session work, for details please visit my <a href="/session">Band/Session</a> page.
           </div>
           <div class="card-actions">
             <div class="horizontal justified">
               <div class="btn-cnt">
-                  Please don't hesitate to get in touch.
+                Please don't hesitate to get in touch.
               </div>
-              
-                  <paper-button class="contact-btn"><a href="/contact">Contact</a></paper-button>
-            </div>  
+
+              <paper-button class="contact-btn"><a href="/contact">Contact</a></paper-button>
+            </div>
           </div>
-    </paper-card>
-    
+        </paper-card>
 
 
+
+      </div>
     </div>
-  </div>
-   
+
   </template>
 
-    <script>
-        Polymer({
-            is: 'my-about',
-        });
-    </script>
+  <script>
+    Polymer({
+      is: 'my-about',
+    });
+  </script>
 </dom-module>

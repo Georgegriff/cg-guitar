@@ -69,7 +69,7 @@
                 <iron-ajax id="ajaxVideos" url="[[videoUrl]]" params='[[_buildVideoParams(_videoIds,_part,apiKey,types)]]' handle-as="json"></iron-ajax>
                 <div class="flex-wrapper">
                     <div class="video-cards">
-                        <template is="dom-repeat" items="{{videos}}">
+                        <template is="dom-repeat" items="{{videos}}" sort="sortItems">
                             <youtube-player-card duration="[[item.contentDetails.duration]]" view-count="[[item.statistics.viewCount]]" video-title="[[item.snippet.title]]"
                                 channel-title="[[item.snippet.channelTitle]]" thumbnail="[[item.snippet.thumbnails.medium.url]]"
                                 video-id="[[item.id]]"></youtube-player-card>
@@ -176,6 +176,13 @@
                 _atBottom: {
                     type: Boolean,
                     value: false
+                }
+            },
+            sortItems: function (a, b) {
+                if (a.statistics) {
+                    return parseInt(a.statistics.viewCount) <= parseInt(b.statistics.viewCount) ? 1 : -1;
+                } else {
+                    return 0;
                 }
             },
             _onHasNav: function () {

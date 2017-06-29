@@ -9,6 +9,10 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
 -->
 <script src="../../bower_components/instafeed.js/instafeed.min.js"></script>
 <link rel="import" href="../../bower_components/polymer/polymer.html">
+<link rel="import" href="../../bower_components/iron-icon/iron-icon.html">
+<link rel="import" href="../../bower_components/iron-icons/iron-icons.html">
+<link rel="import" href="../../bower_components/iron-icons/editor-icons.html">
+
 
 <dom-module id="instagram-feed">
     <template>
@@ -31,10 +35,10 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
                 width: var(--instagram-width, 230px);
                 height: var(--intagram-feed-height, auto);
                 margin: 10px;
-                padding: 10px;
                 color: #757575;
-                border-radius: 5px;
+                border-radius: 2px;
                 background-color: #fff;
+                overflow: hidden;
                 box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.14), 0 1px 5px 0 rgba(0, 0, 0, 0.12), 0 3px 1px -2px rgba(0, 0, 0, 0.2);
             }
 
@@ -48,18 +52,20 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
 
              :host .instafeed-wrap .description {
                 margin: 0;
-                font-size: 12px;
-                padding-top: 5px;
+                padding: 0;
                 background: transparent;
                 overflow: hidden;
                 white-space: nowrap;
                 text-overflow: ellipsis;
+                font-weight: normal;
+                flex: 1;
+                margin-right: 2px;
             }
 
-            .instas a {
+            .instas a.link {
                 position: relative;
                 display: block;
-                height: 240px;
+                height: 224px;
             }
 
             .instas a img {
@@ -72,7 +78,7 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
                 justify-content: center;
                 align-items: center;
                 height: 100%;
-                color: var(--instagram-feed-heart-color, #fff);
+                color: var(--instagram-feed-heart-color, #757575);
                 text-align: center;
             }
 
@@ -99,7 +105,7 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
 
              :host .instafeed-wrap:hover .like-wrap * {
                 transition: opacity .3s ease-in-out;
-                opacity: 0.7;
+                opacity: 0.9;
             }
 
              :host .instafeed-wrap .like-wrap .number {
@@ -107,14 +113,26 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
                 z-index: 100;
                 width: 75px;
                 height: 75px;
-                color: var(--instagram-feed-likes-color, #757575);
+                color: var(--instagram-feed-likes-color, white);
                 display: flex;
                 justify-content: center;
                 align-items: center;
                 letter-spacing: 2px;
-                font-size: 20px;
+                font-size: 24px;
+                margin: 6px 0 0 5px;
                 font-weight: 800;
-                ins
+            }
+
+             :host .comment-wrap {
+                display: flex;
+                font-size: 12px;
+                padding: 12px;
+            }
+
+             :host .comment-wrap a {
+                display: flex;
+                text-decoration: none;
+                color: var(--instagram-feed-likes-color, #757575);
             }
         </style>
         <div id="instafeed">
@@ -122,15 +140,22 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
 
                 <div class="instafeed-wrap">
                     <div class="instas">
-                        <a target="_blank" href="{{item.link}}">
+                        <a class="link" target="_blank" href="{{item.link}}">
                             <div id="{{item.id}}" style$="{{_getImage(item.images)}}" class="likes">
                                 <div class="like-wrap">
                                     <div class="number">{{item.likes.count}}</div>
-                                    <div class="heart">&#10084;</div>
+                                    <iron-icon class="heart" icon="icons:thumb-up"></iron-icon>
                                 </div>
                             </div>
                         </a>
-                        <h3 class="description">{{item.caption.text}}</h3>
+                        <div class="comment-wrap">
+                            <h3 class="description">{{item.caption.text}} </h3>
+                            <a target="_blank" href="{{item.link}}">
+                                <div>{{item.comments.count}}</div>
+                                <iron-icon icon="editor:insert-comment"></iron-icon>
+                            </a>
+                        </div>
+
                     </div>
                 </div>
             </template>

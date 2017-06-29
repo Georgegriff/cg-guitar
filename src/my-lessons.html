@@ -11,6 +11,7 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
 <link rel="import" href="../bower_components/polymer/polymer.html">
 <link rel="import" href="../bower_components/paper-card/paper-card.html">
 <link rel="import" href="../bower_components/paper-button/paper-button.html">
+<link rel="import" href="./components/youtube-videos.html">
 <link rel="import" href="./components/app-link.html">
 
 
@@ -28,39 +29,45 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
         <div class="lvl-title quote">
           Here's an idea of some of things that I can help you with:
         </div>
+        <div class="text-flex-cards">
 
-        <paper-card heading="Beginner" class="text-card" animated-shadow="false">
-          <div class="card-actions">
 
-            <p class="card-light">
-              Kick start your guitar playing with enjoyable and frustration free methods to get you playing music from the first lesson.
-              <p>
+          <paper-card heading="Beginner" class="text-card" animated-shadow="false">
+            <div class="card-actions">
+
+              <p class="card-light">
+                Kick start your guitar playing with enjoyable and frustration free methods to get you playing music from the first lesson.
+                <p>
+            </div>
+          </paper-card>
+
+          <paper-card heading="Intermediate" class="text-card" animated-shadow="false">
+            <div class="card-actions">
+
+              <p class="card-light">
+                Effective practice regimes, building a solid foundation of technique and repertoire, acquiring your guitar grades.
+                <p>
+            </div>
+          </paper-card>
+
+          <paper-card heading="Advanced" class="text-card" animated-shadow="false">
+            <div class="card-actions">
+
+              <p class="card-light">
+                Help with preparing to study music/guitar in further education, improving technique, improvising, preparation for a performance,
+                music theory.
+                <p>
+            </div>
+          </paper-card>
+
+          <div style="display:flex;justify-content:flex-start;" class="quote">
+            <span>See what my students are saying about me, over at my &nbsp;<a href="/testimonials">Testimonials</a>.</span>
           </div>
-        </paper-card>
-
-        <paper-card heading="Intermediate" class="text-card" animated-shadow="false">
-          <div class="card-actions">
-
-            <p class="card-light">
-              Effective practice regimes, building a solid foundation of technique and repertoire, acquiring your guitar grades.
-              <p>
-          </div>
-        </paper-card>
-
-        <paper-card heading="Advanced" class="text-card" animated-shadow="false">
-          <div class="card-actions">
-
-            <p class="card-light">
-              Help with preparing to study music/guitar in further education, improving technique, improvising, preparation for a performance,
-              music theory.
-              <p>
-          </div>
-        </paper-card>
-
-        <div class="flex-cont quote">
-          <span>See what my students are saying about me, over at my <a href="/testimonials">Testimonials</a>.</span>
+          <youtube-videos has-navigation id="lessons-playlist" search-url="https://www.googleapis.com/youtube/v3/playlistItems" order="viewCount"
+            playlist-id="PLA0cAQ-2uoeo4d-k69kkTkekL300dFIwl" api-key="[[apiKey]]" max-results="10"></youtube-videos>
         </div>
       </div>
+
 
       <paper-card class="big-card" id="sign" image="images/lessons.jpg">
         <div class="card-content">
@@ -90,6 +97,12 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
   <script>
     Polymer({
       is: 'my-lessons',
+      properties: {
+        apiKey: {
+          type: String,
+          value: 'AIzaSyCJCokkQUEbcz2hUSzk3CtYU-g2v9CS-uM'
+        }
+      }
     });
   </script>
 </dom-module>
