@@ -1,4 +1,19 @@
 {
+    "builds": [
+        {
+            "bundle": true,
+            "js": {
+                "minify": true,
+                "compile": true
+            },
+            "css": {
+                "minify": true
+            },
+            "html": {
+                "minify": true
+            }
+        }
+    ],
     "lint": {
         "rules": [
             "polymer-1"
@@ -17,7 +32,7 @@
         "src/my-view404.html"
     ],
     "sources": [
-        "src/**/*",
+        "src/**",
         "images/**/*",
         "bower.json"
     ],

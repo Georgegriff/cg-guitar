@@ -261,7 +261,10 @@
                 ids = '';
 
                 if (items && items.length) {
-                    items.forEach(function (item) {
+                    var i,
+                        item;
+                    for (i = 0; i < items.length; i++) {
+                        item = items[i];
                         if (item.id && item.id.videoId) {
                             ids += item.id.videoId + ',';
                         } else if (item.id && item.id.playlistId) {
@@ -274,7 +277,7 @@
                                 }
                             }
                         }
-                    });
+                    }
                     ids = ids.slice(0, -1);
                 }
                 return ids;
