@@ -41,7 +41,7 @@
                 align-items: center;
                 justify-content: center;
                 flex-direction: column;
-                line-height: 2em;
+                line-height: 1.5em;
             }
 
             .email a,
@@ -61,8 +61,8 @@
 
             .side-bar-image {
                 margin: 10px 0 0 10px;
-                width: 150px;
-                height: 150px;
+                width: var(--cd-sidebar-img-size, 150px);
+                height: var(--cd-sidebar-img-size, 150px);
                 border: solid 2px white;
                 border-radius: 100%;
                 overflow: hidden;
@@ -74,7 +74,18 @@
                 background-size: cover;
                 background-position-x: 50%;
                 background-color: var(--app-primary-color);
-                background-image: url('images/guitarist1.jpg');
+                background-image: url('../images/guitarist1.jpg');
+            }
+
+            @media (max-height: 719px) {
+                 :host {
+                    --cd-sidebar-img-size: 100px;
+                }
+
+                #pagesSelector {
+                    padding-top: 0px;
+                    display: block;
+                }
             }
         </style>
         </style>
@@ -142,7 +153,7 @@
 
             },
             ready: function () {
-                var pages = this.$.pages.querySelectorAll('cg-links'),page;
+                var pages = this.$.pages.querySelectorAll('cg-links'), page;
 
                 for (i = 0; i < pages.length; ++i) {
                     page = pages[i];
