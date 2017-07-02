@@ -59,6 +59,7 @@
             #video {
                 position: absolute;
                 top: 0;
+                left: 0;
             }
 
             .thumb-cont {
@@ -103,8 +104,8 @@
                 font-size: 13px;
                 margin-right: 15px;
                 text-decoration: none;
-                display:block;
-                margin-top:-8px;
+                display: block;
+                margin-top: -8px;
                 color: var(--youtube-player-channel-color, #757575);
             }
 
@@ -304,9 +305,6 @@
                     }.bind(this), 100);
                 }
             },
-            getVideo: function () {
-                return fetch('https://www.googleapis.com/youtube/v3/search?part=snippet&channelId=' + this.channelId + '&maxResults=25&key=' + this.apiKey);
-            },
             convertDuration: function (input) {
                 var reptms = /^PT(?:(\d+)H)?(?:(\d+)M)?(?:(\d+)S)?$/;
                 var hours = 0,
@@ -353,8 +351,8 @@
                             }
                         }.bind(this),
                         'onStateChange': function (e) {
-                            this.onPlayerStateChange(e, function (url) {
-                                return callback(url);
+                            this.onPlayerStateChange(e, function () {
+                                return callback();
                             }.bind(this));
                         }.bind(this)
                     },
@@ -362,9 +360,8 @@
             },
             onPlayerStateChange: function onPlayerStateChange(event, callback) {
                 if (event.data === this.YT.PlayerState.CUED) {
-                    var url = event.target.getVideoUrl();
                     if (callback) {
-                        return callback(url);
+                        return callback();
                     }
                 }
             },

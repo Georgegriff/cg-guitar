@@ -12,6 +12,7 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
 <link rel="import" href="../../bower_components/iron-icon/iron-icon.html">
 <link rel="import" href="../../bower_components/iron-icons/iron-icons.html">
 <link rel="import" href="../../bower_components/iron-icons/editor-icons.html">
+<link rel="import" href="../../bower_components/paper-spinner/paper-spinner-lite.html">
 
 
 <dom-module id="instagram-feed">
@@ -134,7 +135,22 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
                 text-decoration: none;
                 color: var(--instagram-feed-likes-color, #757575);
             }
+
+             :host #spins {
+                width: 100%;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+            }
+
+            paper-spinner-lite {
+                width: 75px;
+                height: 75px;
+                --paper-spinner-stroke-width: 6px;
+                --paper-spinner-color: var(--primary-color);
+            }
         </style>
+
         <div id="instafeed">
             <template is="dom-repeat" items="[[_photos]]">
 
@@ -159,6 +175,9 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
                     </div>
                 </div>
             </template>
+        </div>
+        <div id="spins">
+            <paper-spinner-lite id="spinner" active></paper-spinner-lite>
         </div>
 
 
@@ -206,6 +225,7 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
 
                         }
                     }
+                    this.$.spinner.active = true;
                 }
 
             },
@@ -219,6 +239,7 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
             next: function () {
                 try {
                     this.feed.next();
+                    this.$.spinner.active = true;
                 } catch (e) {
 
                 }

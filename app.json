@@ -1,0 +1,4070 @@
+{
+  "schema_version": "1.0.0",
+  "elements": [
+    {
+      "description": "",
+      "summary": "",
+      "path": "src\\cg-social.html",
+      "attributes": [],
+      "properties": [],
+      "methods": [],
+      "styling": {
+        "cssVariables": [],
+        "selectors": []
+      },
+      "demos": [],
+      "slots": [],
+      "events": [],
+      "metadata": {},
+      "sourceRange": {
+        "start": {
+          "line": 59,
+          "column": 16
+        },
+        "end": {
+          "line": 61,
+          "column": 9
+        }
+      },
+      "privacy": "public",
+      "tagname": "cg-social",
+      "superclass": "HTMLElement"
+    },
+    {
+      "description": "CREATE AN ICON SET",
+      "summary": "",
+      "path": "src\\cg-links.html",
+      "attributes": [
+        {
+          "name": "text",
+          "description": "",
+          "sourceRange": {
+            "start": {
+              "line": 70,
+              "column": 16
+            },
+            "end": {
+              "line": 73,
+              "column": 17
+            }
+          },
+          "metadata": {},
+          "type": "string"
+        },
+        {
+          "name": "name",
+          "description": "",
+          "sourceRange": {
+            "start": {
+              "line": 74,
+              "column": 16
+            },
+            "end": {
+              "line": 77,
+              "column": 17
+            }
+          },
+          "metadata": {},
+          "type": "string"
+        },
+        {
+          "name": "href",
+          "description": "",
+          "sourceRange": {
+            "start": {
+              "line": 78,
+              "column": 16
+            },
+            "end": {
+              "line": 81,
+              "column": 17
+            }
+          },
+          "metadata": {},
+          "type": "string"
+        },
+        {
+          "name": "icon",
+          "description": "",
+          "sourceRange": {
+            "start": {
+              "line": 82,
+              "column": 16
+            },
+            "end": {
+              "line": 85,
+              "column": 17
+            }
+          },
+          "metadata": {},
+          "type": "string"
+        },
+        {
+          "name": "src",
+          "description": "",
+          "sourceRange": {
+            "start": {
+              "line": 86,
+              "column": 16
+            },
+            "end": {
+              "line": 89,
+              "column": 17
+            }
+          },
+          "metadata": {},
+          "type": "string"
+        },
+        {
+          "name": "active",
+          "description": "",
+          "sourceRange": {
+            "start": {
+              "line": 90,
+              "column": 16
+            },
+            "end": {
+              "line": 95,
+              "column": 17
+            }
+          },
+          "metadata": {},
+          "type": "string"
+        },
+        {
+          "name": "is-active",
+          "description": "",
+          "sourceRange": {
+            "start": {
+              "line": 96,
+              "column": 16
+            },
+            "end": {
+              "line": 102,
+              "column": 17
+            }
+          },
+          "metadata": {},
+          "type": "boolean"
+        }
+      ],
+      "properties": [
+        {
+          "name": "text",
+          "type": "string",
+          "description": "",
+          "privacy": "public",
+          "sourceRange": {
+            "start": {
+              "line": 70,
+              "column": 16
+            },
+            "end": {
+              "line": 73,
+              "column": 17
+            }
+          },
+          "metadata": {
+            "polymer": {}
+          },
+          "defaultValue": "\"\""
+        },
+        {
+          "name": "name",
+          "type": "string",
+          "description": "",
+          "privacy": "public",
+          "sourceRange": {
+            "start": {
+              "line": 74,
+              "column": 16
+            },
+            "end": {
+              "line": 77,
+              "column": 17
+            }
+          },
+          "metadata": {
+            "polymer": {}
+          },
+          "defaultValue": "\"\""
+        },
+        {
+          "name": "href",
+          "type": "string",
+          "description": "",
+          "privacy": "public",
+          "sourceRange": {
+            "start": {
+              "line": 78,
+              "column": 16
+            },
+            "end": {
+              "line": 81,
+              "column": 17
+            }
+          },
+          "metadata": {
+            "polymer": {}
+          },
+          "defaultValue": "\"\""
+        },
+        {
+          "name": "icon",
+          "type": "string",
+          "description": "",
+          "privacy": "public",
+          "sourceRange": {
+            "start": {
+              "line": 82,
+              "column": 16
+            },
+            "end": {
+              "line": 85,
+              "column": 17
+            }
+          },
+          "metadata": {
+            "polymer": {}
+          },
+          "defaultValue": "\"\""
+        },
+        {
+          "name": "src",
+          "type": "string",
+          "description": "",
+          "privacy": "public",
+          "sourceRange": {
+            "start": {
+              "line": 86,
+              "column": 16
+            },
+            "end": {
+              "line": 89,
+              "column": 17
+            }
+          },
+          "metadata": {
+            "polymer": {}
+          },
+          "defaultValue": "\"\""
+        },
+        {
+          "name": "active",
+          "type": "string",
+          "description": "",
+          "privacy": "public",
+          "sourceRange": {
+            "start": {
+              "line": 90,
+              "column": 16
+            },
+            "end": {
+              "line": 95,
+              "column": 17
+            }
+          },
+          "metadata": {
+            "polymer": {
+              "notify": true,
+              "observer": "\"_toggleActive\""
+            }
+          },
+          "defaultValue": "false"
+        },
+        {
+          "name": "isActive",
+          "type": "boolean",
+          "description": "",
+          "privacy": "public",
+          "sourceRange": {
+            "start": {
+              "line": 96,
+              "column": 16
+            },
+            "end": {
+              "line": 102,
+              "column": 17
+            }
+          },
+          "metadata": {
+            "polymer": {
+              "notify": true,
+              "observer": "\"_toggleActive\""
+            }
+          },
+          "defaultValue": "false"
+        }
+      ],
+      "methods": [
+        {
+          "name": "_toggleActive",
+          "description": "",
+          "privacy": "protected",
+          "sourceRange": {
+            "start": {
+              "line": 104,
+              "column": 12
+            },
+            "end": {
+              "line": 107,
+              "column": 13
+            }
+          },
+          "metadata": {},
+          "params": []
+        }
+      ],
+      "styling": {
+        "cssVariables": [],
+        "selectors": []
+      },
+      "demos": [],
+      "slots": [],
+      "events": [
+        {
+          "type": "CustomEvent",
+          "name": "active-changed",
+          "description": "Fired when the `active` property changes.",
+          "metadata": {}
+        },
+        {
+          "type": "CustomEvent",
+          "name": "is-active-changed",
+          "description": "Fired when the `isActive` property changes.",
+          "metadata": {}
+        }
+      ],
+      "metadata": {},
+      "sourceRange": {
+        "start": {
+          "line": 67,
+          "column": 16
+        },
+        "end": {
+          "line": 108,
+          "column": 9
+        }
+      },
+      "privacy": "public",
+      "tagname": "cg-links",
+      "superclass": "HTMLElement"
+    },
+    {
+      "description": "",
+      "summary": "",
+      "path": "src\\cg-sidebar.html",
+      "attributes": [
+        {
+          "name": "page",
+          "description": "",
+          "sourceRange": {
+            "start": {
+              "line": 113,
+              "column": 16
+            },
+            "end": {
+              "line": 117,
+              "column": 17
+            }
+          },
+          "metadata": {},
+          "type": "string"
+        }
+      ],
+      "properties": [
+        {
+          "name": "page",
+          "type": "string",
+          "description": "",
+          "privacy": "public",
+          "sourceRange": {
+            "start": {
+              "line": 113,
+              "column": 16
+            },
+            "end": {
+              "line": 117,
+              "column": 17
+            }
+          },
+          "metadata": {
+            "polymer": {
+              "notify": true
+            }
+          }
+        },
+        {
+          "name": "_names",
+          "type": "Array",
+          "description": "",
+          "privacy": "protected",
+          "sourceRange": {
+            "start": {
+              "line": 118,
+              "column": 16
+            },
+            "end": {
+              "line": 121,
+              "column": 17
+            }
+          },
+          "metadata": {
+            "polymer": {}
+          },
+          "defaultValue": "[]"
+        }
+      ],
+      "methods": [
+        {
+          "name": "nextPage",
+          "description": "",
+          "privacy": "private",
+          "sourceRange": {
+            "start": {
+              "line": 123,
+              "column": 12
+            },
+            "end": {
+              "line": 132,
+              "column": 13
+            }
+          },
+          "metadata": {},
+          "params": []
+        },
+        {
+          "name": "previousPage",
+          "description": "",
+          "privacy": "private",
+          "sourceRange": {
+            "start": {
+              "line": 133,
+              "column": 12
+            },
+            "end": {
+              "line": 142,
+              "column": 13
+            }
+          },
+          "metadata": {},
+          "params": []
+        },
+        {
+          "name": "ready",
+          "description": "",
+          "privacy": "protected",
+          "sourceRange": {
+            "start": {
+              "line": 143,
+              "column": 12
+            },
+            "end": {
+              "line": 151,
+              "column": 13
+            }
+          },
+          "metadata": {},
+          "params": []
+        }
+      ],
+      "styling": {
+        "cssVariables": [],
+        "selectors": []
+      },
+      "demos": [],
+      "slots": [],
+      "events": [
+        {
+          "type": "CustomEvent",
+          "name": "page-changed",
+          "description": "Fired when the `page` property changes.",
+          "metadata": {}
+        }
+      ],
+      "metadata": {},
+      "sourceRange": {
+        "start": {
+          "line": 110,
+          "column": 16
+        },
+        "end": {
+          "line": 152,
+          "column": 9
+        }
+      },
+      "privacy": "public",
+      "tagname": "cg-sidebar",
+      "superclass": "HTMLElement"
+    },
+    {
+      "description": "",
+      "summary": "",
+      "path": "src\\my-app.html",
+      "attributes": [
+        {
+          "name": "page",
+          "description": "",
+          "sourceRange": {
+            "start": {
+              "line": 161,
+              "column": 16
+            },
+            "end": {
+              "line": 165,
+              "column": 17
+            }
+          },
+          "metadata": {},
+          "type": "string"
+        },
+        {
+          "name": "scroll-pos",
+          "description": "",
+          "sourceRange": {
+            "start": {
+              "line": 166,
+              "column": 16
+            },
+            "end": {
+              "line": 169,
+              "column": 17
+            }
+          },
+          "metadata": {},
+          "type": "string"
+        },
+        {
+          "name": "is-scroll-bottom",
+          "description": "",
+          "sourceRange": {
+            "start": {
+              "line": 170,
+              "column": 16
+            },
+            "end": {
+              "line": 174,
+              "column": 17
+            }
+          },
+          "metadata": {},
+          "type": "boolean"
+        },
+        {
+          "name": "is-scroll-top",
+          "description": "",
+          "sourceRange": {
+            "start": {
+              "line": 175,
+              "column": 16
+            },
+            "end": {
+              "line": 179,
+              "column": 17
+            }
+          },
+          "metadata": {},
+          "type": "boolean"
+        },
+        {
+          "name": "scroll-target",
+          "description": "Specifies the element that will handle the scroll event\non the behalf of the current element. This is typically a reference to an element,\nbut there are a few more posibilities:\n\n### Elements id\n\n```html\n<div id=\"scrollable-element\" style=\"overflow: auto;\">\n <x-element scroll-target=\"scrollable-element\">\n   <!-- Content-->\n </x-element>\n</div>\n```\nIn this case, the `scrollTarget` will point to the outer div element.\n\n### Document scrolling\n\nFor document scrolling, you can use the reserved word `document`:\n\n```html\n<x-element scroll-target=\"document\">\n  <!-- Content -->\n</x-element>\n```\n\n### Elements reference\n\n```js\nappHeader.scrollTarget = document.querySelector('#scrollable-element');\n```",
+          "sourceRange": {
+            "file": "..\\bower_components\\iron-scroll-target-behavior\\iron-scroll-target-behavior.html",
+            "start": {
+              "line": 63,
+              "column": 6
+            },
+            "end": {
+              "line": 68,
+              "column": 7
+            }
+          },
+          "metadata": {},
+          "type": "Element",
+          "inheritedFrom": "Polymer.IronScrollTargetBehavior"
+        }
+      ],
+      "properties": [
+        {
+          "name": "page",
+          "type": "string",
+          "description": "",
+          "privacy": "public",
+          "sourceRange": {
+            "start": {
+              "line": 161,
+              "column": 16
+            },
+            "end": {
+              "line": 165,
+              "column": 17
+            }
+          },
+          "metadata": {
+            "polymer": {
+              "observer": "\"_pageChanged\""
+            }
+          }
+        },
+        {
+          "name": "scrollPos",
+          "type": "string",
+          "description": "",
+          "privacy": "public",
+          "sourceRange": {
+            "start": {
+              "line": 166,
+              "column": 16
+            },
+            "end": {
+              "line": 169,
+              "column": 17
+            }
+          },
+          "metadata": {
+            "polymer": {
+              "notify": true
+            }
+          }
+        },
+        {
+          "name": "isScrollBottom",
+          "type": "boolean",
+          "description": "",
+          "privacy": "public",
+          "sourceRange": {
+            "start": {
+              "line": 170,
+              "column": 16
+            },
+            "end": {
+              "line": 174,
+              "column": 17
+            }
+          },
+          "metadata": {
+            "polymer": {
+              "notify": true,
+              "observer": "\"_isTopOrBottom\""
+            }
+          }
+        },
+        {
+          "name": "isScrollTop",
+          "type": "boolean",
+          "description": "",
+          "privacy": "public",
+          "sourceRange": {
+            "start": {
+              "line": 175,
+              "column": 16
+            },
+            "end": {
+              "line": 179,
+              "column": 17
+            }
+          },
+          "metadata": {
+            "polymer": {
+              "notify": true,
+              "observer": "\"_isTopOrBottom\""
+            }
+          }
+        },
+        {
+          "name": "scrollTarget",
+          "type": "Element",
+          "description": "Specifies the element that will handle the scroll event\non the behalf of the current element. This is typically a reference to an element,\nbut there are a few more posibilities:\n\n### Elements id\n\n```html\n<div id=\"scrollable-element\" style=\"overflow: auto;\">\n <x-element scroll-target=\"scrollable-element\">\n   <!-- Content-->\n </x-element>\n</div>\n```\nIn this case, the `scrollTarget` will point to the outer div element.\n\n### Document scrolling\n\nFor document scrolling, you can use the reserved word `document`:\n\n```html\n<x-element scroll-target=\"document\">\n  <!-- Content -->\n</x-element>\n```\n\n### Elements reference\n\n```js\nappHeader.scrollTarget = document.querySelector('#scrollable-element');\n```",
+          "privacy": "public",
+          "sourceRange": {
+            "file": "..\\bower_components\\iron-scroll-target-behavior\\iron-scroll-target-behavior.html",
+            "start": {
+              "line": 63,
+              "column": 6
+            },
+            "end": {
+              "line": 68,
+              "column": 7
+            }
+          },
+          "metadata": {
+            "polymer": {}
+          },
+          "inheritedFrom": "Polymer.IronScrollTargetBehavior"
+        },
+        {
+          "name": "_shouldHaveListener",
+          "type": "boolean",
+          "description": "True if the event listener should be installed.",
+          "privacy": "protected",
+          "sourceRange": {
+            "file": "..\\bower_components\\iron-scroll-target-behavior\\iron-scroll-target-behavior.html",
+            "start": {
+              "line": 78,
+              "column": 4
+            },
+            "end": {
+              "line": 78,
+              "column": 29
+            }
+          },
+          "metadata": {
+            "polymer": {}
+          },
+          "inheritedFrom": "Polymer.IronScrollTargetBehavior"
+        },
+        {
+          "name": "_scrollTargetChanged",
+          "type": "Function",
+          "description": "",
+          "privacy": "protected",
+          "sourceRange": {
+            "file": "..\\bower_components\\iron-scroll-target-behavior\\iron-scroll-target-behavior.html",
+            "start": {
+              "line": 80,
+              "column": 4
+            },
+            "end": {
+              "line": 107,
+              "column": 5
+            }
+          },
+          "metadata": {
+            "polymer": {}
+          },
+          "inheritedFrom": "Polymer.IronScrollTargetBehavior"
+        },
+        {
+          "name": "_scrollHandler",
+          "type": "Function",
+          "description": "Runs on every scroll event. Consumer of this behavior may override this method.",
+          "privacy": "protected",
+          "sourceRange": {
+            "file": "..\\bower_components\\iron-scroll-target-behavior\\iron-scroll-target-behavior.html",
+            "start": {
+              "line": 114,
+              "column": 4
+            },
+            "end": {
+              "line": 114,
+              "column": 47
+            }
+          },
+          "metadata": {
+            "polymer": {}
+          },
+          "inheritedFrom": "Polymer.IronScrollTargetBehavior"
+        },
+        {
+          "name": "_defaultScrollTarget",
+          "type": "Element",
+          "description": "The default scroll target. Consumers of this behavior may want to customize\nthe default scroll target.",
+          "privacy": "protected",
+          "sourceRange": {
+            "file": "..\\bower_components\\iron-scroll-target-behavior\\iron-scroll-target-behavior.html",
+            "start": {
+              "line": 122,
+              "column": 4
+            },
+            "end": {
+              "line": 124,
+              "column": 5
+            }
+          },
+          "metadata": {
+            "polymer": {}
+          },
+          "inheritedFrom": "Polymer.IronScrollTargetBehavior"
+        },
+        {
+          "name": "_doc",
+          "type": "Element",
+          "description": "Shortcut for the document element",
+          "privacy": "protected",
+          "sourceRange": {
+            "file": "..\\bower_components\\iron-scroll-target-behavior\\iron-scroll-target-behavior.html",
+            "start": {
+              "line": 131,
+              "column": 4
+            },
+            "end": {
+              "line": 133,
+              "column": 5
+            }
+          },
+          "metadata": {
+            "polymer": {}
+          },
+          "inheritedFrom": "Polymer.IronScrollTargetBehavior"
+        },
+        {
+          "name": "_scrollTop",
+          "type": "number",
+          "description": "Gets the number of pixels that the content of an element is scrolled upward.",
+          "privacy": "protected",
+          "sourceRange": {
+            "file": "..\\bower_components\\iron-scroll-target-behavior\\iron-scroll-target-behavior.html",
+            "start": {
+              "line": 140,
+              "column": 4
+            },
+            "end": {
+              "line": 145,
+              "column": 5
+            }
+          },
+          "metadata": {
+            "polymer": {}
+          },
+          "inheritedFrom": "Polymer.IronScrollTargetBehavior"
+        },
+        {
+          "name": "_scrollLeft",
+          "type": "number",
+          "description": "Gets the number of pixels that the content of an element is scrolled to the left.",
+          "privacy": "protected",
+          "sourceRange": {
+            "file": "..\\bower_components\\iron-scroll-target-behavior\\iron-scroll-target-behavior.html",
+            "start": {
+              "line": 152,
+              "column": 4
+            },
+            "end": {
+              "line": 157,
+              "column": 5
+            }
+          },
+          "metadata": {
+            "polymer": {}
+          },
+          "inheritedFrom": "Polymer.IronScrollTargetBehavior"
+        },
+        {
+          "name": "scroll",
+          "type": "Function",
+          "description": "Scrolls the content to a particular place.",
+          "privacy": "public",
+          "sourceRange": {
+            "file": "..\\bower_components\\iron-scroll-target-behavior\\iron-scroll-target-behavior.html",
+            "start": {
+              "line": 192,
+              "column": 4
+            },
+            "end": {
+              "line": 199,
+              "column": 5
+            }
+          },
+          "metadata": {
+            "polymer": {}
+          },
+          "inheritedFrom": "Polymer.IronScrollTargetBehavior"
+        },
+        {
+          "name": "_scrollTargetWidth",
+          "type": "number",
+          "description": "Gets the width of the scroll target.",
+          "privacy": "protected",
+          "sourceRange": {
+            "file": "..\\bower_components\\iron-scroll-target-behavior\\iron-scroll-target-behavior.html",
+            "start": {
+              "line": 206,
+              "column": 4
+            },
+            "end": {
+              "line": 211,
+              "column": 5
+            }
+          },
+          "metadata": {
+            "polymer": {}
+          },
+          "inheritedFrom": "Polymer.IronScrollTargetBehavior"
+        },
+        {
+          "name": "_scrollTargetHeight",
+          "type": "number",
+          "description": "Gets the height of the scroll target.",
+          "privacy": "protected",
+          "sourceRange": {
+            "file": "..\\bower_components\\iron-scroll-target-behavior\\iron-scroll-target-behavior.html",
+            "start": {
+              "line": 218,
+              "column": 4
+            },
+            "end": {
+              "line": 223,
+              "column": 5
+            }
+          },
+          "metadata": {
+            "polymer": {}
+          },
+          "inheritedFrom": "Polymer.IronScrollTargetBehavior"
+        },
+        {
+          "name": "_isValidScrollTarget",
+          "type": "Function",
+          "description": "Returns true if the scroll target is a valid HTMLElement.",
+          "privacy": "protected",
+          "sourceRange": {
+            "file": "..\\bower_components\\iron-scroll-target-behavior\\iron-scroll-target-behavior.html",
+            "start": {
+              "line": 230,
+              "column": 4
+            },
+            "end": {
+              "line": 232,
+              "column": 5
+            }
+          },
+          "metadata": {
+            "polymer": {}
+          },
+          "inheritedFrom": "Polymer.IronScrollTargetBehavior"
+        },
+        {
+          "name": "_toggleScrollListener",
+          "type": "Function",
+          "description": "",
+          "privacy": "protected",
+          "sourceRange": {
+            "file": "..\\bower_components\\iron-scroll-target-behavior\\iron-scroll-target-behavior.html",
+            "start": {
+              "line": 234,
+              "column": 4
+            },
+            "end": {
+              "line": 245,
+              "column": 5
+            }
+          },
+          "metadata": {
+            "polymer": {}
+          },
+          "inheritedFrom": "Polymer.IronScrollTargetBehavior"
+        },
+        {
+          "name": "toggleScrollListener",
+          "type": "Function",
+          "description": "Enables or disables the scroll event listener.",
+          "privacy": "public",
+          "sourceRange": {
+            "file": "..\\bower_components\\iron-scroll-target-behavior\\iron-scroll-target-behavior.html",
+            "start": {
+              "line": 252,
+              "column": 4
+            },
+            "end": {
+              "line": 255,
+              "column": 5
+            }
+          },
+          "metadata": {
+            "polymer": {}
+          },
+          "inheritedFrom": "Polymer.IronScrollTargetBehavior"
+        }
+      ],
+      "methods": [
+        {
+          "name": "_routePageChanged",
+          "description": "",
+          "privacy": "protected",
+          "sourceRange": {
+            "start": {
+              "line": 188,
+              "column": 12
+            },
+            "end": {
+              "line": 194,
+              "column": 13
+            }
+          },
+          "metadata": {},
+          "params": [
+            {
+              "name": "page"
+            }
+          ]
+        },
+        {
+          "name": "_pageChanged",
+          "description": "",
+          "privacy": "protected",
+          "sourceRange": {
+            "start": {
+              "line": 196,
+              "column": 12
+            },
+            "end": {
+              "line": 200,
+              "column": 13
+            }
+          },
+          "metadata": {},
+          "params": [
+            {
+              "name": "page"
+            }
+          ]
+        },
+        {
+          "name": "_showPage404",
+          "description": "",
+          "privacy": "protected",
+          "sourceRange": {
+            "start": {
+              "line": 202,
+              "column": 12
+            },
+            "end": {
+              "line": 204,
+              "column": 13
+            }
+          },
+          "metadata": {},
+          "params": []
+        },
+        {
+          "name": "ready",
+          "description": "",
+          "privacy": "protected",
+          "sourceRange": {
+            "start": {
+              "line": 205,
+              "column": 12
+            },
+            "end": {
+              "line": 207,
+              "column": 13
+            }
+          },
+          "metadata": {},
+          "params": []
+        },
+        {
+          "name": "_scrollHandler",
+          "description": "",
+          "privacy": "protected",
+          "sourceRange": {
+            "start": {
+              "line": 208,
+              "column": 12
+            },
+            "end": {
+              "line": 234,
+              "column": 13
+            }
+          },
+          "metadata": {},
+          "params": []
+        },
+        {
+          "name": "_isTopOrBottom",
+          "description": "",
+          "privacy": "protected",
+          "sourceRange": {
+            "start": {
+              "line": 235,
+              "column": 12
+            },
+            "end": {
+              "line": 237,
+              "column": 13
+            }
+          },
+          "metadata": {},
+          "params": []
+        }
+      ],
+      "styling": {
+        "cssVariables": [],
+        "selectors": []
+      },
+      "demos": [],
+      "slots": [],
+      "events": [
+        {
+          "type": "CustomEvent",
+          "name": "scroll-pos-changed",
+          "description": "Fired when the `scrollPos` property changes.",
+          "metadata": {}
+        },
+        {
+          "type": "CustomEvent",
+          "name": "is-scroll-bottom-changed",
+          "description": "Fired when the `isScrollBottom` property changes.",
+          "metadata": {}
+        },
+        {
+          "type": "CustomEvent",
+          "name": "is-scroll-top-changed",
+          "description": "Fired when the `isScrollTop` property changes.",
+          "metadata": {}
+        }
+      ],
+      "metadata": {},
+      "sourceRange": {
+        "start": {
+          "line": 157,
+          "column": 16
+        },
+        "end": {
+          "line": 239,
+          "column": 9
+        }
+      },
+      "privacy": "public",
+      "tagname": "my-app",
+      "superclass": "HTMLElement"
+    },
+    {
+      "description": "",
+      "summary": "",
+      "path": "src\\my-about.html",
+      "attributes": [],
+      "properties": [],
+      "methods": [],
+      "styling": {
+        "cssVariables": [],
+        "selectors": []
+      },
+      "demos": [],
+      "slots": [],
+      "events": [],
+      "metadata": {},
+      "sourceRange": {
+        "start": {
+          "line": 96,
+          "column": 12
+        },
+        "end": {
+          "line": 98,
+          "column": 5
+        }
+      },
+      "privacy": "public",
+      "tagname": "my-about",
+      "superclass": "HTMLElement"
+    },
+    {
+      "description": "",
+      "summary": "",
+      "path": "src\\components\\contact-form.html",
+      "attributes": [
+        {
+          "name": "api",
+          "description": "",
+          "sourceRange": {
+            "start": {
+              "line": 56,
+              "column": 16
+            },
+            "end": {
+              "line": 59,
+              "column": 17
+            }
+          },
+          "metadata": {},
+          "type": "string"
+        }
+      ],
+      "properties": [
+        {
+          "name": "api",
+          "type": "string",
+          "description": "",
+          "privacy": "public",
+          "sourceRange": {
+            "start": {
+              "line": 56,
+              "column": 16
+            },
+            "end": {
+              "line": 59,
+              "column": 17
+            }
+          },
+          "metadata": {
+            "polymer": {}
+          },
+          "defaultValue": "\"\""
+        },
+        {
+          "name": "_invalidEmails",
+          "type": "boolean",
+          "description": "",
+          "privacy": "protected",
+          "sourceRange": {
+            "start": {
+              "line": 60,
+              "column": 16
+            },
+            "end": {
+              "line": 63,
+              "column": 17
+            }
+          },
+          "metadata": {
+            "polymer": {}
+          },
+          "defaultValue": "false"
+        },
+        {
+          "name": "_invalidTelephone",
+          "type": "boolean",
+          "description": "",
+          "privacy": "protected",
+          "sourceRange": {
+            "start": {
+              "line": 64,
+              "column": 16
+            },
+            "end": {
+              "line": 67,
+              "column": 17
+            }
+          },
+          "metadata": {
+            "polymer": {}
+          },
+          "defaultValue": "false"
+        },
+        {
+          "name": "_isPhonePreferred",
+          "type": "boolean",
+          "description": "",
+          "privacy": "protected",
+          "sourceRange": {
+            "start": {
+              "line": 68,
+              "column": 16
+            },
+            "end": {
+              "line": 71,
+              "column": 17
+            }
+          },
+          "metadata": {
+            "polymer": {}
+          },
+          "defaultValue": "false"
+        }
+      ],
+      "methods": [
+        {
+          "name": "_isTelephonePreferred",
+          "description": "",
+          "privacy": "protected",
+          "sourceRange": {
+            "start": {
+              "line": 73,
+              "column": 12
+            },
+            "end": {
+              "line": 83,
+              "column": 13
+            }
+          },
+          "metadata": {},
+          "params": [
+            {
+              "name": "e"
+            }
+          ]
+        },
+        {
+          "name": "_emailMatch",
+          "description": "",
+          "privacy": "protected",
+          "sourceRange": {
+            "start": {
+              "line": 84,
+              "column": 12
+            },
+            "end": {
+              "line": 98,
+              "column": 13
+            }
+          },
+          "metadata": {},
+          "params": []
+        },
+        {
+          "name": "_validateTelephone",
+          "description": "",
+          "privacy": "protected",
+          "sourceRange": {
+            "start": {
+              "line": 99,
+              "column": 12
+            },
+            "end": {
+              "line": 131,
+              "column": 13
+            }
+          },
+          "metadata": {},
+          "params": []
+        },
+        {
+          "name": "_validate",
+          "description": "",
+          "privacy": "protected",
+          "sourceRange": {
+            "start": {
+              "line": 132,
+              "column": 12
+            },
+            "end": {
+              "line": 138,
+              "column": 13
+            }
+          },
+          "metadata": {},
+          "params": []
+        },
+        {
+          "name": "_validateForm",
+          "description": "",
+          "privacy": "protected",
+          "sourceRange": {
+            "start": {
+              "line": 139,
+              "column": 12
+            },
+            "end": {
+              "line": 143,
+              "column": 13
+            }
+          },
+          "metadata": {},
+          "params": [
+            {
+              "name": "form"
+            }
+          ]
+        },
+        {
+          "name": "_submit",
+          "description": "",
+          "privacy": "protected",
+          "sourceRange": {
+            "start": {
+              "line": 144,
+              "column": 12
+            },
+            "end": {
+              "line": 146,
+              "column": 13
+            }
+          },
+          "metadata": {},
+          "params": []
+        },
+        {
+          "name": "_onSubmit",
+          "description": "",
+          "privacy": "protected",
+          "sourceRange": {
+            "start": {
+              "line": 147,
+              "column": 12
+            },
+            "end": {
+              "line": 153,
+              "column": 13
+            }
+          },
+          "metadata": {},
+          "params": [
+            {
+              "name": "e"
+            }
+          ]
+        },
+        {
+          "name": "ready",
+          "description": "",
+          "privacy": "protected",
+          "sourceRange": {
+            "start": {
+              "line": 154,
+              "column": 12
+            },
+            "end": {
+              "line": 158,
+              "column": 13
+            }
+          },
+          "metadata": {},
+          "params": []
+        },
+        {
+          "name": "_reset",
+          "description": "",
+          "privacy": "protected",
+          "sourceRange": {
+            "start": {
+              "line": 159,
+              "column": 12
+            },
+            "end": {
+              "line": 164,
+              "column": 13
+            }
+          },
+          "metadata": {},
+          "params": [
+            {
+              "name": "event"
+            }
+          ]
+        }
+      ],
+      "styling": {
+        "cssVariables": [],
+        "selectors": []
+      },
+      "demos": [],
+      "slots": [],
+      "events": [],
+      "metadata": {},
+      "sourceRange": {
+        "start": {
+          "line": 53,
+          "column": 16
+        },
+        "end": {
+          "line": 165,
+          "column": 9
+        }
+      },
+      "privacy": "public",
+      "tagname": "contact-form",
+      "superclass": "HTMLElement"
+    },
+    {
+      "description": "",
+      "summary": "",
+      "path": "src\\my-contact.html",
+      "attributes": [],
+      "properties": [],
+      "methods": [],
+      "styling": {
+        "cssVariables": [],
+        "selectors": []
+      },
+      "demos": [],
+      "slots": [],
+      "events": [],
+      "metadata": {},
+      "sourceRange": {
+        "start": {
+          "line": 59,
+          "column": 12
+        },
+        "end": {
+          "line": 61,
+          "column": 5
+        }
+      },
+      "privacy": "public",
+      "tagname": "my-contact",
+      "superclass": "HTMLElement"
+    },
+    {
+      "description": "",
+      "summary": "",
+      "path": "src\\components\\youtube-player-card.html",
+      "attributes": [
+        {
+          "name": "channel-id",
+          "description": "",
+          "sourceRange": {
+            "start": {
+              "line": 227,
+              "column": 16
+            },
+            "end": {
+              "line": 231,
+              "column": 17
+            }
+          },
+          "metadata": {},
+          "type": "string"
+        },
+        {
+          "name": "video-title",
+          "description": "",
+          "sourceRange": {
+            "start": {
+              "line": 232,
+              "column": 16
+            },
+            "end": {
+              "line": 235,
+              "column": 17
+            }
+          },
+          "metadata": {},
+          "type": "string"
+        },
+        {
+          "name": "open-external",
+          "description": "",
+          "sourceRange": {
+            "start": {
+              "line": 236,
+              "column": 16
+            },
+            "end": {
+              "line": 239,
+              "column": 17
+            }
+          },
+          "metadata": {},
+          "type": "string"
+        },
+        {
+          "name": "description",
+          "description": "",
+          "sourceRange": {
+            "start": {
+              "line": 240,
+              "column": 16
+            },
+            "end": {
+              "line": 243,
+              "column": 17
+            }
+          },
+          "metadata": {},
+          "type": "string"
+        },
+        {
+          "name": "thumbnail",
+          "description": "",
+          "sourceRange": {
+            "start": {
+              "line": 244,
+              "column": 16
+            },
+            "end": {
+              "line": 248,
+              "column": 17
+            }
+          },
+          "metadata": {},
+          "type": "string"
+        },
+        {
+          "name": "video-id",
+          "description": "",
+          "sourceRange": {
+            "start": {
+              "line": 249,
+              "column": 16
+            },
+            "end": {
+              "line": 253,
+              "column": 17
+            }
+          },
+          "metadata": {},
+          "type": "string"
+        },
+        {
+          "name": "player",
+          "description": "",
+          "sourceRange": {
+            "start": {
+              "line": 254,
+              "column": 16
+            },
+            "end": {
+              "line": 257,
+              "column": 17
+            }
+          },
+          "metadata": {},
+          "type": "Object"
+        },
+        {
+          "name": "view-count",
+          "description": "",
+          "sourceRange": {
+            "start": {
+              "line": 258,
+              "column": 16
+            },
+            "end": {
+              "line": 261,
+              "column": 17
+            }
+          },
+          "metadata": {},
+          "type": "number"
+        },
+        {
+          "name": "channel-title",
+          "description": "",
+          "sourceRange": {
+            "start": {
+              "line": 262,
+              "column": 16
+            },
+            "end": {
+              "line": 265,
+              "column": 17
+            }
+          },
+          "metadata": {},
+          "type": "string"
+        },
+        {
+          "name": "video-kind",
+          "description": "",
+          "sourceRange": {
+            "start": {
+              "line": 266,
+              "column": 16
+            },
+            "end": {
+              "line": 269,
+              "column": 17
+            }
+          },
+          "metadata": {},
+          "type": "string"
+        }
+      ],
+      "properties": [
+        {
+          "name": "YT",
+          "type": "Object",
+          "description": "",
+          "privacy": "public",
+          "sourceRange": {
+            "start": {
+              "line": 223,
+              "column": 16
+            },
+            "end": {
+              "line": 226,
+              "column": 17
+            }
+          },
+          "metadata": {
+            "polymer": {}
+          },
+          "defaultValue": "null"
+        },
+        {
+          "name": "channelId",
+          "type": "string",
+          "description": "",
+          "privacy": "public",
+          "sourceRange": {
+            "start": {
+              "line": 227,
+              "column": 16
+            },
+            "end": {
+              "line": 231,
+              "column": 17
+            }
+          },
+          "metadata": {
+            "polymer": {
+              "notify": true
+            }
+          },
+          "defaultValue": "\"\""
+        },
+        {
+          "name": "videoTitle",
+          "type": "string",
+          "description": "",
+          "privacy": "public",
+          "sourceRange": {
+            "start": {
+              "line": 232,
+              "column": 16
+            },
+            "end": {
+              "line": 235,
+              "column": 17
+            }
+          },
+          "metadata": {
+            "polymer": {}
+          },
+          "defaultValue": "\"\""
+        },
+        {
+          "name": "openExternal",
+          "type": "string",
+          "description": "",
+          "privacy": "public",
+          "sourceRange": {
+            "start": {
+              "line": 236,
+              "column": 16
+            },
+            "end": {
+              "line": 239,
+              "column": 17
+            }
+          },
+          "metadata": {
+            "polymer": {}
+          },
+          "defaultValue": "\"Open in YouTube\""
+        },
+        {
+          "name": "description",
+          "type": "string",
+          "description": "",
+          "privacy": "public",
+          "sourceRange": {
+            "start": {
+              "line": 240,
+              "column": 16
+            },
+            "end": {
+              "line": 243,
+              "column": 17
+            }
+          },
+          "metadata": {
+            "polymer": {}
+          },
+          "defaultValue": "\"\""
+        },
+        {
+          "name": "thumbnail",
+          "type": "string",
+          "description": "",
+          "privacy": "public",
+          "sourceRange": {
+            "start": {
+              "line": 244,
+              "column": 16
+            },
+            "end": {
+              "line": 248,
+              "column": 17
+            }
+          },
+          "metadata": {
+            "polymer": {
+              "observer": "\"_updateThumb\""
+            }
+          },
+          "defaultValue": "\"\""
+        },
+        {
+          "name": "videoId",
+          "type": "string",
+          "description": "",
+          "privacy": "public",
+          "sourceRange": {
+            "start": {
+              "line": 249,
+              "column": 16
+            },
+            "end": {
+              "line": 253,
+              "column": 17
+            }
+          },
+          "metadata": {
+            "polymer": {
+              "notify": true
+            }
+          },
+          "defaultValue": "\"\""
+        },
+        {
+          "name": "player",
+          "type": "Object",
+          "description": "",
+          "privacy": "public",
+          "sourceRange": {
+            "start": {
+              "line": 254,
+              "column": 16
+            },
+            "end": {
+              "line": 257,
+              "column": 17
+            }
+          },
+          "metadata": {
+            "polymer": {}
+          },
+          "defaultValue": "null"
+        },
+        {
+          "name": "viewCount",
+          "type": "number",
+          "description": "",
+          "privacy": "public",
+          "sourceRange": {
+            "start": {
+              "line": 258,
+              "column": 16
+            },
+            "end": {
+              "line": 261,
+              "column": 17
+            }
+          },
+          "metadata": {
+            "polymer": {}
+          },
+          "defaultValue": "0"
+        },
+        {
+          "name": "channelTitle",
+          "type": "string",
+          "description": "",
+          "privacy": "public",
+          "sourceRange": {
+            "start": {
+              "line": 262,
+              "column": 16
+            },
+            "end": {
+              "line": 265,
+              "column": 17
+            }
+          },
+          "metadata": {
+            "polymer": {}
+          },
+          "defaultValue": "\"\""
+        },
+        {
+          "name": "videoKind",
+          "type": "string",
+          "description": "",
+          "privacy": "public",
+          "sourceRange": {
+            "start": {
+              "line": 266,
+              "column": 16
+            },
+            "end": {
+              "line": 269,
+              "column": 17
+            }
+          },
+          "metadata": {
+            "polymer": {}
+          },
+          "defaultValue": "\"\""
+        },
+        {
+          "name": "_youtubePlaylist",
+          "type": "string",
+          "description": "",
+          "privacy": "protected",
+          "sourceRange": {
+            "start": {
+              "line": 270,
+              "column": 16
+            },
+            "end": {
+              "line": 273,
+              "column": 17
+            }
+          },
+          "metadata": {
+            "polymer": {}
+          },
+          "defaultValue": "\"//youtube.com/playlist?list=\""
+        },
+        {
+          "name": "_youtubeVideo",
+          "type": "string",
+          "description": "",
+          "privacy": "protected",
+          "sourceRange": {
+            "start": {
+              "line": 274,
+              "column": 16
+            },
+            "end": {
+              "line": 277,
+              "column": 17
+            }
+          },
+          "metadata": {
+            "polymer": {}
+          },
+          "defaultValue": "\"//youtube.com/watch?v=\""
+        },
+        {
+          "name": "_youtubeChannel",
+          "type": "string",
+          "description": "",
+          "privacy": "protected",
+          "sourceRange": {
+            "start": {
+              "line": 278,
+              "column": 16
+            },
+            "end": {
+              "line": 281,
+              "column": 17
+            }
+          },
+          "metadata": {
+            "polymer": {}
+          },
+          "defaultValue": "\"//youtube.com/channel/\""
+        }
+      ],
+      "methods": [
+        {
+          "name": "stop",
+          "description": "",
+          "privacy": "private",
+          "sourceRange": {
+            "start": {
+              "line": 283,
+              "column": 12
+            },
+            "end": {
+              "line": 287,
+              "column": 13
+            }
+          },
+          "metadata": {},
+          "params": []
+        },
+        {
+          "name": "_openInYoutube",
+          "description": "",
+          "privacy": "protected",
+          "sourceRange": {
+            "start": {
+              "line": 288,
+              "column": 12
+            },
+            "end": {
+              "line": 290,
+              "column": 13
+            }
+          },
+          "metadata": {},
+          "params": [
+            {
+              "name": "link"
+            },
+            {
+              "name": "id"
+            }
+          ]
+        },
+        {
+          "name": "_openVideoYoutube",
+          "description": "",
+          "privacy": "protected",
+          "sourceRange": {
+            "start": {
+              "line": 291,
+              "column": 12
+            },
+            "end": {
+              "line": 297,
+              "column": 13
+            }
+          },
+          "metadata": {},
+          "params": [
+            {
+              "name": "id"
+            }
+          ]
+        },
+        {
+          "name": "_updateThumb",
+          "description": "",
+          "privacy": "protected",
+          "sourceRange": {
+            "start": {
+              "line": 298,
+              "column": 12
+            },
+            "end": {
+              "line": 305,
+              "column": 13
+            }
+          },
+          "metadata": {},
+          "params": []
+        },
+        {
+          "name": "getVideo",
+          "description": "",
+          "privacy": "private",
+          "sourceRange": {
+            "start": {
+              "line": 306,
+              "column": 12
+            },
+            "end": {
+              "line": 308,
+              "column": 13
+            }
+          },
+          "metadata": {},
+          "params": []
+        },
+        {
+          "name": "convertDuration",
+          "description": "",
+          "privacy": "private",
+          "sourceRange": {
+            "start": {
+              "line": 309,
+              "column": 12
+            },
+            "end": {
+              "line": 331,
+              "column": 13
+            }
+          },
+          "metadata": {},
+          "params": [
+            {
+              "name": "input"
+            }
+          ]
+        },
+        {
+          "name": "loadVideo",
+          "description": "",
+          "privacy": "private",
+          "sourceRange": {
+            "start": {
+              "line": 332,
+              "column": 12
+            },
+            "end": {
+              "line": 361,
+              "column": 13
+            }
+          },
+          "metadata": {},
+          "params": [
+            {
+              "name": "type"
+            },
+            {
+              "name": "width"
+            },
+            {
+              "name": "height"
+            },
+            {
+              "name": "callback"
+            }
+          ]
+        },
+        {
+          "name": "onPlayerStateChange",
+          "description": "",
+          "privacy": "private",
+          "sourceRange": {
+            "start": {
+              "line": 362,
+              "column": 12
+            },
+            "end": {
+              "line": 369,
+              "column": 13
+            }
+          },
+          "metadata": {},
+          "params": [
+            {
+              "name": "event"
+            },
+            {
+              "name": "callback"
+            }
+          ]
+        },
+        {
+          "name": "getPlayerSize",
+          "description": "",
+          "privacy": "private",
+          "sourceRange": {
+            "start": {
+              "line": 370,
+              "column": 12
+            },
+            "end": {
+              "line": 378,
+              "column": 13
+            }
+          },
+          "metadata": {},
+          "params": []
+        },
+        {
+          "name": "playVideo",
+          "description": "",
+          "privacy": "private",
+          "sourceRange": {
+            "start": {
+              "line": 379,
+              "column": 12
+            },
+            "end": {
+              "line": 388,
+              "column": 13
+            }
+          },
+          "metadata": {},
+          "params": []
+        },
+        {
+          "name": "ready",
+          "description": "",
+          "privacy": "protected",
+          "sourceRange": {
+            "start": {
+              "line": 389,
+              "column": 12
+            },
+            "end": {
+              "line": 394,
+              "column": 13
+            }
+          },
+          "metadata": {},
+          "params": []
+        }
+      ],
+      "styling": {
+        "cssVariables": [],
+        "selectors": []
+      },
+      "demos": [],
+      "slots": [],
+      "events": [
+        {
+          "type": "CustomEvent",
+          "name": "channel-id-changed",
+          "description": "Fired when the `channelId` property changes.",
+          "metadata": {}
+        },
+        {
+          "type": "CustomEvent",
+          "name": "video-id-changed",
+          "description": "Fired when the `videoId` property changes.",
+          "metadata": {}
+        }
+      ],
+      "metadata": {},
+      "sourceRange": {
+        "start": {
+          "line": 220,
+          "column": 16
+        },
+        "end": {
+          "line": 396,
+          "column": 9
+        }
+      },
+      "privacy": "public",
+      "tagname": "youtube-player-card",
+      "superclass": "HTMLElement"
+    },
+    {
+      "description": "",
+      "summary": "",
+      "path": "src\\components\\youtube-videos.html",
+      "attributes": [
+        {
+          "name": "has-navigation",
+          "description": "",
+          "sourceRange": {
+            "start": {
+              "line": 100,
+              "column": 16
+            },
+            "end": {
+              "line": 105,
+              "column": 17
+            }
+          },
+          "metadata": {},
+          "type": "boolean"
+        },
+        {
+          "name": "previous-text",
+          "description": "",
+          "sourceRange": {
+            "start": {
+              "line": 106,
+              "column": 16
+            },
+            "end": {
+              "line": 109,
+              "column": 17
+            }
+          },
+          "metadata": {},
+          "type": "string"
+        },
+        {
+          "name": "next-text",
+          "description": "",
+          "sourceRange": {
+            "start": {
+              "line": 110,
+              "column": 16
+            },
+            "end": {
+              "line": 113,
+              "column": 17
+            }
+          },
+          "metadata": {},
+          "type": "string"
+        },
+        {
+          "name": "videos",
+          "description": "",
+          "sourceRange": {
+            "start": {
+              "line": 114,
+              "column": 16
+            },
+            "end": {
+              "line": 118,
+              "column": 17
+            }
+          },
+          "metadata": {},
+          "type": "Array"
+        },
+        {
+          "name": "search-url",
+          "description": "",
+          "sourceRange": {
+            "start": {
+              "line": 119,
+              "column": 16
+            },
+            "end": {
+              "line": 122,
+              "column": 17
+            }
+          },
+          "metadata": {},
+          "type": "string"
+        },
+        {
+          "name": "video-url",
+          "description": "",
+          "sourceRange": {
+            "start": {
+              "line": 123,
+              "column": 16
+            },
+            "end": {
+              "line": 126,
+              "column": 17
+            }
+          },
+          "metadata": {},
+          "type": "string"
+        },
+        {
+          "name": "playlist-url",
+          "description": "",
+          "sourceRange": {
+            "start": {
+              "line": 127,
+              "column": 16
+            },
+            "end": {
+              "line": 130,
+              "column": 17
+            }
+          },
+          "metadata": {},
+          "type": "string"
+        },
+        {
+          "name": "playlist-id",
+          "description": "",
+          "sourceRange": {
+            "start": {
+              "line": 131,
+              "column": 16
+            },
+            "end": {
+              "line": 134,
+              "column": 17
+            }
+          },
+          "metadata": {},
+          "type": "string"
+        },
+        {
+          "name": "api-key",
+          "description": "",
+          "sourceRange": {
+            "start": {
+              "line": 135,
+              "column": 16
+            },
+            "end": {
+              "line": 138,
+              "column": 17
+            }
+          },
+          "metadata": {},
+          "type": "string"
+        },
+        {
+          "name": "channel-id",
+          "description": "",
+          "sourceRange": {
+            "start": {
+              "line": 139,
+              "column": 16
+            },
+            "end": {
+              "line": 142,
+              "column": 17
+            }
+          },
+          "metadata": {},
+          "type": "string"
+        },
+        {
+          "name": "query",
+          "description": "",
+          "sourceRange": {
+            "start": {
+              "line": 143,
+              "column": 16
+            },
+            "end": {
+              "line": 146,
+              "column": 17
+            }
+          },
+          "metadata": {},
+          "type": "string"
+        },
+        {
+          "name": "order",
+          "description": "",
+          "sourceRange": {
+            "start": {
+              "line": 147,
+              "column": 16
+            },
+            "end": {
+              "line": 150,
+              "column": 17
+            }
+          },
+          "metadata": {},
+          "type": "string"
+        },
+        {
+          "name": "types",
+          "description": "",
+          "sourceRange": {
+            "start": {
+              "line": 151,
+              "column": 16
+            },
+            "end": {
+              "line": 154,
+              "column": 17
+            }
+          },
+          "metadata": {},
+          "type": "string"
+        },
+        {
+          "name": "max-results",
+          "description": "",
+          "sourceRange": {
+            "start": {
+              "line": 159,
+              "column": 16
+            },
+            "end": {
+              "line": 162,
+              "column": 17
+            }
+          },
+          "metadata": {},
+          "type": "string"
+        },
+        {
+          "name": "page-token",
+          "description": "",
+          "sourceRange": {
+            "start": {
+              "line": 163,
+              "column": 16
+            },
+            "end": {
+              "line": 166,
+              "column": 17
+            }
+          },
+          "metadata": {},
+          "type": "string"
+        },
+        {
+          "name": "no-get-stats",
+          "description": "",
+          "sourceRange": {
+            "start": {
+              "line": 167,
+              "column": 16
+            },
+            "end": {
+              "line": 170,
+              "column": 17
+            }
+          },
+          "metadata": {},
+          "type": "boolean"
+        }
+      ],
+      "properties": [
+        {
+          "name": "hasNavigation",
+          "type": "boolean",
+          "description": "",
+          "privacy": "public",
+          "sourceRange": {
+            "start": {
+              "line": 100,
+              "column": 16
+            },
+            "end": {
+              "line": 105,
+              "column": 17
+            }
+          },
+          "metadata": {
+            "polymer": {
+              "observer": "\"_onHasNav\""
+            }
+          },
+          "defaultValue": "false"
+        },
+        {
+          "name": "previousText",
+          "type": "string",
+          "description": "",
+          "privacy": "public",
+          "sourceRange": {
+            "start": {
+              "line": 106,
+              "column": 16
+            },
+            "end": {
+              "line": 109,
+              "column": 17
+            }
+          },
+          "metadata": {
+            "polymer": {}
+          },
+          "defaultValue": "\"Previous\""
+        },
+        {
+          "name": "nextText",
+          "type": "string",
+          "description": "",
+          "privacy": "public",
+          "sourceRange": {
+            "start": {
+              "line": 110,
+              "column": 16
+            },
+            "end": {
+              "line": 113,
+              "column": 17
+            }
+          },
+          "metadata": {
+            "polymer": {}
+          },
+          "defaultValue": "\"Next\""
+        },
+        {
+          "name": "videos",
+          "type": "Array",
+          "description": "",
+          "privacy": "public",
+          "sourceRange": {
+            "start": {
+              "line": 114,
+              "column": 16
+            },
+            "end": {
+              "line": 118,
+              "column": 17
+            }
+          },
+          "metadata": {
+            "polymer": {
+              "notify": true
+            }
+          },
+          "defaultValue": "null"
+        },
+        {
+          "name": "searchUrl",
+          "type": "string",
+          "description": "",
+          "privacy": "public",
+          "sourceRange": {
+            "start": {
+              "line": 119,
+              "column": 16
+            },
+            "end": {
+              "line": 122,
+              "column": 17
+            }
+          },
+          "metadata": {
+            "polymer": {}
+          },
+          "defaultValue": "\"https://www.googleapis.com/youtube/v3/search\""
+        },
+        {
+          "name": "videoUrl",
+          "type": "string",
+          "description": "",
+          "privacy": "public",
+          "sourceRange": {
+            "start": {
+              "line": 123,
+              "column": 16
+            },
+            "end": {
+              "line": 126,
+              "column": 17
+            }
+          },
+          "metadata": {
+            "polymer": {}
+          },
+          "defaultValue": "\"https://www.googleapis.com/youtube/v3/videos\""
+        },
+        {
+          "name": "playlistUrl",
+          "type": "string",
+          "description": "",
+          "privacy": "public",
+          "sourceRange": {
+            "start": {
+              "line": 127,
+              "column": 16
+            },
+            "end": {
+              "line": 130,
+              "column": 17
+            }
+          },
+          "metadata": {
+            "polymer": {}
+          },
+          "defaultValue": "\"https://www.googleapis.com/youtube/v3/playlistItems\""
+        },
+        {
+          "name": "playlistId",
+          "type": "string",
+          "description": "",
+          "privacy": "public",
+          "sourceRange": {
+            "start": {
+              "line": 131,
+              "column": 16
+            },
+            "end": {
+              "line": 134,
+              "column": 17
+            }
+          },
+          "metadata": {
+            "polymer": {}
+          },
+          "defaultValue": "\"\""
+        },
+        {
+          "name": "apiKey",
+          "type": "string",
+          "description": "",
+          "privacy": "public",
+          "sourceRange": {
+            "start": {
+              "line": 135,
+              "column": 16
+            },
+            "end": {
+              "line": 138,
+              "column": 17
+            }
+          },
+          "metadata": {
+            "polymer": {}
+          },
+          "defaultValue": "\"\""
+        },
+        {
+          "name": "channelId",
+          "type": "string",
+          "description": "",
+          "privacy": "public",
+          "sourceRange": {
+            "start": {
+              "line": 139,
+              "column": 16
+            },
+            "end": {
+              "line": 142,
+              "column": 17
+            }
+          },
+          "metadata": {
+            "polymer": {}
+          },
+          "defaultValue": "\"\""
+        },
+        {
+          "name": "query",
+          "type": "string",
+          "description": "",
+          "privacy": "public",
+          "sourceRange": {
+            "start": {
+              "line": 143,
+              "column": 16
+            },
+            "end": {
+              "line": 146,
+              "column": 17
+            }
+          },
+          "metadata": {
+            "polymer": {}
+          },
+          "defaultValue": "\"\""
+        },
+        {
+          "name": "order",
+          "type": "string",
+          "description": "",
+          "privacy": "public",
+          "sourceRange": {
+            "start": {
+              "line": 147,
+              "column": 16
+            },
+            "end": {
+              "line": 150,
+              "column": 17
+            }
+          },
+          "metadata": {
+            "polymer": {}
+          },
+          "defaultValue": "\"date\""
+        },
+        {
+          "name": "types",
+          "type": "string",
+          "description": "",
+          "privacy": "public",
+          "sourceRange": {
+            "start": {
+              "line": 151,
+              "column": 16
+            },
+            "end": {
+              "line": 154,
+              "column": 17
+            }
+          },
+          "metadata": {
+            "polymer": {}
+          },
+          "defaultValue": "\"video, playlist\""
+        },
+        {
+          "name": "_part",
+          "type": "string",
+          "description": "",
+          "privacy": "protected",
+          "sourceRange": {
+            "start": {
+              "line": 155,
+              "column": 16
+            },
+            "end": {
+              "line": 158,
+              "column": 17
+            }
+          },
+          "metadata": {
+            "polymer": {}
+          },
+          "defaultValue": "\"snippet\""
+        },
+        {
+          "name": "maxResults",
+          "type": "string",
+          "description": "",
+          "privacy": "public",
+          "sourceRange": {
+            "start": {
+              "line": 159,
+              "column": 16
+            },
+            "end": {
+              "line": 162,
+              "column": 17
+            }
+          },
+          "metadata": {
+            "polymer": {}
+          },
+          "defaultValue": "\"20\""
+        },
+        {
+          "name": "pageToken",
+          "type": "string",
+          "description": "",
+          "privacy": "public",
+          "sourceRange": {
+            "start": {
+              "line": 163,
+              "column": 16
+            },
+            "end": {
+              "line": 166,
+              "column": 17
+            }
+          },
+          "metadata": {
+            "polymer": {}
+          },
+          "defaultValue": "\"\""
+        },
+        {
+          "name": "noGetStats",
+          "type": "boolean",
+          "description": "",
+          "privacy": "public",
+          "sourceRange": {
+            "start": {
+              "line": 167,
+              "column": 16
+            },
+            "end": {
+              "line": 170,
+              "column": 17
+            }
+          },
+          "metadata": {
+            "polymer": {}
+          },
+          "defaultValue": "false"
+        },
+        {
+          "name": "_atTop",
+          "type": "boolean",
+          "description": "",
+          "privacy": "protected",
+          "sourceRange": {
+            "start": {
+              "line": 171,
+              "column": 16
+            },
+            "end": {
+              "line": 174,
+              "column": 17
+            }
+          },
+          "metadata": {
+            "polymer": {}
+          },
+          "defaultValue": "true"
+        },
+        {
+          "name": "_atBottom",
+          "type": "boolean",
+          "description": "",
+          "privacy": "protected",
+          "sourceRange": {
+            "start": {
+              "line": 175,
+              "column": 16
+            },
+            "end": {
+              "line": 178,
+              "column": 17
+            }
+          },
+          "metadata": {
+            "polymer": {}
+          },
+          "defaultValue": "false"
+        }
+      ],
+      "methods": [
+        {
+          "name": "sortItems",
+          "description": "",
+          "privacy": "private",
+          "sourceRange": {
+            "start": {
+              "line": 180,
+              "column": 12
+            },
+            "end": {
+              "line": 186,
+              "column": 13
+            }
+          },
+          "metadata": {},
+          "params": [
+            {
+              "name": "a"
+            },
+            {
+              "name": "b"
+            }
+          ]
+        },
+        {
+          "name": "_onHasNav",
+          "description": "",
+          "privacy": "protected",
+          "sourceRange": {
+            "start": {
+              "line": 187,
+              "column": 12
+            },
+            "end": {
+              "line": 192,
+              "column": 13
+            }
+          },
+          "metadata": {},
+          "params": []
+        },
+        {
+          "name": "_showNext",
+          "description": "",
+          "privacy": "protected",
+          "sourceRange": {
+            "start": {
+              "line": 193,
+              "column": 12
+            },
+            "end": {
+              "line": 220,
+              "column": 13
+            }
+          },
+          "metadata": {},
+          "params": []
+        },
+        {
+          "name": "_showPrevious",
+          "description": "",
+          "privacy": "protected",
+          "sourceRange": {
+            "start": {
+              "line": 221,
+              "column": 12
+            },
+            "end": {
+              "line": 235,
+              "column": 13
+            }
+          },
+          "metadata": {},
+          "params": []
+        },
+        {
+          "name": "_navigate",
+          "description": "",
+          "privacy": "protected",
+          "sourceRange": {
+            "start": {
+              "line": 236,
+              "column": 12
+            },
+            "end": {
+              "line": 239,
+              "column": 13
+            }
+          },
+          "metadata": {},
+          "params": [
+            {
+              "name": "updated"
+            }
+          ]
+        },
+        {
+          "name": "_handleResponse",
+          "description": "",
+          "privacy": "protected",
+          "sourceRange": {
+            "start": {
+              "line": 240,
+              "column": 12
+            },
+            "end": {
+              "line": 257,
+              "column": 13
+            }
+          },
+          "metadata": {},
+          "params": [
+            {
+              "name": "response"
+            }
+          ]
+        },
+        {
+          "name": "_extractId",
+          "description": "",
+          "privacy": "protected",
+          "sourceRange": {
+            "start": {
+              "line": 258,
+              "column": 12
+            },
+            "end": {
+              "line": 284,
+              "column": 13
+            }
+          },
+          "metadata": {},
+          "params": [
+            {
+              "name": "items"
+            }
+          ]
+        },
+        {
+          "name": "_buildVideoParams",
+          "description": "",
+          "privacy": "protected",
+          "sourceRange": {
+            "start": {
+              "line": 285,
+              "column": 12
+            },
+            "end": {
+              "line": 297,
+              "column": 13
+            }
+          },
+          "metadata": {},
+          "params": []
+        },
+        {
+          "name": "_buildParams",
+          "description": "",
+          "privacy": "protected",
+          "sourceRange": {
+            "start": {
+              "line": 298,
+              "column": 12
+            },
+            "end": {
+              "line": 323,
+              "column": 13
+            }
+          },
+          "metadata": {},
+          "params": []
+        },
+        {
+          "name": "loadMore",
+          "description": "",
+          "privacy": "private",
+          "sourceRange": {
+            "start": {
+              "line": 324,
+              "column": 12
+            },
+            "end": {
+              "line": 326,
+              "column": 13
+            }
+          },
+          "metadata": {},
+          "params": []
+        },
+        {
+          "name": "nextPage",
+          "description": "",
+          "privacy": "private",
+          "sourceRange": {
+            "start": {
+              "line": 327,
+              "column": 12
+            },
+            "end": {
+              "line": 329,
+              "column": 13
+            }
+          },
+          "metadata": {},
+          "params": []
+        },
+        {
+          "name": "previousPage",
+          "description": "",
+          "privacy": "private",
+          "sourceRange": {
+            "start": {
+              "line": 330,
+              "column": 12
+            },
+            "end": {
+              "line": 333,
+              "column": 13
+            }
+          },
+          "metadata": {},
+          "params": []
+        },
+        {
+          "name": "attached",
+          "description": "",
+          "privacy": "protected",
+          "sourceRange": {
+            "start": {
+              "line": 334,
+              "column": 12
+            },
+            "end": {
+              "line": 338,
+              "column": 13
+            }
+          },
+          "metadata": {},
+          "params": []
+        },
+        {
+          "name": "detached",
+          "description": "",
+          "privacy": "protected",
+          "sourceRange": {
+            "start": {
+              "line": 339,
+              "column": 12
+            },
+            "end": {
+              "line": 344,
+              "column": 13
+            }
+          },
+          "metadata": {},
+          "params": []
+        },
+        {
+          "name": "_updateWithStats",
+          "description": "",
+          "privacy": "protected",
+          "sourceRange": {
+            "start": {
+              "line": 345,
+              "column": 12
+            },
+            "end": {
+              "line": 350,
+              "column": 13
+            }
+          },
+          "metadata": {},
+          "params": [
+            {
+              "name": "e"
+            }
+          ]
+        },
+        {
+          "name": "_onResponse",
+          "description": "",
+          "privacy": "protected",
+          "sourceRange": {
+            "start": {
+              "line": 351,
+              "column": 12
+            },
+            "end": {
+              "line": 360,
+              "column": 13
+            }
+          },
+          "metadata": {},
+          "params": [
+            {
+              "name": "e"
+            }
+          ]
+        }
+      ],
+      "styling": {
+        "cssVariables": [],
+        "selectors": []
+      },
+      "demos": [],
+      "slots": [],
+      "events": [
+        {
+          "type": "CustomEvent",
+          "name": "videos-changed",
+          "description": "Fired when the `videos` property changes.",
+          "metadata": {}
+        }
+      ],
+      "metadata": {},
+      "sourceRange": {
+        "start": {
+          "line": 97,
+          "column": 16
+        },
+        "end": {
+          "line": 361,
+          "column": 9
+        }
+      },
+      "privacy": "public",
+      "tagname": "youtube-videos",
+      "superclass": "HTMLElement"
+    },
+    {
+      "description": "",
+      "summary": "",
+      "path": "src\\components\\app-link.html",
+      "attributes": [
+        {
+          "name": "href",
+          "description": "",
+          "sourceRange": {
+            "start": {
+              "line": 17,
+              "column": 16
+            },
+            "end": {
+              "line": 20,
+              "column": 17
+            }
+          },
+          "metadata": {},
+          "type": "string"
+        },
+        {
+          "name": "text",
+          "description": "",
+          "sourceRange": {
+            "start": {
+              "line": 21,
+              "column": 16
+            },
+            "end": {
+              "line": 24,
+              "column": 17
+            }
+          },
+          "metadata": {},
+          "type": "string"
+        }
+      ],
+      "properties": [
+        {
+          "name": "href",
+          "type": "string",
+          "description": "",
+          "privacy": "public",
+          "sourceRange": {
+            "start": {
+              "line": 17,
+              "column": 16
+            },
+            "end": {
+              "line": 20,
+              "column": 17
+            }
+          },
+          "metadata": {
+            "polymer": {}
+          },
+          "defaultValue": "\"\""
+        },
+        {
+          "name": "text",
+          "type": "string",
+          "description": "",
+          "privacy": "public",
+          "sourceRange": {
+            "start": {
+              "line": 21,
+              "column": 16
+            },
+            "end": {
+              "line": 24,
+              "column": 17
+            }
+          },
+          "metadata": {
+            "polymer": {}
+          },
+          "defaultValue": "\"\""
+        }
+      ],
+      "methods": [],
+      "styling": {
+        "cssVariables": [],
+        "selectors": []
+      },
+      "demos": [],
+      "slots": [],
+      "events": [],
+      "metadata": {},
+      "sourceRange": {
+        "start": {
+          "line": 15,
+          "column": 16
+        },
+        "end": {
+          "line": 27,
+          "column": 9
+        }
+      },
+      "privacy": "public",
+      "tagname": "app-link",
+      "superclass": "HTMLElement"
+    },
+    {
+      "description": "",
+      "summary": "",
+      "path": "src\\my-lessons.html",
+      "attributes": [
+        {
+          "name": "api-key",
+          "description": "",
+          "sourceRange": {
+            "start": {
+              "line": 100,
+              "column": 8
+            },
+            "end": {
+              "line": 103,
+              "column": 9
+            }
+          },
+          "metadata": {},
+          "type": "string"
+        }
+      ],
+      "properties": [
+        {
+          "name": "apiKey",
+          "type": "string",
+          "description": "",
+          "privacy": "public",
+          "sourceRange": {
+            "start": {
+              "line": 100,
+              "column": 8
+            },
+            "end": {
+              "line": 103,
+              "column": 9
+            }
+          },
+          "metadata": {
+            "polymer": {}
+          },
+          "defaultValue": "\"AIzaSyCJCokkQUEbcz2hUSzk3CtYU-g2v9CS-uM\""
+        }
+      ],
+      "methods": [],
+      "styling": {
+        "cssVariables": [],
+        "selectors": []
+      },
+      "demos": [],
+      "slots": [],
+      "events": [],
+      "metadata": {},
+      "sourceRange": {
+        "start": {
+          "line": 97,
+          "column": 12
+        },
+        "end": {
+          "line": 105,
+          "column": 5
+        }
+      },
+      "privacy": "public",
+      "tagname": "my-lessons",
+      "superclass": "HTMLElement"
+    },
+    {
+      "description": "",
+      "summary": "",
+      "path": "src\\components\\instagram-feed.html",
+      "attributes": [
+        {
+          "name": "resolution",
+          "description": "",
+          "sourceRange": {
+            "start": {
+              "line": 175,
+              "column": 16
+            },
+            "end": {
+              "line": 178,
+              "column": 17
+            }
+          },
+          "metadata": {},
+          "type": "string"
+        }
+      ],
+      "properties": [
+        {
+          "name": "_photos",
+          "type": "Array",
+          "description": "",
+          "privacy": "protected",
+          "sourceRange": {
+            "start": {
+              "line": 171,
+              "column": 16
+            },
+            "end": {
+              "line": 174,
+              "column": 17
+            }
+          },
+          "metadata": {
+            "polymer": {}
+          },
+          "defaultValue": "null"
+        },
+        {
+          "name": "resolution",
+          "type": "string",
+          "description": "",
+          "privacy": "public",
+          "sourceRange": {
+            "start": {
+              "line": 175,
+              "column": 16
+            },
+            "end": {
+              "line": 178,
+              "column": 17
+            }
+          },
+          "metadata": {
+            "polymer": {}
+          },
+          "defaultValue": "\"standard_resolution\""
+        },
+        {
+          "name": "_ids",
+          "type": "Array",
+          "description": "",
+          "privacy": "protected",
+          "sourceRange": {
+            "start": {
+              "line": 179,
+              "column": 16
+            },
+            "end": {
+              "line": 182,
+              "column": 17
+            }
+          },
+          "metadata": {
+            "polymer": {}
+          },
+          "defaultValue": "[]"
+        }
+      ],
+      "methods": [
+        {
+          "name": "_getImage",
+          "description": "",
+          "privacy": "protected",
+          "sourceRange": {
+            "start": {
+              "line": 184,
+              "column": 12
+            },
+            "end": {
+              "line": 186,
+              "column": 13
+            }
+          },
+          "metadata": {},
+          "params": [
+            {
+              "name": "images"
+            }
+          ]
+        },
+        {
+          "name": "getInstagramFeed",
+          "description": "",
+          "privacy": "private",
+          "sourceRange": {
+            "start": {
+              "line": 187,
+              "column": 12
+            },
+            "end": {
+              "line": 197,
+              "column": 13
+            }
+          },
+          "metadata": {},
+          "params": []
+        },
+        {
+          "name": "onLoad",
+          "description": "",
+          "privacy": "private",
+          "sourceRange": {
+            "start": {
+              "line": 198,
+              "column": 12
+            },
+            "end": {
+              "line": 210,
+              "column": 13
+            }
+          },
+          "metadata": {},
+          "params": [
+            {
+              "name": "e"
+            }
+          ]
+        },
+        {
+          "name": "ready",
+          "description": "",
+          "privacy": "protected",
+          "sourceRange": {
+            "start": {
+              "line": 211,
+              "column": 12
+            },
+            "end": {
+              "line": 214,
+              "column": 13
+            }
+          },
+          "metadata": {},
+          "params": []
+        },
+        {
+          "name": "run",
+          "description": "",
+          "privacy": "private",
+          "sourceRange": {
+            "start": {
+              "line": 215,
+              "column": 12
+            },
+            "end": {
+              "line": 217,
+              "column": 13
+            }
+          },
+          "metadata": {},
+          "params": []
+        },
+        {
+          "name": "next",
+          "description": "",
+          "privacy": "private",
+          "sourceRange": {
+            "start": {
+              "line": 218,
+              "column": 12
+            },
+            "end": {
+              "line": 224,
+              "column": 13
+            }
+          },
+          "metadata": {},
+          "params": []
+        }
+      ],
+      "styling": {
+        "cssVariables": [],
+        "selectors": []
+      },
+      "demos": [],
+      "slots": [],
+      "events": [],
+      "metadata": {},
+      "sourceRange": {
+        "start": {
+          "line": 168,
+          "column": 16
+        },
+        "end": {
+          "line": 226,
+          "column": 9
+        }
+      },
+      "privacy": "public",
+      "tagname": "instagram-feed",
+      "superclass": "HTMLElement"
+    },
+    {
+      "description": "",
+      "summary": "",
+      "path": "src\\my-photos.html",
+      "attributes": [
+        {
+          "name": "scroll-pos",
+          "description": "",
+          "sourceRange": {
+            "start": {
+              "line": 31,
+              "column": 16
+            },
+            "end": {
+              "line": 37,
+              "column": 17
+            }
+          },
+          "metadata": {},
+          "type": "string"
+        }
+      ],
+      "properties": [
+        {
+          "name": "scrollPos",
+          "type": "string",
+          "description": "",
+          "privacy": "public",
+          "sourceRange": {
+            "start": {
+              "line": 31,
+              "column": 16
+            },
+            "end": {
+              "line": 37,
+              "column": 17
+            }
+          },
+          "metadata": {
+            "polymer": {
+              "notify": true,
+              "observer": "\"_loadMore\""
+            }
+          },
+          "defaultValue": "null"
+        }
+      ],
+      "methods": [
+        {
+          "name": "ready",
+          "description": "",
+          "privacy": "protected",
+          "sourceRange": {
+            "start": {
+              "line": 39,
+              "column": 12
+            },
+            "end": {
+              "line": 41,
+              "column": 13
+            }
+          },
+          "metadata": {},
+          "params": []
+        },
+        {
+          "name": "_loadMore",
+          "description": "",
+          "privacy": "protected",
+          "sourceRange": {
+            "start": {
+              "line": 42,
+              "column": 12
+            },
+            "end": {
+              "line": 46,
+              "column": 13
+            }
+          },
+          "metadata": {},
+          "params": []
+        }
+      ],
+      "styling": {
+        "cssVariables": [],
+        "selectors": []
+      },
+      "demos": [],
+      "slots": [],
+      "events": [
+        {
+          "type": "CustomEvent",
+          "name": "scroll-pos-changed",
+          "description": "Fired when the `scrollPos` property changes.",
+          "metadata": {}
+        }
+      ],
+      "metadata": {},
+      "sourceRange": {
+        "start": {
+          "line": 28,
+          "column": 16
+        },
+        "end": {
+          "line": 49,
+          "column": 9
+        }
+      },
+      "privacy": "public",
+      "tagname": "my-photos",
+      "superclass": "HTMLElement"
+    },
+    {
+      "description": "",
+      "summary": "",
+      "path": "src\\my-session.html",
+      "attributes": [
+        {
+          "name": "api-key",
+          "description": "",
+          "sourceRange": {
+            "start": {
+              "line": 74,
+              "column": 8
+            },
+            "end": {
+              "line": 77,
+              "column": 9
+            }
+          },
+          "metadata": {},
+          "type": "string"
+        }
+      ],
+      "properties": [
+        {
+          "name": "apiKey",
+          "type": "string",
+          "description": "",
+          "privacy": "public",
+          "sourceRange": {
+            "start": {
+              "line": 74,
+              "column": 8
+            },
+            "end": {
+              "line": 77,
+              "column": 9
+            }
+          },
+          "metadata": {
+            "polymer": {}
+          },
+          "defaultValue": "\"AIzaSyCJCokkQUEbcz2hUSzk3CtYU-g2v9CS-uM\""
+        }
+      ],
+      "methods": [],
+      "styling": {
+        "cssVariables": [],
+        "selectors": []
+      },
+      "demos": [],
+      "slots": [],
+      "events": [],
+      "metadata": {},
+      "sourceRange": {
+        "start": {
+          "line": 71,
+          "column": 12
+        },
+        "end": {
+          "line": 79,
+          "column": 5
+        }
+      },
+      "privacy": "public",
+      "tagname": "my-session",
+      "superclass": "HTMLElement"
+    },
+    {
+      "description": "",
+      "summary": "",
+      "path": "src\\my-testimonials.html",
+      "attributes": [
+        {
+          "name": "testimonials",
+          "description": "",
+          "sourceRange": {
+            "start": {
+              "line": 101,
+              "column": 16
+            },
+            "end": {
+              "line": 143,
+              "column": 17
+            }
+          },
+          "metadata": {},
+          "type": "Array"
+        }
+      ],
+      "properties": [
+        {
+          "name": "testimonials",
+          "type": "Array",
+          "description": "",
+          "privacy": "public",
+          "sourceRange": {
+            "start": {
+              "line": 101,
+              "column": 16
+            },
+            "end": {
+              "line": 143,
+              "column": 17
+            }
+          },
+          "metadata": {
+            "polymer": {}
+          },
+          "defaultValue": "[{\"author\":\"Victoria Hicks\",\"text\":\"Charlie has taught our 11 year old for more than two years. Joe really enjoys his lessons and Charlie has kept him motivated with a great selection of tunes he wants to learn as well as what he needs to follow for the Rock School grade 1 (and now grade 2) course. Charlie is patient and encouraging with young students, and is also well organised, proactive and flexible which is great from a parents point of view. \"},{\"author\":\"Alison Mair\",\"text\":\"My 11 year old son actually enjoys having his guitar lessons now! Charlie structures the lessons around my son's ability and taste in music and remains positive and enthusiastic throughout the session.\"},{\"author\":\"Patrick Mair\",\"text\":\"Lessons with Charlie are fun! \"},{\"author\":\"Anne Poulter\",\"text\":\"My son thoroughly enjoys his guitar lessons. He really loves playing with Charlie and trying out the new techniques he has learned. He is becoming a good little musician, but for me it isn’t just about him learning to play the guitar — he is exploring different kinds of music from rock classics to more modern songs and having a lot of fun doing it.\"},{\"author\":\"Sarah Bryans\",\"text\":\"My son has been having guitar lessons from Charlie, for the past 4 years. Charlie has taken him through Grade 1 and 2, and he passed both exams with a Merit. Charlie is professional in his teaching, and my son listens to his advice. My son has recently changed his guitar, and Charlie was on hand to help and advise us. I would highly recommend Charlie as a guitar teacher.\"},{\"author\":\"Sonya Turpin\",\"text\":\"Charlie was recommended to me about 2 1/2 years ago for guitar lessons for my son Richie, who at the time was 6 years old, painfully shy and completely new to guitar. Charlie's friendly and fun approach immediately won Richie over and he has loved playing the guitar ever since. Charlie was able to adapt when Richie floated, undecided, between acoustic and electric guitar and offered good advice for both.  Richie has come on in leaps & bounds since starting with Charlie, will now sit and happily practice and is proud of his progress. Charlie always has a lesson planned and goals for Richie but is flexible where necessary and always patient and kind. He has provided professional advice on instruments, equipment and progression for Richie and is a great communicator both with Richie and my husband and I. Charlie is dependable and trustworthy and I highly recommend him as a guitar teacher!\"},{\"author\":\"Lucy Ford\",\"text\":\"Charlie has been a fantastic teacher to our 7 year old son over the last year. Lessons are always fun and relaxed and they have a great rapport. He is learning songs across many different genres, as well as any current tracks my son requests. Charlie has the patience of a Saint and we trust him implicitly. I would not hesitate at all in recommending him to anyone looking for a great teacher.\"},{\"author\":\"Elliot Pett, aged 11\",\"text\":\"Charlie is really patient. If you don't understand he's happy to go over it again and again at your speed until you get the hang of it.\"},{\"author\":\"Stuart Pett, Elliot's Dad\",\"text\":\"Charlie gave my son his first guitar lesson at the age of 7 and had him instantly hooked! He engages well with kids and maintains interest with variations in lessons and and techniques. He communicates well at the appropriate level and is able to balance the practical and theoretical side to suit his student's approach and interests. He will help students towards their personal goals and can quickly change or adapt a lesson plan on demand. I am particularly impressed that Charlie is still able to be an effective teacher via Skype, something that I would have previously considered impractical but that I was prepared to trial since he taught my son so effectively face-to-face - we now happily conduct all lessons this way as a matter of routine. Charlie is also very good at managing poor concentration in a sympathetic way!\"},{\"author\":\"Becky King\",\"text\":\"Charlie has been teaching my son (aged seven), for just over 12 months. He always customises the lessons to capture his interest with a wide range of music adjusted to his level of skill. This combined with a great balance of patience, talent, enthusiasm and humour has completely inspired him and kept him engaged and motivated. My son sums up the lessons perfectly (below).\"},{\"author\":\"Charlie King, aged 7\",\"text\":\"Charlie is epic, guitar is awesome.\"},{\"author\":\"Jody Cooksley\",\"text\":\"Charlie’s easy and enthusiastic teaching style has completely transformed my son’s playing and reawakened his love of the guitar. Previous lessons had left him uninspired but he now needs no prompting to practise. I would highly recommend Charlie as a teacher\"},{\"author\":\"Ben Cooksley, aged 11\",\"text\":\"I really enjoy my lessons with Charlie, he chooses great songs for us to learn and he is very kind and patient\"}]"
+        }
+      ],
+      "methods": [],
+      "styling": {
+        "cssVariables": [],
+        "selectors": []
+      },
+      "demos": [],
+      "slots": [],
+      "events": [],
+      "metadata": {},
+      "sourceRange": {
+        "start": {
+          "line": 98,
+          "column": 16
+        },
+        "end": {
+          "line": 145,
+          "column": 9
+        }
+      },
+      "privacy": "public",
+      "tagname": "my-testimonials",
+      "superclass": "HTMLElement"
+    },
+    {
+      "description": "",
+      "summary": "",
+      "path": "src\\my-videos.html",
+      "attributes": [
+        {
+          "name": "channel-id",
+          "description": "",
+          "sourceRange": {
+            "start": {
+              "line": 50,
+              "column": 8
+            },
+            "end": {
+              "line": 53,
+              "column": 9
+            }
+          },
+          "metadata": {},
+          "type": "string"
+        },
+        {
+          "name": "api-key",
+          "description": "",
+          "sourceRange": {
+            "start": {
+              "line": 54,
+              "column": 8
+            },
+            "end": {
+              "line": 57,
+              "column": 9
+            }
+          },
+          "metadata": {},
+          "type": "string"
+        },
+        {
+          "name": "next-page-token",
+          "description": "",
+          "sourceRange": {
+            "start": {
+              "line": 58,
+              "column": 8
+            },
+            "end": {
+              "line": 61,
+              "column": 9
+            }
+          },
+          "metadata": {},
+          "type": "string"
+        },
+        {
+          "name": "scroll-pos",
+          "description": "",
+          "sourceRange": {
+            "start": {
+              "line": 62,
+              "column": 8
+            },
+            "end": {
+              "line": 67,
+              "column": 9
+            }
+          },
+          "metadata": {},
+          "type": "string"
+        }
+      ],
+      "properties": [
+        {
+          "name": "channelId",
+          "type": "string",
+          "description": "",
+          "privacy": "public",
+          "sourceRange": {
+            "start": {
+              "line": 50,
+              "column": 8
+            },
+            "end": {
+              "line": 53,
+              "column": 9
+            }
+          },
+          "metadata": {
+            "polymer": {}
+          },
+          "defaultValue": "\"UCReQS8UwfrhDRGTowiXqVKg\""
+        },
+        {
+          "name": "apiKey",
+          "type": "string",
+          "description": "",
+          "privacy": "public",
+          "sourceRange": {
+            "start": {
+              "line": 54,
+              "column": 8
+            },
+            "end": {
+              "line": 57,
+              "column": 9
+            }
+          },
+          "metadata": {
+            "polymer": {}
+          },
+          "defaultValue": "\"AIzaSyCJCokkQUEbcz2hUSzk3CtYU-g2v9CS-uM\""
+        },
+        {
+          "name": "nextPageToken",
+          "type": "string",
+          "description": "",
+          "privacy": "public",
+          "sourceRange": {
+            "start": {
+              "line": 58,
+              "column": 8
+            },
+            "end": {
+              "line": 61,
+              "column": 9
+            }
+          },
+          "metadata": {
+            "polymer": {}
+          },
+          "defaultValue": "\"\""
+        },
+        {
+          "name": "scrollPos",
+          "type": "string",
+          "description": "",
+          "privacy": "public",
+          "sourceRange": {
+            "start": {
+              "line": 62,
+              "column": 8
+            },
+            "end": {
+              "line": 67,
+              "column": 9
+            }
+          },
+          "metadata": {
+            "polymer": {
+              "notify": true,
+              "observer": "\"_loadMore\""
+            }
+          },
+          "defaultValue": "null"
+        }
+      ],
+      "methods": [
+        {
+          "name": "_filterPlaylists",
+          "description": "",
+          "privacy": "protected",
+          "sourceRange": {
+            "start": {
+              "line": 69,
+              "column": 6
+            },
+            "end": {
+              "line": 71,
+              "column": 7
+            }
+          },
+          "metadata": {},
+          "params": []
+        },
+        {
+          "name": "_loadMore",
+          "description": "",
+          "privacy": "protected",
+          "sourceRange": {
+            "start": {
+              "line": 72,
+              "column": 6
+            },
+            "end": {
+              "line": 76,
+              "column": 7
+            }
+          },
+          "metadata": {},
+          "params": []
+        },
+        {
+          "name": "_buildParams",
+          "description": "",
+          "privacy": "protected",
+          "sourceRange": {
+            "start": {
+              "line": 77,
+              "column": 6
+            },
+            "end": {
+              "line": 90,
+              "column": 7
+            }
+          },
+          "metadata": {},
+          "params": []
+        }
+      ],
+      "styling": {
+        "cssVariables": [],
+        "selectors": []
+      },
+      "demos": [],
+      "slots": [],
+      "events": [
+        {
+          "type": "CustomEvent",
+          "name": "scroll-pos-changed",
+          "description": "Fired when the `scrollPos` property changes.",
+          "metadata": {}
+        }
+      ],
+      "metadata": {},
+      "sourceRange": {
+        "start": {
+          "line": 47,
+          "column": 12
+        },
+        "end": {
+          "line": 94,
+          "column": 5
+        }
+      },
+      "privacy": "public",
+      "tagname": "my-videos",
+      "superclass": "HTMLElement"
+    },
+    {
+      "description": "",
+      "summary": "",
+      "path": "src\\my-view404.html",
+      "attributes": [],
+      "properties": [],
+      "methods": [],
+      "styling": {
+        "cssVariables": [],
+        "selectors": []
+      },
+      "demos": [],
+      "slots": [],
+      "events": [],
+      "metadata": {},
+      "sourceRange": {
+        "start": {
+          "line": 30,
+          "column": 12
+        },
+        "end": {
+          "line": 32,
+          "column": 5
+        }
+      },
+      "privacy": "public",
+      "tagname": "my-view404",
+      "superclass": "HTMLElement"
+    }
+  ]
+}

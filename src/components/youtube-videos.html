@@ -2,6 +2,8 @@
 <link rel="import" href="../../bower_components/paper-icon-button/paper-icon-button.html">
 <link rel="import" href="../../bower_components/iron-icons/av-icons.html">
 <link rel="import" href="../../bower_components/iron-ajax/iron-ajax.html">
+<link rel="import" href="../../bower_components/paper-spinner/paper-spinner-lite.html">
+
 <link rel="import" href="./youtube-player-card.html">
 
 <dom-module id="youtube-videos">
@@ -61,7 +63,37 @@
             a:not([disabled]):hover {
                 text-decoration: underline;
             }
+
+             :host .spin-wrap {
+                position: relative;
+                width: 100%;
+                height: 100%;
+                z-index: 1001;
+            }
+
+             :host #spins {
+                position: absolute;
+                ;
+                width: 100%;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                margin: 10px;
+                height: var(--youtube-video-navigator-height, 263px);
+            }
+
+            paper-spinner-lite {
+                width: 75px;
+                height: 75px;
+                --paper-spinner-stroke-width: 6px;
+                --paper-spinner-color: var(--primary-color);
+            }
         </style>
+        <div class="spin-wrap">
+            <div id="spins">
+                <paper-spinner-lite id="spinner" active></paper-spinner-lite>
+            </div>
+        </div>
         <div class="video-wrap">
             <div id="videoAnim" class="video-transition">
                 <iron-ajax id="ajaxRequest" auto url="[[searchUrl]]" params='[[_buildParams(pageToken,_part,apiKey,channelId,query,order,types,maxResults, playlistId)]]'
@@ -179,7 +211,7 @@
                 }
             },
             sortItems: function (a, b) {
-                if (a.statistics) {
+                if (a.statistics && b.statistics) {
                     return parseInt(a.statistics.viewCount) <= parseInt(b.statistics.viewCount) ? 1 : -1;
                 } else {
                     return 0;
@@ -333,6 +365,7 @@
                 this.pageToken = this._prevPageToken;
             },
             attached: function () {
+                this.listen(this.$.ajaxVideos, 'iron-ajax-request', '_onRequest');
                 this.listen(this.$.ajaxRequest, 'iron-ajax-response', '_onResponse');
                 this.listen(this.$.ajaxVideos, 'iron-ajax-response', '_updateWithStats');
 
@@ -349,10 +382,15 @@
                     this.videos = this._noStats.concat(response.items);
                 }
             },
+            _onRequest: function () {
+                this.$.spinner.active = true;
+
+            },
             _onResponse: function (e) {
                 var response = e.target.lastResponse;
                 if (response) {
                     this._handleResponse(response);
+                    this.$.spinner.active = false;
                     if (response.nextPageToken || response.prevPageToken) {
                         this._nextPageToken = response.nextPageToken;
                         this._prevPageToken = response.prevPageToken;
