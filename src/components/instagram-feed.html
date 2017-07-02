@@ -30,6 +30,7 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
                 flex: 1;
                 flex-wrap: wrap;
                 justify-content: center;
+                min-height: 25vh;
             }
 
              :host .instafeed-wrap {
@@ -231,7 +232,7 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
             },
             ready: function () {
                 this.feed = this.getInstagramFeed();
-                this.feed.run();
+                this.run();
             },
             run: function () {
                 this.feed.run();
