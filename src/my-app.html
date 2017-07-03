@@ -158,7 +158,9 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
             }
          
 
-          
+           :host([is-full-screen]) app-drawer,:host([is-full-screen]) app-header {
+                   visibility: hidden;
+                }
 
 
             @media (max-width: 750px) {
@@ -207,7 +209,8 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
                 [condensed-title] img {
                     height: 3em;
                 }
-             
+                
+               
 
             }
         </style>
@@ -307,6 +310,11 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
                     type: Boolean,
                     notify: true,
                     observer: '_isTopOrBottom'
+                },
+                isFullScreen: {
+                    type: Boolean,
+                    value: false,
+                    reflectToAttribute: true
                 }
             },
             behaviors: [
@@ -379,6 +387,23 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
             },
             _isTopOrBottom: function() {
                 this.scrollPos = this.isScrollBottom ? 'bottom' : this.isScrollTop ? 'top' : this.scrollPos;
+            },
+            ready: function() {
+                document.addEventListener("fullscreenchange", function(e) {
+                    this.isFullScreen = !!document.fullscreenElement;
+                }.bind(this), false);
+
+                document.addEventListener("msfullscreenchange", function(e) {
+                    this.isFullScreen = !!document.msFullscreenElement;
+                }.bind(this), false);
+
+                document.addEventListener("mozfullscreenchange", function(e) {
+                    this.isFullScreen = document.mozFullScreen;
+                }.bind(this), false);
+
+                document.addEventListener("webkitfullscreenchange", function(e) {
+                    this.isFullScreen = !!document.webkitFullscreenElement;
+                }.bind(this), false);
             }
 
         });

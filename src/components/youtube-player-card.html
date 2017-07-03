@@ -183,7 +183,10 @@
                 </button>
                     <div id="imageThumb" class="thumbnail"></div>
                     <div id="imageCont" class="thumb-cont"></div>
-                    <div class="video" id="video"></div>
+                    <div id="videoElement">
+                                            <div class="video" id="video"></div>
+
+                    </div>
                 </div>
                 <div class="card-actions">
                     <div class="actions-top">
@@ -282,6 +285,11 @@
                 _youtubeChannel: {
                     type: String,
                     value: '//youtube.com/channel/'
+                },
+                isFullScreen: {
+                    type: Boolean,
+                    value: false,
+                    reflectToAttribute: true
                 }
             },
             stop: function() {
@@ -350,6 +358,8 @@
                                 });
                             } else {
                                 this.player.loadVideoById(this.videoId);
+                                this.attachFSEvents();
+
                             }
                         }.bind(this),
                         'onStateChange': function(e) {
@@ -366,6 +376,23 @@
                         return callback();
                     }
                 }
+            },
+            attachFSEvents: function() {
+                document.addEventListener("fullscreenchange", function(e) {
+                    this.isFullScreen = !!document.fullscreenElement;
+                }.bind(this), false);
+
+                document.addEventListener("msfullscreenchange", function(e) {
+                    this.isFullScreen = !!document.msFullscreenElement;
+                }.bind(this), false);
+
+                document.addEventListener("mozfullscreenchange", function(e) {
+                    this.isFullScreen = document.mozFullScreen;
+                }.bind(this), false);
+
+                document.addEventListener("webkitfullscreenchange", function(e) {
+                    this.isFullScreen = !!document.webkitFullscreenElement;
+                }.bind(this), false);
             },
             getPlayerSize: function() {
                 var video = getComputedStyle(this.$.contentVideo);
