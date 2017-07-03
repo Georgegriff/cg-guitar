@@ -150,6 +150,15 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
                 --paper-spinner-stroke-width: 6px;
                 --paper-spinner-color: var(--primary-color);
             }
+
+            @media (max-width: 719px) and (orientation: portrait) {
+                 :host .instafeed-wrap {
+                    width: var(--instagram-width, 90vw);
+                }
+                 :host .instas a.link {
+                    height: 80vw;
+                }
+            }
         </style>
 
         <div id="instafeed">

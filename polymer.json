@@ -3,15 +3,15 @@
         {
             "bundle": true,
             "js": {
-                "minify": true,
-                "compile": true
+                "minify": true
             },
             "css": {
                 "minify": true
             },
             "html": {
                 "minify": true
-            }
+            },
+            "addServiceWorker": true
         }
     ],
     "lint": {

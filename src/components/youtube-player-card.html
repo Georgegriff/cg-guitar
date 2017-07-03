@@ -13,12 +13,12 @@
             }
 
              :host #card {
-                width: var(--youtube-player-video-width, 240px);
+                width: var(--youtube-player-card-width, 240px);
             }
 
              :host .card-content {
-                width: var(--youtube-player-video-width, 240px);
-                height: var(--youtube-player-video-height, 135px);
+                width: var(--youtube-player-card-width, 240px);
+                height: var(--youtube-player-card-height, 135px);
                 padding: 0 !important;
                 position: relative;
                 display: flex;
@@ -63,8 +63,8 @@
             }
 
             .thumb-cont {
-                width: var(--youtube-player-video-width, 240px);
-                height: var(--youtube-player-video-height, 135px);
+                width: var(--youtube-player-card-width, 240px);
+                height: var(--youtube-player-card-height, 135px);
                 background: var(--youtube-player-thumbnail-background, #757575);
                 transition: opacity .5s ease-in-out;
                 position: absolute;
@@ -78,11 +78,11 @@
                 position: absolute;
                 top: 0;
                 left: 0;
-                width: var(--youtube-player-video-width, 240px);
-                height: var(--youtube-player-video-height, 135px);
+                width: var(--youtube-player-card-width, 240px);
+                height: var(--youtube-player-card-height, 135px);
                 background-repeat: no-repeat;
                 background-position: center center;
-                background-size: 100%;
+                background-size: cover;
                 transition: opacity .3s ease-in-out;
                 z-index: 50;
             }
@@ -112,7 +112,7 @@
             }
 
             .title-wrap {
-
+                text-align: left;
                 padding-bottom: 5px;
                 padding-left: 5px;
             }
@@ -128,7 +128,7 @@
             .actions {
                 display: flex;
                 color: #757575;
-                padding: 5px 16px;
+                padding: 4px 16px;
             }
 
             .open-yt {

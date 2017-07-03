@@ -12,7 +12,7 @@ exports.handler = function (event, context) {
 }
  
 function sendEmail (event, done) {
-    var viaTele =  event.telephonePreferred ? 'Yes' : 'No';
+    var viaTele =  event.telephonePreferred === "true" ? 'Yes' : 'No';
     var telephone = event["telephone-no"] || 'n/a';
     var params = {
         Destination: {

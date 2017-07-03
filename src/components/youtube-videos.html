@@ -25,7 +25,7 @@
                 align-items: center;
             }
 
-            youtube-player-card {
+            .yt-card {
                 --youtube-player-card-width: var(--youtube-videos-width, 264px);
                 --youtube-player-card-height: var(--youtube-videos-height, 149px);
             }
@@ -67,7 +67,7 @@
              :host .spin-wrap {
                 position: relative;
                 z-index: 101;
-                pointer-events:none;
+                pointer-events: none;
             }
 
              :host #spins {
@@ -87,6 +87,20 @@
                 --paper-spinner-stroke-width: 6px;
                 --paper-spinner-color: var(--primary-color);
             }
+
+            @media (max-width: 719px) and (orientation: portrait) {
+                .yt-card {
+                    --youtube-player-card-width: var(--youtube-videos-width, 80vw);
+                    --youtube-player-card-height: var(--youtube-videos-height, 45vw);
+                }
+
+                 :host([has-navigation]) .video-wrap {
+                    height: var(--youtube-video-navigator-height, 77vw);
+                }
+                 :host #spins {
+                    height: var(--youtube-video-navigator-height, 77vw);
+                }
+            }
         </style>
         <div class="spin-wrap">
             <div id="spins">
@@ -101,8 +115,8 @@
                 <div class="flex-wrapper">
                     <div class="video-cards">
                         <template is="dom-repeat" items="{{videos}}" sort="sortItems">
-                            <youtube-player-card duration="[[item.contentDetails.duration]]" view-count="[[item.statistics.viewCount]]" video-title="[[item.snippet.title]]"
-                                channel-title="[[item.snippet.channelTitle]]" thumbnail="[[item.snippet.thumbnails.medium.url]]"
+                            <youtube-player-card class="yt-card" duration="[[item.contentDetails.duration]]" view-count="[[item.statistics.viewCount]]"
+                                video-title="[[item.snippet.title]]" channel-title="[[item.snippet.channelTitle]]" thumbnail="[[_getThumb(item)]]"
                                 video-id="[[item.id]]"></youtube-player-card>
                         </template>
                     </div>
@@ -207,6 +221,10 @@
                 _atBottom: {
                     type: Boolean,
                     value: false
+                },
+                thumbQuality: {
+                    type: String,
+                    value: "high"
                 }
             },
             sortItems: function (a, b) {
@@ -215,6 +233,9 @@
                 } else {
                     return 0;
                 }
+            },
+            _getThumb: function (item) {
+                return item.snippet.thumbnails[this.thumbQuality].url;
             },
             _onHasNav: function () {
                 if (this.hasNavigation) {

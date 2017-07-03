@@ -13,6 +13,8 @@
 module.exports = {
   staticFileGlobs: [
     '/index.html',
+    'src/my-app.html',
+    'src/my-lessons.html', 
     '/manifest.json',
     '/bower_components/webcomponentsjs/webcomponents-lite.min.js',
   ],

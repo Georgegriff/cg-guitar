@@ -6,21 +6,29 @@ const dist = "dist";
 const tmp = ".tmp";
 
 gulp.task("clean", function () {
-    return clean([
+    return clean.sync([
         '.tmp/**', 'dist/**'
     ], {force: true})
 });
 
 gulp.task("revision", ["clean"], function () {
     return gulp
-        .src(["build/default/**/*.*", "!**/**/index.html"])
+        .src(["build/default/**/*.*", "!**/**/index.html", "!build/default/images/manifest/**.*"])
         .pipe(rev())
         .pipe(gulp.dest(tmp))
         .pipe(rev.manifest())
         .pipe(gulp.dest(tmp))
 })
 
-gulp.task("default", ["revision"], function () {
+gulp.task("manifest-files", function () {
+    return gulp
+        .src(["images/manifest/**"], {"base" : '.'})
+        .pipe(gulp.dest(dist));
+});
+
+gulp.task("default", [
+    "revision", "manifest-files"
+], function () {
     const manifest = gulp.src("./.tmp/rev-manifest.json");
 
     return gulp
