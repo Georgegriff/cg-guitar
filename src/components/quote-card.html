@@ -1,0 +1,143 @@
+<link rel="import" href="../../bower_components/polymer/polymer.html">
+<link rel="import" href="../../bower_components/paper-card/paper-card.html">
+<link rel="import" href="../shared-styles.html">
+
+<dom-module id="quote-card" include="shared-styles">
+    <template>
+        <style>
+            :host {
+                display: block;
+                width:100%;
+                height: auto;
+                margin:10px;
+            }
+           
+
+            .quote-header {
+                @apply(--paper-font-headline);
+            }
+            :host .card-content {
+                display: flex;
+                flex:1;
+                height:100%;
+            }
+
+
+            .card-location {
+                float: right;
+                font-size: 15px;
+                vertical-align: middle;
+            }
+
+
+            .lvl-title {
+                padding-bottom: 10px;
+                text-align: center;
+            }
+
+           
+            paper-card {
+                width: 100%;
+                height: 100%;
+                max-width: initial;
+            }
+            .quote-info {
+                display: flex;
+                margin-left:16px;
+                flex:1;
+                text-align: left;
+                flex-direction: column;
+
+            }
+
+            .quote-image {
+                display: flex;
+                width:100px;
+                height:100px;
+                min-width: 100px;
+                justify-content: center;
+                align-items: center;
+                 border-radius: 100%;
+                overflow: hidden;
+                background:var(--quote-card-image-color, #ddd);
+            }
+            .quote-image .img {
+                background-repeat: no-repeat;
+                background-position: center center;
+                background-size: 100%;
+                width:100%;
+                height:100%;
+            }
+            :host([use-default-image]) .quote-image .img {
+                background-size:70%;
+            }
+            :host([use-default-image]) .quote-image {
+                background:none;
+            }
+            .quote-name {
+                padding:5px;
+            }
+
+            @media (max-width: 750px) {
+                :host .card-content {
+                    flex-direction: column;
+                    justify-content: center;
+                    align-items: center;
+                }
+                 .quote-info {
+                    text-align: center;
+                    align-items: center;
+                 }
+            }
+
+  </style>
+    <paper-card class="quote-card" class="text-card" animated-shadow="true">
+    <div class="card-content">
+        <div class="quote-image">
+           <div class="img" style$="[[_updateImg(defaultImage, image)]]"></div>
+         </div>
+         <div class="quote-info">
+            <div class="quote-header">{{author}}</div>
+            <div class="quote-name">{{text}}</div>
+         </div>
+
+
+    </div>
+    </paper-card>
+    </template>
+    <script>
+        Polymer({
+            is: 'quote-card',
+            properties: {
+                author: {
+                    type: String,
+                    value: ''
+                },
+                text: {
+                    type: String,
+                    value: ''
+                },
+                image: {
+                    type: String,
+                    value: ""
+                },
+                defaultImage: {
+                    type: String,
+                    value: ""
+                },
+                useDefaultImage: {
+                    type: Boolean,
+                    value: false,
+                    reflectToAttribute: true
+                }
+            },
+            _updateImg: function() {
+                if (!this.image) {
+                    this.useDefaultImage = true;
+                }
+                var img = this.image || this.defaultImage;
+                return "background-image:url('" + img + "');";
+            }
+        });
+    </script>
+</dom-module>

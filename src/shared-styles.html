@@ -12,7 +12,7 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
 
 <!-- shared styles for all views -->
 <dom-module id="shared-styles">
-  <template>
+    <template>
     <style>
       * {
         font-family: Roboto, Noto, sans-serif;
@@ -86,10 +86,13 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
 
       .card-header {
         @apply(--paper-font-headline);
+        font-size:22px;
       }
 
       .card-light {
         color: var(--paper-grey-600);
+        margin:5px;
+        font-size: 14px;
       }
 
       .card-location {
@@ -155,7 +158,13 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
       }
 
 
-
+  @media (max-width: 750px) {
+    .big-card {
+      --paper-card-header-image : {
+        
+      };
+    }
+  }
 
       .big-card {
         max-width: 600px;
@@ -163,8 +172,8 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
         --paper-card-actions: {
           bottom: 0;
           margin-bottom: 10px;
-        }
-        ;
+        };
+      
       }
 
       .btn-cnt {

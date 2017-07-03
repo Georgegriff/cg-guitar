@@ -88,7 +88,7 @@
                 --paper-spinner-color: var(--primary-color);
             }
 
-            @media (max-width: 719px) and (orientation: portrait) {
+            @media (max-width: 750px) and (orientation: portrait) {
                 .yt-card {
                     --youtube-player-card-width: var(--youtube-videos-width, 80vw);
                     --youtube-player-card-height: var(--youtube-videos-height, 45vw);
@@ -119,11 +119,11 @@
                                 video-title="[[item.snippet.title]]" channel-title="[[item.snippet.channelTitle]]" thumbnail="[[_getThumb(item)]]"
                                 video-id="[[item.id]]"></youtube-player-card>
                         </template>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <template is="dom-if" if={{hasNavigation}}>
+    </div>
+    </div>
+    </div>
+    </div>
+    <template is="dom-if" if={{hasNavigation}}>
             <div class="nav-wrap">
                 <paper-icon-button disabled$=[[_atTop]] on-click="_showPrevious" icon="av:skip-previous" title="Previous"></paper-icon-button>
                 <a disabled$=[[_atTop]] on-click="_showPrevious" class="nav-text">[[previousText]]</a>
@@ -227,23 +227,23 @@
                     value: "high"
                 }
             },
-            sortItems: function (a, b) {
+            sortItems: function(a, b) {
                 if (a.statistics && b.statistics) {
                     return parseInt(a.statistics.viewCount) <= parseInt(b.statistics.viewCount) ? 1 : -1;
                 } else {
                     return 0;
                 }
             },
-            _getThumb: function (item) {
+            _getThumb: function(item) {
                 return item.snippet.thumbnails[this.thumbQuality].url;
             },
-            _onHasNav: function () {
+            _onHasNav: function() {
                 if (this.hasNavigation) {
                     // need to force for decent lazy loading of pages
                     this.maxResults = '10';
                 }
             },
-            _showNext: function () {
+            _showNext: function() {
                 if (!this._atBottom) {
                     //TODO:: when resize window reset transform
                     var height = this.$$('youtube-player-card').offsetHeight,
@@ -262,8 +262,7 @@
                     if (Math.abs(currentTranslate) + THRESHOLD >= animateHeight) {
                         this.loadMore();
                         this._navigate(currentTranslate);
-                    }
-                    else {
+                    } else {
                         // if the translate would be bigger than height, load more, lazy load ?
                         this._atBottom = false;
                         this._navigate(currentTranslate);
@@ -271,7 +270,7 @@
                 }
 
             },
-            _showPrevious: function () {
+            _showPrevious: function() {
                 if (!this._atTop) {
                     this._atBottom = false;
                     var height = this.$$('youtube-player-card').offsetHeight;
@@ -286,11 +285,11 @@
 
 
             },
-            _navigate: function (updated) {
+            _navigate: function(updated) {
                 this.customStyle['--youtube-videos-translatey'] = updated + 'px';
                 this.updateStyles();
             },
-            _handleResponse: function (response) {
+            _handleResponse: function(response) {
                 var noStats,
                     items;
                 if (response && (response.items || response.snippet)) {
@@ -308,7 +307,7 @@
                     }
                 }
             },
-            _extractId: function (items) {
+            _extractId: function(items) {
                 // need to update for playlists
                 ids = '';
 
@@ -335,7 +334,7 @@
                 return ids;
 
             },
-            _buildVideoParams: function () {
+            _buildVideoParams: function() {
                 if (this.apiKey) {
                     let output = {
                         'key': this.apiKey,
@@ -348,7 +347,7 @@
                     console.warn('No attribute "key" provided: API Key');
                 }
             },
-            _buildParams: function () {
+            _buildParams: function() {
                 if (this.apiKey) {
                     let output = {
                         'key': this.apiKey,
@@ -374,40 +373,40 @@
                     console.warn('No attribute "key" provided: API Key');
                 }
             },
-            loadMore: function () {
+            loadMore: function() {
                 this.nextPage();
             },
-            nextPage: function () {
+            nextPage: function() {
                 this.pageToken = this._nextPageToken;
             },
-            previousPage: function () {
+            previousPage: function() {
                 // doesnt work properly
                 this.pageToken = this._prevPageToken;
             },
-            attached: function () {
+            attached: function() {
                 this.listen(this.$.ajaxVideos, 'iron-ajax-request', '_onRequest');
                 this.listen(this.$.ajaxRequest, 'iron-ajax-response', '_onResponse');
                 this.listen(this.$.ajaxVideos, 'iron-ajax-response', '_updateWithStats');
 
             },
-            detached: function () {
+            detached: function() {
                 this.unlisten(this.$.ajaxRequest, 'iron-ajax-response', '_onResponse');
                 this.unlisten(this.$.ajaxVideoss, 'iron-ajax-response', '_updateWithStats');
 
 
             },
-            _updateWithStats: function (e) {
+            _updateWithStats: function(e) {
                 var response = e.target.lastResponse;
                 if (response && response.items && response.items.length) {
                     this.videos = this._noStats.concat(response.items);
                 }
             },
-            _onRequest: function () {
+            _onRequest: function() {
                 this.$.spinner.active = true;
                 this.$.spinner.hidden = false;
 
             },
-            _onResponse: function (e) {
+            _onResponse: function(e) {
                 var response = e.target.lastResponse;
                 if (response) {
                     this._handleResponse(response);

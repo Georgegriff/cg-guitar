@@ -203,8 +203,8 @@
                                 [[viewCount]]
 
                             </template>
-                        </div>
-                        <template is="dom-if" if="[[duration]]">
+    </div>
+    <template is="dom-if" if="[[duration]]">
                             <div class="duration">
                                 <iron-icon icon="icons:query-builder"></iron-icon>
                                 [[convertDuration(duration)]]
@@ -212,13 +212,13 @@
 
                         </template>
 
-                        <a target="_blank" title="[[openExternal]]" class="open-yt" href="[[_openVideoYoutube(videoId, _youtubeVideo, _youtubePlaylist)]]">
-                            <iron-icon icon="icons:exit-to-app"></iron-icon>
-                        </a>
-                    </div>
-                </div>
-            </paper-card>
-        </div>
+    <a target="_blank" title="[[openExternal]]" class="open-yt" href="[[_openVideoYoutube(videoId, _youtubeVideo, _youtubePlaylist)]]">
+        <iron-icon icon="icons:exit-to-app"></iron-icon>
+    </a>
+    </div>
+    </div>
+    </paper-card>
+    </div>
     </template>
     <script>
         Polymer({
@@ -284,30 +284,30 @@
                     value: '//youtube.com/channel/'
                 }
             },
-            stop: function () {
+            stop: function() {
                 if (this.player) {
                     this.player.stopVideo();
                 }
             },
-            _openInYoutube: function (link, id) {
+            _openInYoutube: function(link, id) {
                 return link + id;
             },
-            _openVideoYoutube: function (id) {
+            _openVideoYoutube: function(id) {
                 if (this.videoKind === 'youtube#playlist') {
                     return this._openInYoutube(this._youtubePlaylist, id);
                 } else {
                     return this._openInYoutube(this._youtubeVideo, id);
                 }
             },
-            _updateThumb: function () {
+            _updateThumb: function() {
                 if (this.thumbnail) {
                     this.$.imageThumb.style['background-image'] = "url('" + this.thumbnail + "')";
-                    setTimeout(function () {
+                    setTimeout(function() {
                         this.$.imageCont.style['opacity'] = '0';
                     }.bind(this), 100);
                 }
             },
-            convertDuration: function (input) {
+            convertDuration: function(input) {
                 var reptms = /^PT(?:(\d+)H)?(?:(\d+)M)?(?:(\d+)S)?$/;
                 var hours = 0,
                     minutes = 0,
@@ -330,7 +330,7 @@
                 timeString += seconds;
                 return timeString;
             },
-            loadVideo: function (type, width, height, callback) {
+            loadVideo: function(type, width, height, callback) {
                 // check if ready first...
                 this.player = new this.YT.Player(this.$.video, {
                     height: height,
@@ -342,7 +342,7 @@
                         'showinfo': 0
                     },
                     events: {
-                        'onReady': function (e) {
+                        'onReady': function(e) {
                             if (type === 'playlist') {
                                 this.player.cuePlaylist({
                                     listType: "playlist",
@@ -352,8 +352,8 @@
                                 this.player.loadVideoById(this.videoId);
                             }
                         }.bind(this),
-                        'onStateChange': function (e) {
-                            this.onPlayerStateChange(e, function () {
+                        'onStateChange': function(e) {
+                            this.onPlayerStateChange(e, function() {
                                 return callback();
                             }.bind(this));
                         }.bind(this)
@@ -367,7 +367,7 @@
                     }
                 }
             },
-            getPlayerSize: function () {
+            getPlayerSize: function() {
                 var video = getComputedStyle(this.$.contentVideo);
                 if (video) {
                     return {
@@ -376,19 +376,19 @@
                     }
                 }
             },
-            playVideo: function () {
+            playVideo: function() {
                 this.$.imageThumb.style.opacity = 0;
                 this.$.playBtn.style.opacity = 0;
                 this.$.imageThumb.style['pointer-events'] = 'none';
                 this.$.playBtn.style['pointer-events'] = 'none';
                 var size = this.getPlayerSize();
-                this.loadVideo('video', size.width, size.height, function () {
+                this.loadVideo('video', size.width, size.height, function() {
                     console.log('stopped');
                 });
             },
-            ready: function () {
+            ready: function() {
                 var size;
-                this.$.yapi.addEventListener('api-load', function () {
+                this.$.yapi.addEventListener('api-load', function() {
                     this.YT = this.$.yapi.api;
                 }.bind(this));
             }

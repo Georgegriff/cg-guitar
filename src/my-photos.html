@@ -41,7 +41,7 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
                 this.feed = this.$.feed;
             },
             _loadMore: function() {
-                if (this.feed && this.scrollPos >= 0.7 || this.scrollPos === 'bottom') {
+                if (this.feed && (this.scrollPos >= 0.7 || this.scrollPos === 'bottom')) {
                     this.feed.next();
                 }
             }

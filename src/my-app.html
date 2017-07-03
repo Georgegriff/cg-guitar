@@ -35,25 +35,31 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
              :host {
                 --app-primary-color: #990033;
                 --app-secondary-color: #ddd;
+                --app-white: #fff;
                 --primary-text-color: #000;
                 --primary-color: #990033;
 
                 display: block;
             }
 
-            app-header {
-                color: #fff;
+            app-header.collapse-header {
+                color: #990033;
+                --app-header-shadow: {
+                box-shadow: inset 0px 5px 5px -3px rgba(221, 221, 221, 0.5)
+                };
+                border-bottom:solid 1px var(--app-secondary-color);
                 background-color: var(--app-primary-color);
             }
-
-            app-header paper-icon-button {
+    
+            app-header.collapse-header paper-icon-button {
+                width:55px;
+                height:55px;
                 --paper-icon-button-ink-color: white;
             }
             /** title */
 
-            app-header {
-                color: #fff;
-                background-color: var(--app-primary-color);
+            app-header.collapse-header {
+                background-color: var(--app-white);
             }
 
             app-toolbar {
@@ -94,7 +100,13 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
             [main-title] h2 {
                 font-size: 0.4em;
                 font-weight: normal;
-                margin: 10px 5px 0 5px;
+                margin: 11px 5px 0 5px;
+            }
+              .title-contents h1 {
+                color: var(--primary-text-color);
+            }  
+            .title-contents h2 {
+                color: var(--app-primary-color);
             }
 
             .title-contents {
@@ -144,9 +156,12 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
             .title-contents .captions {
                 display: flex;
             }
+         
+
+          
 
 
-            @media (max-width: 719px) {
+            @media (max-width: 750px) {
                 app-toolbar {
                     height: 60px;
                 }
@@ -155,11 +170,19 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
                     display: none;
                 }
                 [main-title] img {
-                    height: 50%;
+                    height: 46%;
                 }
+
+                .title-contents>* {
+                padding: 0;
+                margin: 0;
+                line-height: 0;
+                }
+
                 [main-title] h1 {
-                    margin-top: 5px;
+                    margin-top: 16px;
                 }
+                
                 .content {
                     max-width: 400px;
                 }
@@ -176,12 +199,15 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
 
                 [condensed-title] h2 {
                     font-size: 0.8em;
-                    margin: 10px 5px 0 5px;
+                    margin: 5px 5px 0 5px;
                 }
+
+               
 
                 [condensed-title] img {
                     height: 3em;
                 }
+             
 
             }
         </style>
@@ -191,7 +217,7 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
 
         <app-drawer-layout fullbleed>
             <!-- Drawer content -->
-            <app-drawer id="drawer">
+            <app-drawer swipe-open id="drawer">
                 <cg-sidebar id="sidebar" page="[[page]]"></cg-sidebar>
 
             </app-drawer>
@@ -200,48 +226,50 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
 
             <!-- Main content -->
             <app-header-layout id="layout">
-
-                <app-header effects="resize-snapped-title" condenses fixed>
-                    <app-toolbar class="top-toolbar">
-                        <paper-icon-button icon="my-icons:menu" drawer-toggle></paper-icon-button>
-                        <div condensed-title>
-                            <div class="title-contents">
-                                <img src="../images/cg-logo.svg" alt="">
-                                <div class="titles">
-                                    <h1>CG Guitar</h1>
-                                    <div class="captions">
-                                        <h2>Enjoy</h2>
-                                        <h2>Learn</h2>
-                                        <h2>Achieve</h2>
-                                        <h2>Perform</h2>
+                    
+                    <app-header class="collapse-header" effects=" waterfall resize-snapped-title" condenses fixed>
+                                <app-toolbar class="top-toolbar">
+                                     <div class="tog-wrap">
+                                        <paper-icon-button class="drawer-tog" icon="my-icons:menu" drawer-toggle></paper-icon-button>
                                     </div>
-                                </div>
+                                    <div condensed-title>
+                                        <div class="title-contents">
+                                            <img src="../images/cg-logo.svg" alt="">
+                                            <div class="titles">
+                                                <h1>CG Guitar</h1>
+                                                <div class="captions">
+                                                    <h2>Enjoy</h2>
+                                                    <h2>Learn</h2>
+                                                    <h2>Achieve</h2>
+                                                    <h2>Perform</h2>
+                                                </div>
+                                            </div>
 
-                            </div>
-                        </div>
+                                        </div>
+                                    </div>
 
-                    </app-toolbar>
-                    <app-toolbar class="bottom-toolbar">
+                                </app-toolbar>
+                                <app-toolbar class="bottom-toolbar">
+                                    <div main-title>
+                                        <div class="title-contents">
+                                            <img src="../images/cg-logo.svg" alt="">
+                                            <h1>CG Guitar</h1>
+                                            <div class="captions">
+                                                <h2>Enjoy</h2>
+                                                <h2>Learn</h2>
+                                                <h2>Achieve</h2>
+                                                <h2>Perform</h2>
+                                            </div>
 
-                        <div main-title>
-                            <div class="title-contents">
-                                <img src="../images/cg-logo.svg" alt="">
-                                <h1>CG Guitar</h1>
-                                <div class="captions">
-                                    <h2>Enjoy</h2>
-                                    <h2>Learn</h2>
-                                    <h2>Achieve</h2>
-                                    <h2>Perform</h2>
-                                </div>
+                                        </div>
+                                    </div>
 
-                            </div>
-                        </div>
+                                </app-toolbar>
+                
+                    </app-header>
 
-                    </app-toolbar>
-                </app-header>
-
-                <neon-animated-pages id="animPages" selected="[[page]]" attr-for-selected="name" fallback-selection="view404" entry-animation="slide-from-right-animation"
-                    exit-animation="slide-left-animation" role="main">
+                <neon-animated-pages id="animPages" selected="[[page]]" attr-for-selected="name" fallback-selection="view404" entry-animation="slide-from-left-animation"
+                    exit-animation="slide-right-animation" role="main">
                     <my-lessons id="lessons" name="lessons"></my-lessons>
                     <my-about id="about" name="about"></my-about>
                     <my-session id="session" name="session"></my-session>
@@ -288,7 +316,7 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
                 '_routePageChanged(routeData.page)',
             ],
 
-            _routePageChanged: function (page) {
+            _routePageChanged: function(page) {
                 this.page = page || 'lessons';
 
                 if (!this.$.drawer.persistent) {
@@ -296,7 +324,7 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
                 }
             },
             // for cache busting with my hashed files #lame
-            _lookUpPages: function (name) {
+            _lookUpPages: function(name) {
                 var pages = {
                     "my-lessons.html": "src/my-lessons.html",
                     "my-about.html": "src/my-about.html",
@@ -310,19 +338,19 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
                 var page = pages[name] || name;
                 return page.replace("src/", "");
             },
-            _pageChanged: function (page) {
+            _pageChanged: function(page) {
                 // Load page import on demand. Show 404 page if fails
                 var resolvedPageUrl = this.resolveUrl(this._lookUpPages('my-' + page + '.html'));
                 this.importHref(resolvedPageUrl, null, this._showPage404, true);
             },
 
-            _showPage404: function () {
+            _showPage404: function() {
                 this.page = 'view404';
             },
-            ready: function () {
+            ready: function() {
                 this.scrollArea = 'document';
             },
-            _scrollHandler: function () {
+            _scrollHandler: function() {
                 var scrollArea = this.scrollTarget.querySelector('body'),
                     scrollTop = scrollArea.scrollTop,
                     windowHeight,
@@ -349,7 +377,7 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
                 }
 
             },
-            _isTopOrBottom: function () {
+            _isTopOrBottom: function() {
                 this.scrollPos = this.isScrollBottom ? 'bottom' : this.isScrollTop ? 'top' : this.scrollPos;
             }
 

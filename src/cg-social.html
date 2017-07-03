@@ -6,8 +6,7 @@
                 box-sizing: content-box;
             }
             .container {
-                width: 245px;
-                height:160px;
+                width:100%;
                 display: -webkit-flex;
                 display: flex;
                 -webkit-align-items: center;
@@ -20,11 +19,11 @@
                 align-content: center;
             }
             .block {
-                height:72px;
-                width:72px;
-                margin: 5px;
+                height:var(--cg-social-icon-size, 57px);
+                width:var(--cg-social-icon-size, 57px);
+                margin: var(--cg-social-icon-margin, 15px);
                 background:none;
-                background-size:56px;
+                background-size:100%;
                 background-repeat: no-repeat;
                 background-position: center;
             }
@@ -50,9 +49,10 @@
         </style>
         <div class="container">
             <a target="_blank" href="https://www.facebook.com/CGGuitar"><div class="fb block"></div></a>
-            <a target="_blank" href="https://instagram.com/cg_guitar/"><div class="ig block"></div></a>
             <a target="_blank" href="https://www.youtube.com/channel/UCReQS8UwfrhDRGTowiXqVKg"><div class="yt block"></div></a>
+            <a target="_blank" href="https://instagram.com/cg_guitar/"><div class="ig block"></div></a>
             <a target="_blank" href="https://twitter.com/cg_guitar"><div class="tw block"></div></a>
+
         </div>
        
     </template>

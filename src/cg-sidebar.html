@@ -27,7 +27,6 @@
             }
 
             #pagesSelector {
-                padding-top: 7px;
                 display: block;
             }
 
@@ -61,8 +60,8 @@
 
             .side-bar-image {
                 margin: 10px 0 0 10px;
-                width: var(--cd-sidebar-img-size, 150px);
-                height: var(--cd-sidebar-img-size, 150px);
+                width: var(--cd-sidebar-img-size, 145px);
+                height: var(--cd-sidebar-img-size, 145px);
                 border: solid 2px white;
                 border-radius: 100%;
                 overflow: hidden;
@@ -77,9 +76,13 @@
                 background-image: url('../images/guitarist1.jpg');
             }
 
-            @media (max-height: 719px) {
+            @media (max-height: 750px) and (orientation:portrait) {
                  :host {
                     --cd-sidebar-img-size: 100px;
+                }
+                cg-social {
+                    --cg-social-icon-size :  37px;
+                    --cg-social-icon-margin: 10px;
                 }
 
                 #pagesSelector {
@@ -87,7 +90,6 @@
                     display: block;
                 }
             }
-        </style>
         </style>
         <div class="top-info">
             <a href="/">
@@ -134,7 +136,7 @@
                     value: []
                 }
             },
-            nextPage: function () {
+            nextPage: function() {
                 var current = this._names.indexOf(this.page),
                     newIndex = current + 1,
                     newPage = this._names[newIndex];
@@ -144,7 +146,7 @@
                 }
                 return newPage;
             },
-            previousPage: function () {
+            previousPage: function() {
                 var current = this._names.indexOf(this.page),
                     newIndex = current - 1,
                     newPage = this._names[newIndex];
@@ -154,8 +156,9 @@
                 return newPage;
 
             },
-            ready: function () {
-                var pages = this.$.pages.querySelectorAll('cg-links'), page;
+            ready: function() {
+                var pages = this.$.pages.querySelectorAll('cg-links'),
+                    page;
 
                 for (i = 0; i < pages.length; ++i) {
                     page = pages[i];
