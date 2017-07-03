@@ -57,12 +57,10 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
             }
 
             app-toolbar {
-                height: 80px;
+                height: 85px;
             }
 
             [condensed-title] {
-
-
                 /* The difference in font size is used to calculate the scale of the title in the transition. */
                 font-size: 16px;
             }
@@ -185,7 +183,6 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
                     height: 3em;
                 }
 
-              
             }
         </style>
 
@@ -204,7 +201,7 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
             <!-- Main content -->
             <app-header-layout id="layout">
 
-                <app-header effects="resize-title" condenses fixed>
+                <app-header effects="resize-snapped-title" condenses fixed>
                     <app-toolbar class="top-toolbar">
                         <paper-icon-button icon="my-icons:menu" drawer-toggle></paper-icon-button>
                         <div condensed-title>
@@ -298,10 +295,24 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
                     this.$.drawer.close();
                 }
             },
-
+            // for cache busting with my hashed files #lame
+            _lookUpPages: function (name) {
+                var pages = {
+                    "my-lessons.html": "src/my-lessons.html",
+                    "my-about.html": "src/my-about.html",
+                    "my-session.html": "src/my-session.html",
+                    "my-testimonials.html": "src/my-testimonials.html",
+                    "my-contact.html": "src/my-contact.html",
+                    "my-photos.html": "src/my-photos.html",
+                    "my-view404.html": "src/my-view404.html",
+                    "my-videos.html": "src/my-videos.html",
+                };
+                var page = pages[name] || name;
+                return page.replace("src/", "");
+            },
             _pageChanged: function (page) {
                 // Load page import on demand. Show 404 page if fails
-                var resolvedPageUrl = this.resolveUrl('my-' + page + '.html');
+                var resolvedPageUrl = this.resolveUrl(this._lookUpPages('my-' + page + '.html'));
                 this.importHref(resolvedPageUrl, null, this._showPage404, true);
             },
 

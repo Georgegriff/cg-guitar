@@ -3,3 +3,5 @@ build/default/
 build/bundled/
 node_modules/
 build/
+dist/
+.tmp/
