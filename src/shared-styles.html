@@ -91,8 +91,11 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
 
       .card-light {
         color: var(--paper-grey-600);
-        margin:5px;
-        font-size: 14px;
+        margin:2px;
+        font-size: 13px;
+      }
+      .card-actions {
+        font-size: 13px;
       }
 
       .card-location {
@@ -103,19 +106,36 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
 
       .wrap {
         display: flex;
-        flex-direction: row;
+        flex-direction: column;
         flex-wrap: wrap;
         justify-content: center;
         align-items: center;
       }
 
+      .flex-push-wrap {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+      }
+      .f-wrap {
+        display:flex;
+        flex-wrap: wrap;
+        flex-direction: column;
+        
+      }
+      .flex-push {
+        flex:1;
+      }
 
+      .flex-end {
+        display: flex;
+        justify-content: flex-end;
+      }
 
       .levels {
         display: flex;
         flex-direction: column;
         justify-content: center;
-        text-align: center;
         align-items: center;
         flex: 1;
         margin: 10px;
@@ -128,7 +148,7 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
       .text-card {
         margin: 9px;
         --paper-card-header-text: {
-          padding: 3px;
+          margin-left:16px;
         }
       }
 
@@ -159,9 +179,9 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
 
 
   @media (max-width: 750px) {
-    .big-card {
+    .wide-card {
       --paper-card-header-image : {
-        
+          --iron-image-height: 300px;
       };
     }
   }

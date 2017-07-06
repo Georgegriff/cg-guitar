@@ -25,6 +25,8 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
 <link rel="import" href="../bower_components/iron-scroll-target-behavior/iron-scroll-target-behavior.html">
 <link rel="import" href="../bower_components/iron-selector/iron-selector.html">
 <link rel="import" href="../bower_components/paper-icon-button/paper-icon-button.html">
+<link rel="import" href="../bower_components/iron-ajax/iron-ajax.html">
+
 <link rel="import" href="cg-sidebar.html">
 
 <link rel="import" href="my-icons.html">
@@ -32,16 +34,22 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
 <dom-module id="my-app">
     <template>
         <style>
+          
              :host {
                 --app-primary-color: #990033;
                 --app-secondary-color: #ddd;
+                --app-sidebar-color:#424242;
                 --app-white: #fff;
-                --primary-text-color: #000;
+                 --app-link-dark: #fff;
+                --primary-text-color: #424242;
                 --primary-color: #990033;
 
                 display: block;
             }
 
+            a {
+                color: var( --app-sidebar-color);
+            }
             app-header.collapse-header {
                 color: #990033;
                 --app-header-shadow: {
@@ -63,7 +71,7 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
             }
 
             app-toolbar {
-                height: 80px;
+                height: 70px;
             }
 
             [condensed-title] {
@@ -79,7 +87,7 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
 
             [main-title] {
                 position: absolute;
-                top: -85px;
+                top: -75px;
                 bottom: 0;
                 left: 0;
                 right: 0;
@@ -91,18 +99,18 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
                 font-size: 32px;
             }
 
-            [main-title] h1 {
+            [main-title] img.logo-text {
                 font-size: 0.8em;
-                margin-top: 10px;
-                display: flex;
+                margin-top:2px;
+                height: 0.8em;
             }
 
             [main-title] h2 {
                 font-size: 0.4em;
                 font-weight: normal;
-                margin: 11px 5px 0 5px;
+                margin: 5px 5px 0 5px;
             }
-              .title-contents h1 {
+              .title-contents img.logo-text {
                 color: var(--primary-text-color);
             }  
             .title-contents h2 {
@@ -111,7 +119,7 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
 
             .title-contents {
                 display: flex;
-                height: 165px;
+                height: 145px;
                 justify-content: center;
                 text-align: center;
                 align-items: center;
@@ -125,21 +133,20 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
                 flex-direction: row;
             }
 
-            .title-contents img {
-                height: 3em;
+            .title-contents img.logo {
+                height: 2.5em;
             }
 
             .title-contents>* {
                 padding: 0;
-                margin: 5px 0 4px 0;
-                line-height: 0;
+            }
+            [condensed-title] .title-contents>* {
+                line-height: 0.5em;
             }
 
-
-            [condensed-title] h1 {
-                font-size: 1.5em;
-                margin-top: 10px;
-                display: flex;
+            [condensed-title] img.logo-text {
+                font-size: 1.3em;
+                height:1.3em;
                 margin-left: 5px;
             }
 
@@ -149,14 +156,16 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
                 margin: 10px 5px 0 5px;
             }
 
-            [condensed-title] img {
-                height: 4.5em;
+            [condensed-title] img.logo {
+                height: 3.5em;
             }
 
             .title-contents .captions {
                 display: flex;
             }
-         
+            app-drawer#drawer {
+                --app-drawer-width : 240px;
+            }
 
            :host([is-full-screen]) app-drawer,:host([is-full-screen]) app-header {
                    visibility: hidden;
@@ -171,7 +180,7 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
                 [main-title] .captions {
                     display: none;
                 }
-                [main-title] img {
+                [main-title] img.logo {
                     height: 46%;
                 }
 
@@ -181,8 +190,8 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
                 line-height: 0;
                 }
 
-                [main-title] h1 {
-                    margin-top: 16px;
+                [main-title] img.logo-text {
+                    margin-top: 10px;
                 }
                 
                 .content {
@@ -192,10 +201,10 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
                     width: 100%;
                 }
 
-                [condensed-title] h1 {
+                [condensed-title] img.logo-text {
                     font-size: 1em;
+                    height:1em;
                     margin-top: 10px;
-                    display: flex;
                     margin-left: 5px;
                 }
 
@@ -206,7 +215,7 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
 
                
 
-                [condensed-title] img {
+                [condensed-title] img.logo {
                     height: 3em;
                 }
                 
@@ -214,6 +223,13 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
 
             }
         </style>
+
+        <!-- load site data -->
+        <iron-ajax
+        auto
+        url="../data.json"
+        handle-as="json"
+        last-response="{{data}}"></iron-ajax>
 
         <app-location route="{{route}}"></app-location>
         <app-route route="{{route}}" pattern="/:page" data="{{routeData}}" tail="{{subroute}}"></app-route>
@@ -237,13 +253,13 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
                                     </div>
                                     <div condensed-title>
                                         <div class="title-contents">
-                                            <img src="../images/cg-logo.svg" alt="">
+                                            <img class="logo" src="../images/cg-logo.svg" alt=""/>
                                             <div class="titles">
-                                                <h1>CG Guitar</h1>
+                                                <img class="logo-text" src="../images/cg_text.svg"  alt="CG Guitar">
                                                 <div class="captions">
                                                     <h2>Enjoy</h2>
-                                                    <h2>Learn</h2>
                                                     <h2>Achieve</h2>
+                                                    <h2>Learn</h2>
                                                     <h2>Perform</h2>
                                                 </div>
                                             </div>
@@ -255,12 +271,12 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
                                 <app-toolbar class="bottom-toolbar">
                                     <div main-title>
                                         <div class="title-contents">
-                                            <img src="../images/cg-logo.svg" alt="">
-                                            <h1>CG Guitar</h1>
+                                            <img class="logo" src="../images/cg-logo.svg" alt="">
+                                            <img class="logo-text" src="../images/cg_text.svg"  alt="CG Guitar">
                                             <div class="captions">
                                                 <h2>Enjoy</h2>
-                                                <h2>Learn</h2>
                                                 <h2>Achieve</h2>
+                                                <h2>Learn</h2>
                                                 <h2>Perform</h2>
                                             </div>
 
@@ -273,10 +289,10 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
 
                 <neon-animated-pages id="animPages" selected="[[page]]" attr-for-selected="name" fallback-selection="view404" entry-animation="slide-from-left-animation"
                     exit-animation="slide-right-animation" role="main">
-                    <my-lessons id="lessons" name="lessons"></my-lessons>
-                    <my-about id="about" name="about"></my-about>
-                    <my-session id="session" name="session"></my-session>
-                    <my-testimonials id="testimonials" name="testimonials"></my-testimonials>
+                    <my-lessons data="{{data.lessons}}" id="lessons" name="lessons"></my-lessons>
+                    <my-about data="{{data.about}}" id="about" name="about"></my-about>
+                    <my-session data="{{data.session}}" id="session" name="session"></my-session>
+                    <my-testimonials data="{{data.testimonials}}" testimonials="{{_testimonials}}" id="testimonials" name="testimonials"></my-testimonials>
                     <my-contact id="contact" name="contact"></my-contact>
                     <my-photos scroll-pos="{{scrollPos}}" id="photos" name="photos"></my-photos>
                     <my-videos scroll-pos="{{scrollPos}}" id="videos" name="videos"></my-videos>
@@ -315,6 +331,19 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
                     type: Boolean,
                     value: false,
                     reflectToAttribute: true
+                },
+                data: {
+                    type: Object,
+                    value: null,
+                    observer: '_processData'
+                },
+                _testimonials: {
+                    type: Object,
+                    value: null
+                },
+                _generalTestimonial: {
+                    type: String,
+                    value: 'General'
                 }
             },
             behaviors: [
@@ -323,7 +352,30 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
             observers: [
                 '_routePageChanged(routeData.page)',
             ],
+            _processData: function() {
+                if (this.data) {
+                    var i,
+                        lessonType,
+                        lessonTypeName,
+                        testimonials;
+                    testimonialMap = this.data.testimonials.data;
+                    this._lessonTypes = this.data.lessons.lessonTypes;
+                    // defaults
 
+                    this._testimonials = [];
+                    for (i = 0; i < this._lessonTypes.length; i++) {
+                        // lessons type matches one defined in 
+                        lessonType = this._lessonTypes[i];
+                        if (lessonType) {
+                            lessonTypeName = lessonType.name;
+                            testimonials = testimonialMap[lessonType.name];
+                            this._testimonials = this._testimonials.concat(testimonials);
+                            lessonType.testimonials = testimonials;
+                        }
+                    }
+                    this._testimonials = this._testimonials.concat(testimonialMap[this._generalTestimonial]);
+                }
+            },
             _routePageChanged: function(page) {
                 this.page = page || 'lessons';
 

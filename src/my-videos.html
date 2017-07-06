@@ -16,7 +16,7 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
 <link rel="import" href="shared-styles.html">
 
 <dom-module id="my-videos">
-  <template>
+    <template>
     <style include="shared-styles">
        :host {
         display: block;
@@ -28,7 +28,7 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
     <div class="wrap">
 
       <p class="quote">
-        Want to see videos of my Band and Session work? Head over <a href="/session">here</a>.
+       Want to see videos of my Band? <a href="/session">Please click here.</a>
       </p>
 
       <iron-ajax id="ajaxRequest" auto url="https://www.googleapis.com/youtube/v3/search" params=[[_buildParams(channelId,apiKey)]]
@@ -41,56 +41,56 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
 
 
     </div>
-  </template>
+    </template>
 
-  <script>
-    Polymer({
-      is: 'my-videos',
-      properties: {
-        channelId: {
-          type: String,
-          value: 'UCReQS8UwfrhDRGTowiXqVKg'
-        },
-        apiKey: {
-          type: String,
-          value: 'AIzaSyCJCokkQUEbcz2hUSzk3CtYU-g2v9CS-uM'
-        },
-        nextPageToken: {
-          type: String,
-          value: ''
-        },
-        scrollPos: {
-          type: String,
-          value: null,
-          notify: true,
-          observer: '_loadMore'
-        }
-      },
-      _filterPlaylists: function () {
-        // exluce the playlists on the band session page
-      },
-      _loadMore: function () {
-        if (this.scrollPos >= 0.7 || this.scrollPos === 'bottom') {
-       //   this.$.videos.loadMore();
-        }
-      },
-      _buildParams: function () {
-        if (this.apiKey) {
-          let output = {
-            'key': this.apiKey,
-            'part': 'snippet',
-            'type': 'playlist',
-            'maxResults': '50',
-            'channelId': this.channelId
-          };
-          return output;
-        } else {
-          console.warn('No attribute "key" provided: API Key');
-        }
-      }
+    <script>
+        Polymer({
+            is: 'my-videos',
+            properties: {
+                channelId: {
+                    type: String,
+                    value: 'UCReQS8UwfrhDRGTowiXqVKg'
+                },
+                apiKey: {
+                    type: String,
+                    value: 'AIzaSyCJCokkQUEbcz2hUSzk3CtYU-g2v9CS-uM'
+                },
+                nextPageToken: {
+                    type: String,
+                    value: ''
+                },
+                scrollPos: {
+                    type: String,
+                    value: null,
+                    notify: true,
+                    observer: '_loadMore'
+                }
+            },
+            _filterPlaylists: function() {
+                // exluce the playlists on the band session page
+            },
+            _loadMore: function() {
+                if (this.scrollPos >= 0.7 || this.scrollPos === 'bottom') {
+                    //   this.$.videos.loadMore();
+                }
+            },
+            _buildParams: function() {
+                if (this.apiKey) {
+                    let output = {
+                        'key': this.apiKey,
+                        'part': 'snippet',
+                        'type': 'playlist',
+                        'maxResults': '50',
+                        'channelId': this.channelId
+                    };
+                    return output;
+                } else {
+                    console.warn('No attribute "key" provided: API Key');
+                }
+            }
 
 
 
-    });
-  </script>
+        });
+    </script>
 </dom-module>

@@ -11,7 +11,9 @@
                 display: block;
                 height: 100%;
                 overflow-y: auto;
+                color: var(--app-link-dark);
                 overflow-x: hidden;
+                background: var(--app-sidebar-color);
             }
 
             #pages {
@@ -22,7 +24,7 @@
                 display: block;
                 padding: 0 16px;
                 text-decoration: none;
-                color: var(--app-secondary-color);
+                color: var(--app-white);
                 line-height: 40px;
             }
 
@@ -40,13 +42,14 @@
                 align-items: center;
                 justify-content: center;
                 flex-direction: column;
+                margin-top:5px;
                 line-height: 1.5em;
             }
 
             .email a,
             .tele a {
                 text-decoration: none;
-                color: var(--app-primary-color);
+                color: var(--app-white);
                 font-weight: normal;
             }
 
@@ -73,17 +76,17 @@
                 background-size: cover;
                 background-position-x: 50%;
                 background-color: var(--app-primary-color);
-                background-image: url('../images/guitarist1.jpg');
+                background-image: url('../images/main-icon.jpg');
             }
 
             @media (max-height: 750px) and (orientation:portrait) {
-                 :host {
-                    --cd-sidebar-img-size: 100px;
-                }
-                cg-social {
-                    --cg-social-icon-size :  37px;
-                    --cg-social-icon-margin: 10px;
-                }
+                    :host {
+                        --cd-sidebar-img-size: 100px;
+                    }
+                    cg-social {
+                        --cg-social-icon-size :  37px;
+                        --cg-social-icon-margin: 10px;
+                    }
 
                 #pagesSelector {
                     padding-top: 0px;
@@ -112,7 +115,7 @@
                 <cg-links active="[[page]]" text="Photos" href="/photos" name="photos" icon="image:photo-library"></cg-links>
                 <cg-links active="[[page]]" text="Videos" href="/videos" name="videos" icon="av:videocam"></cg-links>
                 <cg-links active="[[page]]" text="Testimonials" href="/testimonials" name="testimonials" icon="maps:person-pin"></cg-links>
-                <cg-links active="[[page]]" text="Band/Session Work" href="/session" name="session" icon="image:audiotrack"></cg-links>
+                <cg-links active="[[page]]" text="Band/Sessions" href="/session" name="session" icon="image:audiotrack"></cg-links>
             </div>
 
 

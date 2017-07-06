@@ -91,10 +91,10 @@
             }
 
   </style>
-    <paper-card class="quote-card" class="text-card" animated-shadow="true">
+    <paper-card elevation="{{elevation}}" class="quote-card" class="text-card" animated-shadow="true">
     <div class="card-content">
         <div class="quote-image">
-           <div class="img" style$="[[_updateImg(defaultImage, image)]]"></div>
+           <div class="img" style$="{{_updateImg(defaultImage)}}"></div>
          </div>
          <div class="quote-info">
             <div class="quote-header">{{author}}</div>
@@ -119,16 +119,20 @@
                 },
                 image: {
                     type: String,
-                    value: ""
+                    value: null
                 },
                 defaultImage: {
                     type: String,
-                    value: ""
+                    value: null
                 },
                 useDefaultImage: {
                     type: Boolean,
                     value: false,
                     reflectToAttribute: true
+                },
+                elevation: {
+                    type: Number,
+                    value: 1
                 }
             },
             _updateImg: function() {

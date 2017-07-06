@@ -18,12 +18,7 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
         <style include="shared-styles">
              :host {
                 display: block;
-            }
-
-            .lvl-title {
-                text-align: center;
-
-            }
+            }   
          
             .levels {
                  display: flex;
@@ -52,12 +47,12 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
                 <div class="levels">
                     
                     <div class="lvl-title quote">
-                        What do people say about CG Guitar?
+                       {{data.title}}
                     </div>
                     <div class="t-wrap">
 
                         <template is="dom-repeat" items="{{testimonials}}">
-                            <quote-card default-image="../../images/default-test.svg" author="{{item.author}}" text="{{item.text}}"></quote-card>
+                            <quote-card image="{{item.image}}" default-image="../../images/default-test.svg" author="{{item.name}}" text="{{item.text}}"></quote-card>
 
                         </template>
     </div>
@@ -72,46 +67,11 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
             properties: {
                 testimonials: {
                     type: Array,
-                    value: [{
-                        "author": "Victoria Hicks",
-                        "text": "Charlie has taught our 11 year old for more than two years. Joe really enjoys his lessons and Charlie has kept him motivated with a great selection of tunes he wants to learn as well as what he needs to follow for the Rock School grade 1 (and now grade 2) course. Charlie is patient and encouraging with young students, and is also well organised, proactive and flexible which is great from a parents point of view. "
-                    }, {
-                        "author": "Alison Mair",
-                        "text": "My 11 year old son actually enjoys having his guitar lessons now! Charlie structures the lessons around my son's ability and taste in music and remains positive and enthusiastic throughout the session."
-                    }, {
-                        "author": "Patrick Mair",
-                        "text": "Lessons with Charlie are fun! "
-                    }, {
-                        "author": "Anne Poulter",
-                        "text": "My son thoroughly enjoys his guitar lessons. He really loves playing with Charlie and trying out the new techniques he has learned. He is becoming a good little musician, but for me it isn’t just about him learning to play the guitar — he is exploring different kinds of music from rock classics to more modern songs and having a lot of fun doing it."
-                    }, {
-                        "author": "Sarah Bryans",
-                        "text": "My son has been having guitar lessons from Charlie, for the past 4 years. Charlie has taken him through Grade 1 and 2, and he passed both exams with a Merit. Charlie is professional in his teaching, and my son listens to his advice. My son has recently changed his guitar, and Charlie was on hand to help and advise us. I would highly recommend Charlie as a guitar teacher."
-                    }, {
-                        "author": "Sonya Turpin",
-                        "text": "Charlie was recommended to me about 2 1/2 years ago for guitar lessons for my son Richie, who at the time was 6 years old, painfully shy and completely new to guitar. Charlie's friendly and fun approach immediately won Richie over and he has loved playing the guitar ever since. Charlie was able to adapt when Richie floated, undecided, between acoustic and electric guitar and offered good advice for both.  Richie has come on in leaps & bounds since starting with Charlie, will now sit and happily practice and is proud of his progress. Charlie always has a lesson planned and goals for Richie but is flexible where necessary and always patient and kind. He has provided professional advice on instruments, equipment and progression for Richie and is a great communicator both with Richie and my husband and I. Charlie is dependable and trustworthy and I highly recommend him as a guitar teacher!"
-                    }, {
-                        "author": "Lucy Ford",
-                        "text": "Charlie has been a fantastic teacher to our 7 year old son over the last year. Lessons are always fun and relaxed and they have a great rapport. He is learning songs across many different genres, as well as any current tracks my son requests. Charlie has the patience of a Saint and we trust him implicitly. I would not hesitate at all in recommending him to anyone looking for a great teacher."
-                    }, {
-                        "author": "Elliot Pett, aged 11",
-                        "text": "Charlie is really patient. If you don't understand he's happy to go over it again and again at your speed until you get the hang of it."
-                    }, {
-                        "author": "Stuart Pett, Elliot's Dad",
-                        "text": "Charlie gave my son his first guitar lesson at the age of 7 and had him instantly hooked! He engages well with kids and maintains interest with variations in lessons and and techniques. He communicates well at the appropriate level and is able to balance the practical and theoretical side to suit his student's approach and interests. He will help students towards their personal goals and can quickly change or adapt a lesson plan on demand. I am particularly impressed that Charlie is still able to be an effective teacher via Skype, something that I would have previously considered impractical but that I was prepared to trial since he taught my son so effectively face-to-face - we now happily conduct all lessons this way as a matter of routine. Charlie is also very good at managing poor concentration in a sympathetic way!"
-                    }, {
-                        "author": "Becky King",
-                        "text": "Charlie has been teaching my son (aged seven), for just over 12 months. He always customises the lessons to capture his interest with a wide range of music adjusted to his level of skill. This combined with a great balance of patience, talent, enthusiasm and humour has completely inspired him and kept him engaged and motivated. My son sums up the lessons perfectly (below)."
-                    }, {
-                        "author": "Charlie King, aged 7",
-                        "text": "Charlie is epic, guitar is awesome."
-                    }, {
-                        "author": "Jody Cooksley",
-                        "text": "Charlie’s easy and enthusiastic teaching style has completely transformed my son’s playing and reawakened his love of the guitar. Previous lessons had left him uninspired but he now needs no prompting to practise. I would highly recommend Charlie as a teacher"
-                    }, {
-                        "author": "Ben Cooksley, aged 11",
-                        "text": "I really enjoy my lessons with Charlie, he chooses great songs for us to learn and he is very kind and patient"
-                    }]
+                    value: null
+                },
+                data: {
+                    type: Object,
+                    value: null
                 }
             }
         });

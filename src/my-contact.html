@@ -15,7 +15,7 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
 
 
 <dom-module id="my-contact">
-  <template>
+    <template>
     <style include="shared-styles">
        :host {
         display: block;
@@ -40,9 +40,14 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
         align-items: center;
         flex-direction: column;
       }
+      :host .card-actions {
+        max-width: 100%;
+        padding:0 !important;
+        width: 100%;
+      }
     </style>
     <div class="wrap">
-      <p class="quote">If you'd wish to contact Charlie regarding lessons or session work please use the contact form below. <br/>Alternatively
+      <p class="quote">If you'd wish to contact Charlie regarding guitar lessons or session work then please use the contact form below.<br/>Alternativelypa
         you can email <a href="mailto:cgguitar@outlook.com">cgguitar@outlook.com</a> or call <a href="tel:++447861538564">++447861538564</a>.</p>
       <div class="contact-container">
         <paper-card heading="Contact" class="contact-card" animated-shadow="false">
@@ -56,9 +61,9 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
     </div>
   </template>
 
-  <script>
-    Polymer({
-      is: 'my-contact'
-    });
-  </script>
+    <script>
+        Polymer({
+            is: 'my-contact'
+        });
+    </script>
 </dom-module>

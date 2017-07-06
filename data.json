@@ -1,0 +1,123 @@
+{
+    "lessons": {
+        "lessonCard": {
+            "name": "Kickstart Your Guitar Lessons Today",
+            "text": "Whether you're looking to start guitar lessons for the first time or you need help and advice on how to develop your playing, CG Guitar can accommodate for all! 1-2-1, group lessons and workshops available.",
+            "footer": "If you wish to enquire about guitar lessons then please get in touch by clicking the button below"
+        },
+        "lessonTypes": [{
+                "name": "Beginners",
+                "text": "Play music from the first lesson! Kick start your guitar playing with enjoyable and frustration free methods."
+            },
+            {
+                "name": "Intermediates",
+                "text": "Effective practice regimes, coaching to build a solid foundation of technique and repertoire, ways to improve your improvisation and composition skills."
+            },
+            {
+                "name": "Advanced",
+                "text": "Appropriate coaching and mentoring to study music/guitar in further education, to prepare for live performances and advice on ways to take your playing to the next level."
+            }
+        ],
+        "seeTestimonials": "See what my students have to say, over on the Testimonials page",
+        "lessonTypesMore": "Read more..."
+    },
+    "testimonials": {
+        "title": "What do people have to say about CG Guitar?",
+        "data": {
+            "Beginners": [{
+                "name": "Anne Poulter",
+                "text": "Since he started taking lessons from Charlie, my son's love of the guitar and music, in general, has grown and grown. Charlie's energy and enthusiasm are infectious, and I have been so impressed by my son's progress. He is working through the Rock School grades and is also learning to play popular songs, both alone and with other students. We feel very lucky to have discovered CG Guitar Tuition."
+            }],
+            "Intermediates": [{
+                "name": "Stuart Pett",
+                "text": "Charlie has been teaching my son for about 5 years, taking him from complete novice through to playing some pretty impressive rock songs as well as a couple of music gradings. Charlie is patient when necessary and tailors his tuition to the tastes, needs and aspirations of his students. Charlie initially taught face-to-face but now lessons are conducted via Skype to surprisingly good effect. I cannot recommend CG Guitar highly enough!”"
+            }],
+            "Advanced": [{
+                "name": "Johno Madgwick",
+                "text": "I've been have lessons with CG Guitar for a few months now. I considered myself as a proficient player but wanted to progress myself to a higher standard. Charlie has tailored the lessons to cover advanced topics such as playing with odd time signatures, music theory (extended chords, Modal theory) and Improvisation skills (playing over changes, modal interchange, arpeggio development). It has been great to solidify my previous/current knowledge and help fill in any gaps and getting me to tackle subjects i was struggling with. His supporting resources such as transcriptions are always flawless. Charlie has a great understanding of music and imparting that information to his students."
+            }],
+            "General": [{
+                    "name": "Uta Roggendorf",
+                    "text": "Charlie has been teaching our 8 year old daughter for just over a year now. She's made great progress from the first lesson when she learned her first song already - very much to my surprise! Charlie is very patient and has a lot of tricks up his sleeve to keep children engaged and interested."
+                },
+                {
+                    "name": "Clare Denton",
+                    "text": "Charlie is a truly inspirational guitar teacher - he really connects with his students. My son thoroughly enjoys his lessons and loves learning a range of great rock tunes. Since taking guitar lessons with Charlie, his ability and passion for playing have increased 100%!"
+                },
+                {
+                    "name": "Laura Hanna-Stevens",
+                    "text": "My eldest hated doing anything which involved being in a group, but he absolutely loves Thursday group sessions and the workshops in the holidays. I was totally shocked. Charlie is really a patient teacher and good with the children. I would highly recommend lessons with him."
+                },
+                {
+                    "name": "Carolyn Webb",
+                    "text": "My 8 year old son loves his guitar lessons with Charlie. Supremely talented Charlie keeps the lessons and workshops fun and varied. Particularly useful are the training videos available which make practicing easier for little ones in particular."
+                },
+                {
+                    "name": "Jason Webb",
+                    "text": "Charlie is a cool dude. Just what an 8 year old needs - loads of patience, lots of fun and a little bit firm when needed. My son says that he likes learning new and cool songs!"
+                },
+                {
+                    "name": "Bridget Slater",
+                    "text": "Charlie is a fantastic teacher. He has been teaching my 15 year old son Chris for a couple of years now. Chris really looks forward to his lessons and Charlie is endlessly patient with him. I can't recommend him highly enough."
+                },
+                {
+                    "name": "Hector Gonzalez Mendez",
+                    "text": "Charlie is an amazing teacher. He is very passionate about music and it really feels like he enjoys doing it. It's been almost a year since I started having guitar lessons with him and, as a foreigner, he has made it extremely easy for me. He's guided me through the UK education system, as well as giving me the best advice. Having him around is definitely helping in reaching my goals. As a musician, he is very talented. He knows music theory, guitar techniques and different music genres and styles to the detail. I couldn't think of anyone better if you are looking for expanding your musical horizons. I have no doubt that he has the training and experience to be a great teacher. He is close and easy to talk to, and he is able of helping, guiding and teaching you in the best way possible."
+                },
+                {
+                    "name": "Victoria Hicks",
+                    "text": "Charlie has taught our 11 year old for more than two years. Joe really enjoys his lessons and Charlie has kept him motivated with a great selection of tunes he wants to learn as well as what he needs to follow for the Rock School grade 1 (and now grade 2) course. Charlie is patient and encouraging with young students, and is also well organised, proactive and flexible which is great from a parents point of view. "
+                }, {
+                    "name": "Alison Mair",
+                    "text": "My 11 year old son actually enjoys having his guitar lessons now! Charlie structures the lessons around my son's ability and taste in music and remains positive and enthusiastic throughout the session."
+                }, {
+                    "name": "Patrick Mair",
+                    "text": "Lessons with Charlie are fun! "
+                }, {
+                    "name": "Sarah Bryans",
+                    "text": "My son has been having guitar lessons from Charlie, for the past 5-6 years. Charlie has taken him through Grade 1, 2 and 3, and he passed all exams with a Merit. Charlie is professional in his teaching, and my son listens to his advice. My son has recently changed his guitar, and Charlie was on hand to help and advise us. I would highly recommend Charlie as a guitar teacher."
+                }, {
+                    "name": "Sonya Turpin",
+                    "text": "Charlie was recommended to me about 2 1/2 years ago for guitar lessons for my son Richie, who at the time was 6 years old, painfully shy and completely new to guitar. Charlie's friendly and fun approach immediately won Richie over and he has loved playing the guitar ever since. Charlie was able to adapt when Richie floated, undecided, between acoustic and electric guitar and offered good advice for both.  Richie has come on in leaps & bounds since starting with Charlie, will now sit and happily practice and is proud of his progress. Charlie always has a lesson planned and goals for Richie but is flexible where necessary and always patient and kind. He has provided professional advice on instruments, equipment and progression for Richie and is a great communicator both with Richie and my husband and I. Charlie is dependable and trustworthy and I highly recommend him as a guitar teacher!"
+                }, {
+                    "name": "Lucy Ford",
+                    "text": "Charlie has been a fantastic teacher to our 7 year old son over the last year. Lessons are always fun and relaxed and they have a great rapport. He is learning songs across many different genres, as well as any current tracks my son requests. Charlie has the patience of a Saint and we trust him implicitly. I would not hesitate at all in recommending him to anyone looking for a great teacher."
+                }, {
+                    "name": "Elliot Pett",
+                    "text": "Charlie is really patient. If you don't understand he's happy to go over it again and again at your speed until you get the hang of it."
+                },
+                {
+                    "name": "Becky King",
+                    "text": "Charlie has been teaching my son (aged seven), for just over 12 months. He always customises the lessons to capture his interest with a wide range of music adjusted to his level of skill. This combined with a great balance of patience, talent, enthusiasm and humour has completely inspired him and kept him engaged and motivated. My son sums up the lessons perfectly (below)."
+                }, {
+                    "name": "Charlie King",
+                    "text": "Charlie is epic, guitar is awesome."
+                }, {
+                    "name": "Jody Cooksley",
+                    "text": "Charlie’s easy and enthusiastic teaching style has completely transformed my son’s playing and reawakened his love of the guitar. Previous lessons had left him uninspired but he now needs no prompting to practise. I would highly recommend Charlie as a teacher"
+                }, {
+                    "name": "Ben Cooksley",
+                    "text": "I really enjoy my lessons with Charlie, he chooses great songs for us to learn and he is very kind and patient"
+                }
+            ]
+        }
+    },
+    "about": {
+        "infoCards": [{
+            "name": "Who is CG Guitar?",
+            "image": "/images/about.jpg",
+            "text": "CG Guitar is the creation of guitarist Charlie Griffiths. Charlie started playing guitar at the age of 13, since then he has performed in a number of bands that have required him to play a variety of genres, blues, jazz, soul, funk, rock, all the way to the extreme sides of metal. This brings tons of experience, knowledge and advice for Charlie to share."
+        }, {
+            "name": "A little bit more...",
+            "text": "Charlie graduated from The Academy of Contemporary Music as a Bachelor of Music with a First Class Honours in Professional Music Performance in 2013. During his degree in 2012 he started teaching at Goodall Guitar School in which has now led him on to running his own teaching business, CG Guitar. As well as running CG Guitar he is an active member of the band"
+        }]
+
+
+    },
+    "session": {
+        "quotes": {
+            "name": "Session Work/Function Band",
+            "text": "\"Along with the band side of guitar playing I have been hired to play in theatrical productions such as The Wedding Singer, Grease & Rock The Ages, to name a few, and to perform guitar parts on other artist/band's records and during live performances.\""
+        }
+    }
+}

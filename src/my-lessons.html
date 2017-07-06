@@ -12,6 +12,8 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
 <link rel="import" href="../bower_components/paper-card/paper-card.html">
 <link rel="import" href="../bower_components/paper-button/paper-button.html">
 <link rel="import" href="./components/youtube-videos.html">
+<link rel="import" href="components/quote-card.html">
+
 <link rel="import" href="./components/app-link.html">
 
 
@@ -23,77 +25,106 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
        :host {
         display: block;
       }
+      :host .inline-quote {
+        margin:0;
+      }
+      :host .read-more {
+        justify-content: flex-end;
+      }
+      :host .lesson-card {
+        padding:0 !important;
+      }
+      :host .p-top {
+        padding-top:16px;
+      }
+
+      :host .bottom-cont {
+        text-align: center;
+        margin:10px;
+      }
+
+      :host .card-top {
+        border-bottom: solid 1px #e8e8e8;
+        padding: 0px 16px 0 16px;
+
+      }
+
+        :host .card-top p{
+          padding-bottom:8px;
+        }
+
+        :host .levels {
+          margin:0;
+          justify-content: flex-start;
+        }
+        :host .max-card {
+          margin-left:20px;
+          max-width: 630px;
+          flex:1;
+        }
+      
+      
     </style>
-    <div class="wrap">
+    <div class="flex-push-wrap">
+      <div class="max-card">
       <paper-card class="big-card" id="sign" image="images/lessons.jpg">
         <div class="card-content">
-          <div class="card-header">Kickstart your guitar lessons now!</div>
-          <p class="card-light">
-            Whether you're a beginner, intermediate or advanced player, Acoustic, Electric or Bass Guitar, all are welcome.
-          </p>
+               <div class="card-header">{{data.lessonCard.name}}</div>
+          <p class="card-light">{{data.lessonCard.text}}</p>
+         
 
         </div>
         <div class="card-actions">
           <div class="horizontal justified">
             <div class="btn-cnt">
-              If you wish to enquire about guitar lessons please contact me.
+            {{data.lessonCard.footer}}
             </div>
             <app-link href="/contact" text="Contact">
             </app-link>
           </div>
         </div>
       </paper-card>
+
+        <youtube-videos has-navigation id="lessons-playlist" search-url="https://www.googleapis.com/youtube/v3/playlistItems" order="viewCount" playlist-id="PLA0cAQ-2uoeo4d-k69kkTkekL300dFIwl" api-key="[[apiKey]]" max-results="10"></youtube-videos>
+
+      
+      <div class="flex-push"></div>
+      </div>
       <div class="levels">
         <div class="text-flex-cards">
-          <paper-card heading="Beginner" class="text-card" animated-shadow="false">
-            <div class="card-actions">
+          
+          <template is="dom-repeat" items={{data.lessonTypes}} 
+            as=item index-as=index>
+          <paper-card class="l-card text-card" animated-shadow="false">
+                <div class="lesson-card card-content">
+                  <div class="card-top">
+                    <div class="p-top card-header">{{item.name}}</div>
+                   <p class="card-light">{{item.text}}</p>
+                   </div>
+                    <template is="dom-repeat" items={{item.testimonials}}  as=testimonial>
+                    <quote-card elevation="0" class="inline-quote" image="{{testimonial.image}}" default-image="../../images/default-test.svg" author="{{testimonial.name}}" text="{{testimonial.text}}"></quote-card>
+                  </template>
+    </div>
+    <div class="flex-end card-actions">
+        <a href="/testimonials">{{data.lessonTypesMore}}</a>
 
-              <p class="card-light">
-                Kick start your guitar playing with enjoyable and frustration free methods to get you playing music from the first lesson.
-                <p>
-            </div>
-          </paper-card>
+    </div>
+    </paper-card>
 
-          <paper-card heading="Intermediate" class="text-card" animated-shadow="false">
-            <div class="card-actions">
+    </template>
 
-              <p class="card-light">
-                Effective practice regimes, building a solid foundation of technique and repertoire, acquiring your guitar grades.
-                <p>
-            </div>
-          </paper-card>
-
-          <paper-card heading="Advanced" class="text-card" animated-shadow="false">
-            <div class="card-actions">
-
-              <p class="card-light">
-                Help with preparing to study music/guitar in further education, improving technique, improvising, preparation for a performance,
-                music theory.
-                <p>
-            </div>
-          </paper-card>
-
-          <div style="display:flex;justify-content:flex-start;">
-            <span class="quote">
-           See what my students are saying about me, over at my &nbsp;<a href="/testimonials">Testimonials</a>.
-            </span>
-          </div>
-          <youtube-videos has-navigation id="lessons-playlist" search-url="https://www.googleapis.com/youtube/v3/playlistItems" order="viewCount"
-            playlist-id="PLA0cAQ-2uoeo4d-k69kkTkekL300dFIwl" api-key="[[apiKey]]" max-results="10"></youtube-videos>
-
-          <p style="margin-top:10px;">
-            <span class="quote">
-            I'm also available for session work, for details please visit my
-            <a href="/session">Band/Session</a> page.
-            </span>
-          </p>
-        </div>
-      </div>
 
     </div>
     </div>
 
-  </template>
+    </div>
+    <p style="text-align:center;margin-top:10px;">
+        <span class="quote">
+            I'm also available to hire for Session Work, for details please visit the
+            <a href="/session">Band/Sessions</a> page.
+            </span>
+    </p>
+    </template>
 
     <script>
         Polymer({
@@ -102,6 +133,10 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
                 apiKey: {
                     type: String,
                     value: 'AIzaSyCJCokkQUEbcz2hUSzk3CtYU-g2v9CS-uM'
+                },
+                data: {
+                    type: Object,
+                    value: null
                 }
             }
         });

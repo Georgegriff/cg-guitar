@@ -174,7 +174,7 @@
             }
         </style>
         <div class="yt-card-wrap">
-            <google-youtube-api id="yapi"></google-youtube-api>
+            <google-youtube-api id="yapi" on-api-load="onLoad"></google-youtube-api>
             <!-- Make title click able -->
             <paper-card id="card" elevation="1" animated-shadow="false">
                 <div class="card-content" id="contentVideo">
@@ -290,6 +290,10 @@
                     type: Boolean,
                     value: false,
                     reflectToAttribute: true
+                },
+                playAttempted: {
+                    type: Boolean,
+                    value: false
                 }
             },
             stop: function() {
@@ -340,35 +344,39 @@
             },
             loadVideo: function(type, width, height, callback) {
                 // check if ready first...
-                this.player = new this.YT.Player(this.$.video, {
-                    height: height,
-                    width: width,
-                    playerVars: {
-                        'autoplay': 0,
-                        'controls': 1,
-                        hd: 1,
-                        'showinfo': 0
-                    },
-                    events: {
-                        'onReady': function(e) {
-                            if (type === 'playlist') {
-                                this.player.cuePlaylist({
-                                    listType: "playlist",
-                                    list: this.videoId
-                                });
-                            } else {
-                                this.player.loadVideoById(this.videoId);
-                                this.attachFSEvents();
+                if (this.YT) {
+                    this.player = new this.YT.Player(this.$.video, {
+                        height: height,
+                        width: width,
+                        playerVars: {
+                            'autoplay': 0,
+                            'controls': 1,
+                            hd: 1,
+                            'showinfo': 0
+                        },
+                        events: {
+                            'onReady': function(e) {
+                                if (type === 'playlist') {
+                                    this.player.cuePlaylist({
+                                        listType: "playlist",
+                                        list: this.videoId
+                                    });
+                                } else {
+                                    this.player.loadVideoById(this.videoId);
+                                    this.attachFSEvents();
 
-                            }
-                        }.bind(this),
-                        'onStateChange': function(e) {
-                            this.onPlayerStateChange(e, function() {
-                                return callback();
-                            }.bind(this));
-                        }.bind(this)
-                    },
-                });
+                                }
+                            }.bind(this),
+                            'onStateChange': function(e) {
+                                this.onPlayerStateChange(e, function() {
+                                    return callback();
+                                }.bind(this));
+                            }.bind(this)
+                        },
+                    });
+                } else {
+                    this.playAttempted = true;
+                }
             },
             onPlayerStateChange: function onPlayerStateChange(event, callback) {
                 if (event.data === this.YT.PlayerState.CUED) {
@@ -413,13 +421,15 @@
                     console.log('stopped');
                 });
             },
-            ready: function() {
-                var size;
-                this.$.yapi.addEventListener('api-load', function() {
-                    this.YT = this.$.yapi.api;
-                }.bind(this));
+            onLoad: function(e) {
+                this.YT = e.target.api;
+                if (this.playAttempted) {
+                    var size = this.getPlayerSize();
+                    this.loadVideo('video', size.width, size.height, function() {
+                        console.log('stopped');
+                    });
+                }
             }
-
         });
     </script>
 </dom-module>

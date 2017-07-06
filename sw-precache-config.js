@@ -11,12 +11,13 @@
 /* eslint-env node */
 
 module.exports = {
-  staticFileGlobs: [
-    '/index.html',
-    'src/my-app.html',
-    'src/my-lessons.html', 
-    '/manifest.json',
-    '/bower_components/webcomponentsjs/webcomponents-lite.min.js',
-  ],
-  navigateFallback: 'index.html',
+    staticFileGlobs: [
+        '/index.html',
+        'src/my-app.html',
+        'src/my-lessons.html',
+        '/manifest.json',
+        '/images/**',
+        '/bower_components/webcomponentsjs/webcomponents-lite.min.js',
+    ],
+    navigateFallback: 'index.html',
 };
