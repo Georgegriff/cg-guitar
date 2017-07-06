@@ -1,19 +1,17 @@
 {
-    "builds": [
-        {
-            "bundle": true,
-            "js": {
-                "minify": true
-            },
-            "css": {
-                "minify": true
-            },
-            "html": {
-                "minify": true
-            },
-            "addServiceWorker": true
-        }
-    ],
+    "builds": [{
+        "bundle": true,
+        "js": {
+            "minify": true
+        },
+        "css": {
+            "minify": true
+        },
+        "html": {
+            "minify": true
+        },
+        "addServiceWorker": true
+    }],
     "lint": {
         "rules": [
             "polymer-1"
@@ -38,6 +36,7 @@
     ],
     "extraDependencies": [
         "manifest.json",
+        "data.json",
         "bower_components/webcomponentsjs/webcomponents-lite.min.js"
     ]
 }
