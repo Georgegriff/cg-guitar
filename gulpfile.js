@@ -22,7 +22,7 @@ gulp.task("revision", ["clean"], function() {
 
 gulp.task("manifest-files", function() {
     return gulp
-        .src(["images/pageimages/**", "images/manifest/**", "build/default/service-worker.js"], { "base": '.' })
+        .src(["images/pageimages/**", "images/manifest/**"], { "base": '.' })
         .pipe(gulp.dest(dist));
 });
 
