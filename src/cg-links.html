@@ -48,17 +48,25 @@
                 };
                 --paper-item-focused : {
                     background: #fdfcfb !important;
-                border-top: solid 1px #ddd;
-                border-bottom: solid 1px #ddd;
-                                        color: var(--app-primary-color);
+                    border-top: solid 1px #ddd;
+                    border-bottom: solid 1px #ddd;
+                    color: var(--app-primary-color);
 
                 };
+              
               
             }
             #item.active-link, #item:focus, #item:active {
                 background: #fdfcfb !important;
                 border-top: solid 1px #ddd;
                 border-bottom: solid 1px #ddd;
+                color: var(--app-primary-color);
+             
+
+
+            }
+            #item:focus iron-icon, #item:active iron-icon{
+                color: var(--app-primary-color);
             }
             :host([is-active]) iron-icon, :host([is-active]) a {
                 color: var(--app-primary-color, black);
