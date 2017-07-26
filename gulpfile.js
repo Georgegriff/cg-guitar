@@ -1,6 +1,7 @@
 const gulp = require("gulp");
 const rev = require("gulp-rev");
 const clean = require("del");
+var gulpif = require('gulp-if');
 var htmlAutoprefixer = require("gulp-html-autoprefixer");
 const revReplace = require("gulp-rev-replace");
 const dist = "dist";
@@ -14,7 +15,7 @@ gulp.task("clean", function() {
 
 gulp.task("revision", ["clean"], function() {
     return gulp
-        .src(["build/default/**/*.*", "!**/**/index.html", "!build/default/service-worker.js", "!build/default/images/manifest/**.*", "!build/default/data.json"])
+        .src(["build/default/**/*.*", "!**/**/index.html", "!build/default/service-worker.js", "!build/default/images/manifest/**.*", "!build/default/data.json", "!build/default/images/**"])
         .pipe(rev())
         .pipe(gulp.dest(tmp))
         .pipe(rev.manifest())
@@ -23,7 +24,7 @@ gulp.task("revision", ["clean"], function() {
 
 gulp.task("manifest-files", function() {
     return gulp
-        .src(["data.json", "images/testimonials/**", "images/pageimages/**", "images/manifest/**"], { "base": '.' })
+        .src(["data.json", "images/**", "images/**", "images/**"], { "base": '.' })
         .pipe(gulp.dest(dist));
 });
 
@@ -35,6 +36,6 @@ gulp.task("default", [
     return gulp
         .src(["build/default/service-worker.js", "build/default/index.html", ".tmp/**/*.*"])
         .pipe(revReplace({ manifest: manifest }))
-        .pipe(htmlAutoprefixer())
+ //       .pipe(gulpif(/\.html$/, htmlAutoprefixer()))
         .pipe(gulp.dest(dist));
 });
