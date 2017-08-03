@@ -33,7 +33,7 @@
 
 
              :host([has-navigation]) .video-wrap {
-                height: var(--youtube-video-navigator-height, 263px);
+                height: var(--youtube-video-navigator-height, 270px);
                 overflow: hidden;
             }
 
@@ -78,7 +78,7 @@
                 align-items: center;
                 justify-content: center;
                 margin: 10px;
-                height: var(--youtube-video-navigator-height, 263px);
+                height: var(--youtube-video-navigator-height, 270px);
             }
 
             paper-spinner-lite {
@@ -88,17 +88,18 @@
                 --paper-spinner-color: var(--primary-color);
             }
 
-            @media (max-width: 750px) and (orientation: portrait) {
+            @media (max-width: 650px) and (orientation: portrait) {
+                
                 .yt-card {
                     --youtube-player-card-width: var(--youtube-videos-width, 80vw);
                     --youtube-player-card-height: var(--youtube-videos-height, 45vw);
                 }
 
                  :host([has-navigation]) .video-wrap {
-                    height: var(--youtube-video-navigator-height, 77vw);
+                    height: var(--youtube-video-navigator-height, 79vw);
                 }
                  :host #spins {
-                    height: var(--youtube-video-navigator-height, 77vw);
+                    height: var(--youtube-video-navigator-height, 79vw);
                 }
             }
         </style>
@@ -224,7 +225,7 @@
                 },
                 thumbQuality: {
                     type: String,
-                    value: "high"
+                    value: "maxres"
                 }
             },
             sortItems: function(a, b) {
@@ -383,17 +384,20 @@
                 // doesnt work properly
                 this.pageToken = this._prevPageToken;
             },
+            onResize: function() {
+                this.updateStyles();
+            },
             attached: function() {
                 this.listen(this.$.ajaxVideos, 'iron-ajax-request', '_onRequest');
                 this.listen(this.$.ajaxRequest, 'iron-ajax-response', '_onResponse');
                 this.listen(this.$.ajaxVideos, 'iron-ajax-response', '_updateWithStats');
+                this.listen(window, 'resize', 'onResize');
 
             },
             detached: function() {
                 this.unlisten(this.$.ajaxRequest, 'iron-ajax-response', '_onResponse');
                 this.unlisten(this.$.ajaxVideoss, 'iron-ajax-response', '_updateWithStats');
-
-
+                this.unlisten(window, 'resize', 'onResize');
             },
             _updateWithStats: function(e) {
                 var response = e.target.lastResponse;

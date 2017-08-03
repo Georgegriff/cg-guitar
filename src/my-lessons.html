@@ -58,15 +58,27 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
           justify-content: flex-start;
         }
         :host .max-card {
-          max-width: 630px;
+          max-width: 620px;
         }
 
-        @media (orientation: landscape) {
+       
+        @media (min-width: 1300px) and (orientation:landscape) {
+           youtube-videos {
+             --youtube-videos-width : 25vw;
+             --youtube-videos-height: 25vh;
+             --youtube-video-navigator-height:40vh;
+           }
+        }
+        @media (min-width: 650px)  and (orientation: landscape) {
           :host .max-card {
             min-width: 400px;
             }
-
+            
            }
+
+          
+
+       
       
       
     </style>

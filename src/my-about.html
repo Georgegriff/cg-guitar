@@ -41,8 +41,7 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
              <div class="card-content">
             <div class="card-header">{{item.name}}</div>
 
-                <p class="card-light">
-                {{item.text}}
+                <p class="card-light" inner-h-t-m-l="{{item.text}}">
                   <p>
               </div>
               </div
@@ -93,6 +92,9 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
                     type: Object,
                     value: null
                 }
+            },
+            _parseText: function(text) {
+                return text;
             }
         });
     </script>

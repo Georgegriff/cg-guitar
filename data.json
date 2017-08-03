@@ -1,4 +1,5 @@
 {
+    "links": {},
     "lessons": {
         "lessonCard": {
             "name": "Kickstart Your Guitar Lessons Today",
@@ -139,13 +140,19 @@
     },
     "about": {
         "infoCards": [{
-            "name": "Who is CG Guitar?",
-            "image": "/images/pageimages/about.jpg",
-            "text": "CG Guitar is the creation of guitarist Charlie Griffiths. Charlie started playing guitar at the age of 13, since then he has performed in a number of bands that have required him to play a variety of genres, blues, jazz, soul, funk, rock, all the way to the extreme sides of metal. This brings tons of experience, knowledge and advice for Charlie to share."
-        }, {
-            "name": "A little bit more...",
-            "text": "Charlie graduated from The Academy of Contemporary Music as a Bachelor of Music with a First Class Honours in Professional Music Performance in 2013. During his degree in 2012 he started teaching at Goodall Guitar School in which has now led him on to running his own teaching business, CG Guitar. As well as running CG Guitar he is an active member of the band"
-        }]
+                "name": "Who is CG Guitar?",
+                "image": "/images/pageimages/about.jpg",
+                "text": "CG Guitar is the creation of guitarist Charlie Griffiths. Charlie started playing guitar at the age of 13, since then he has performed in a number of bands that have required him to play a variety of genres, blues, jazz, soul, funk, rock, all the way to the extreme sides of metal. This brings tons of experience, knowledge and advice for Charlie to share."
+            }, {
+                "name": "A little bit more...",
+                "text": "Charlie graduated from The Academy of Contemporary Music as a Bachelor of Music with a First Class Honours in Professional Music Performance in 2013. <br/><br/> During his degree in 2012 he started teaching at Goodall Guitar School in which has now led him on to running his own teaching business, CG Guitar. As well as running CG Guitar he is an active member of the band <a href='https://www.facebook.com/harbingerriffs/'>Harbinger</a>."
+            },
+            {
+                "name": "Looking for guitar lessons?",
+                "text": " I offer lessons for students of all standards, find out more information on the <a href='/lessons'>Lessons</a> page.<br/>To check out what my students have to say about the guitar lessons, please visit the <a href='/testimonials'>Testimonials</a> page."
+            }
+
+        ]
 
 
     },
