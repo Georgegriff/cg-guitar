@@ -236,7 +236,11 @@
                 }
             },
             _getThumb: function(item) {
-                return item.snippet.thumbnails[this.thumbQuality].url;
+                var thumb = item.snippet.thumbnails[this.thumbQuality];
+                if (thumb) {
+                    return thumb.url;
+                }
+                return undefined;
             },
             _onHasNav: function() {
                 if (this.hasNavigation) {

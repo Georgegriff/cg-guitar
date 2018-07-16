@@ -15,7 +15,7 @@ gulp.task("clean", function() {
 
 gulp.task("revision", ["clean"], function() {
     return gulp
-        .src(["build/default/**/*.*", "!**/**/index.html", "!build/default/service-worker.js", "!build/default/images/manifest/**.*", "!build/default/data.json", "!build/default/images/**"])
+        .src(["build/default/**/*.*", "!**/**/index.html", "!build/default/service-worker.js", "!build/default/images/manifest/**.*", "!build/default/images/**"])
         .pipe(rev())
         .pipe(gulp.dest(tmp))
         .pipe(rev.manifest())
@@ -36,6 +36,6 @@ gulp.task("default", [
     return gulp
         .src(["build/default/service-worker.js", "build/default/index.html", ".tmp/**/*.*"])
         .pipe(revReplace({ manifest: manifest }))
- //       .pipe(gulpif(/\.html$/, htmlAutoprefixer()))
+        //       .pipe(gulpif(/\.html$/, htmlAutoprefixer()))
         .pipe(gulp.dest(dist));
 });
