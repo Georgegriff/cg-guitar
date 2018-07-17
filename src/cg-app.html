@@ -382,6 +382,7 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
                 if (!this.$.drawer.persistent) {
                     this.$.drawer.close();
                 }
+                document.documentElement.scrollTop = 0;
             },
             // for cache busting with my hashed files #lame
             _lookUpPages: function(name) {
