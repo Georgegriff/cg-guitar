@@ -24,7 +24,8 @@
                 text-decoration: none;
             }
             iron-icon {
-                color: var(--app-link-dark);            }
+                color: var(--app-link-dark);            
+                }
             #item {
                 flex:1;
                 width:100%;
@@ -53,7 +54,7 @@
                     color: var(--app-primary-color);
 
                 };
-              
+                
               
             }
             #item.active-link, #item:focus, #item:active {
@@ -71,13 +72,18 @@
             :host([is-active]) iron-icon, :host([is-active]) a {
                 color: var(--app-primary-color, black);
             }
+
+            #item span {
+                margin-left: 0px;
+            }
+
            
         </style>
         <div class="wrap">
              <a class="paper-item-link" tab-index="-1" name="[[name]]" href="[[href]]">
             <paper-icon-item id="item">
-                <iron-icon src$="[[src]]" icon$="[[icon]]" item-icon></iron-icon>
-               [[text]]
+                <iron-icon src$="[[src]]" icon$="[[icon]]" slot="item-icon"></iron-icon>
+               <span>[[text]]</span>
             </paper-icon-item>
             </a>
         </div>

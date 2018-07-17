@@ -18,10 +18,10 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
 <link rel="import" href="../bower_components/app-layout/app-scroll-effects/app-scroll-effects.html">
 <link rel="import" href="../bower_components/app-route/app-location.html">
 <link rel="import" href="../bower_components/app-route/app-route.html">
-<link rel="import" href="../bower_components/app-layout/app-scrollpos-control/app-scrollpos-control.html">
 
 <link rel="import" href="../bower_components/neon-animation/neon-animated-pages.html">
 <link rel="import" href="../bower_components/neon-animation/neon-animations.html">
+<link rel="import" href="../bower_components/neon-animation/web-animations.html">
 <link rel="import" href="../bower_components/iron-scroll-target-behavior/iron-scroll-target-behavior.html">
 <link rel="import" href="../bower_components/iron-selector/iron-selector.html">
 <link rel="import" href="../bower_components/paper-icon-button/paper-icon-button.html">
@@ -45,6 +45,10 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
                 --primary-color: #82212c;
 
                 display: block;
+            }
+            
+            app-drawer-layout:not([narrow]) [drawer-toggle] {
+                    display: none;
             }
 
             a {
@@ -163,7 +167,7 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
             .title-contents .captions {
                 display: flex;
             }
-            app-drawer#drawer {
+            app-drawer-layout {
                 --app-drawer-width : 240px;
             }
 
@@ -219,7 +223,7 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
                     height: 3em;
                 }
                 
-               
+              
 
             }
         </style>
@@ -236,21 +240,17 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
 
         <app-drawer-layout fullbleed>
             <!-- Drawer content -->
-            <app-drawer swipe-open id="drawer">
+            <app-drawer swipe-open id="drawer" slot="drawer">
                 <cg-sidebar id="sidebar" page="[[page]]"></cg-sidebar>
 
             </app-drawer>
 
-            <app-scrollpos-control id="scrollPos" selected="{{page}}"></app-scrollpos-control>
-
             <!-- Main content -->
             <app-header-layout id="layout">
                     
-                    <app-header class="collapse-header" effects=" waterfall resize-snapped-title" condenses fixed>
+                    <app-header slot="header" class="collapse-header" effects=" waterfall resize-snapped-title" condenses fixed>
                                 <app-toolbar class="top-toolbar">
-                                     <div class="tog-wrap">
-                                        <paper-icon-button class="drawer-tog" icon="my-icons:menu" drawer-toggle></paper-icon-button>
-                                    </div>
+                                    <paper-icon-button class="drawer-tog" icon="my-icons:menu" drawer-toggle></paper-icon-button>
                                     <div condensed-title>
                                         <div class="title-contents">
                                             <img class="logo" src="../images/cg-logo.svg" alt=""/>

@@ -27,6 +27,23 @@
                 background-repeat: no-repeat;
                 background-position: center;
             }
+
+            @media (max-width: 650px) { 
+                .block {
+                    height:var(--cg-social-icon-size, 40px);
+                    width:var(--cg-social-icon-size, 40px);
+                    margin: var(--cg-social-icon-margin, 10px);
+                }
+
+                .container {
+                    display: flex;
+                }
+                
+                .ifb {
+                    order: 4;
+                }
+
+            }
             
             .fb {
                 background-image: url('../images/facebook.svg');
@@ -48,7 +65,7 @@
           
         </style>
         <div class="container">
-            <a target="_blank" href="https://www.facebook.com/CGGuitar"><div class="fb block"></div></a>
+            <a class="ifb" target="_blank" href="https://www.facebook.com/CGGuitar"><div class="fb block"></div></a>
             <a target="_blank" href="https://www.youtube.com/channel/UCReQS8UwfrhDRGTowiXqVKg"><div class="yt block"></div></a>
             <a target="_blank" href="https://instagram.com/cg_guitar/"><div class="ig block"></div></a>
             <a target="_blank" href="https://twitter.com/cg_guitar"><div class="tw block"></div></a>

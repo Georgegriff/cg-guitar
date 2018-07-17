@@ -1,20 +1,10 @@
 {
     "builds": [{
-        "bundle": true,
-        "js": {
-            "minify": true
-        },
-        "css": {
-            "minify": true
-        },
-        "html": {
-            "minify": true
-        },
-        "addServiceWorker": true
+        "preset": "es5-bundled"
     }],
     "lint": {
         "rules": [
-            "polymer-1"
+            "polymer-2"
         ]
     },
     "entrypoint": "index.html",
@@ -37,6 +27,6 @@
     "extraDependencies": [
         "manifest.json",
         "data.json",
-        "bower_components/webcomponentsjs/webcomponents-lite.min.js"
+        "bower_components/webcomponentsjs/*.js"
     ]
 }

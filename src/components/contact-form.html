@@ -49,31 +49,33 @@
                 --paper-spinner-color: var(--primary-color);
             }
         </style>
+        <iron-form id="contactForm">
+            <form method="post" action="[[api]]"  content-type="application/json">
+                <paper-input name="name" label="Name" required auto-validate></paper-input>
+                <paper-input id="email" on-change="_emailMatch" name="email-address" label="Email" type="email" required></paper-input>
+                <paper-input id="cEmail" on-change="_emailMatch" name="confirm-email-address" label="Confirm Email" type="email" required></paper-input>
+                <paper-input id="telephone" on-change="_validateTelephone" name="telephone-no" label="Telephone" type="telephone"></paper-input>
+    
+                <paper-textarea rows="3" max-rows="6" label="Your Message" name="message"></paper-textarea>
+                <label id="prefer">How would you prefer to be contacted?</label>
+                <input style="display:none" name="telephonePreferred" name="" value="[[_isPhonePreferred]]">
+                <paper-radio-group id="preferSelect" on-selected-changed="_isTelephonePreferred" aria-labelledby="prefer" selected="email">
+                    <paper-radio-button name="email">Email</paper-radio-button>
+                    <paper-radio-button name="telephone">Telephone</paper-radio-button>
+                </paper-radio-group>
+                <template is="dom-if" if="{{status}}">
+                    <div class="output">{{status}}</div>
+                </template>
+    <div class="buttons">
+        <paper-spinner-lite id="spinner"></paper-spinner-lite>
+        <paper-button raised on-click="_submit" disabled id="contactFormSubmit">
+            Submit</paper-button>
+        <paper-button raised on-click="_reset">Reset</paper-button>
+    </div>
 
-        <form is="iron-form" method="post" action="[[api]]" id="contactForm" content-type="application/json">
-            <paper-input name="name" label="Name" required auto-validate></paper-input>
-            <paper-input id="email" on-change="_emailMatch" name="email-address" label="Email" type="email" required></paper-input>
-            <paper-input id="cEmail" on-change="_emailMatch" name="confirm-email-address" label="Confirm Email" type="email" required></paper-input>
-            <paper-input id="telephone" on-change="_validateTelephone" name="telephone-no" label="Telephone" type="telephone"></paper-input>
+    </form>
+    </iron-form>
 
-            <paper-textarea rows="3" max-rows="6" label="Your Message" name="message"></paper-textarea>
-            <label id="prefer">How would you prefer to be contacted?</label>
-            <input style="display:none" name="telephonePreferred" name="" value="[[_isPhonePreferred]]">
-            <paper-radio-group id="preferSelect" on-selected-changed="_isTelephonePreferred" aria-labelledby="prefer" selected="email">
-                <paper-radio-button name="email">Email</paper-radio-button>
-                <paper-radio-button name="telephone">Telephone</paper-radio-button>
-            </paper-radio-group>
-            <template is="dom-if" if="{{status}}">
-                <div class="output">{{status}}</div>
-            </template>
-            <div class="buttons">
-                <paper-spinner-lite id="spinner"></paper-spinner-lite>
-                <paper-button raised on-click="_submit" disabled id="contactFormSubmit">
-                    Submit</paper-button>
-                <paper-button raised on-click="_reset">Reset</paper-button>
-            </div>
-
-        </form>
 
 
     </template>
@@ -112,7 +114,7 @@
                 'contactForm.iron-form-error': '_onResponse'
 
             },
-            _onResponse: function (e) {
+            _onResponse: function(e) {
                 var status = e.detail.status;
                 this.$.spinner.active = false;
                 if (status === 200) {
@@ -123,7 +125,7 @@
                     this.status = 'Submission Failed.'
                 }
             },
-            _isTelephonePreferred: function (e) {
+            _isTelephonePreferred: function(e) {
                 var preferred = e.detail.value === 'telephone';
                 if (preferred) {
                     this._isPhonePreferred = true;
@@ -134,7 +136,7 @@
                 }
                 this._validate();
             },
-            _emailMatch: function () {
+            _emailMatch: function() {
                 var emailVal = this.$.email.value,
                     cEmailValue = this.$.cEmail.value,
                     invalid = emailVal !== cEmailValue,
@@ -149,7 +151,7 @@
 
 
             },
-            _validateTelephone: function () {
+            _validateTelephone: function() {
                 var input = this.$.telephone.value;
                 var valid = false;
                 var phones = {
@@ -182,32 +184,32 @@
                 return valid
 
             },
-            _validate: function () {
+            _validate: function() {
                 // Validate the entire form to see if we should enable the `Submit` button.
                 var isValid = this.$.contactForm.validate();
                 this._emailMatch();
                 this._validateTelephone();
                 this.$.contactFormSubmit.disabled = !(isValid && !this._invalidEmails && !this._invalidTelephone);
             },
-            _validateForm: function (form) {
-                form.addEventListener('change', function (event) {
+            _validateForm: function(form) {
+                form.addEventListener('change', function(event) {
                     this._validate();
                     this.status = null;
                 }.bind(this));
             },
-            _submit: function () {
+            _submit: function() {
                 this.$.contactForm.submit();
             },
-            _onSubmit: function (e) {
+            _onSubmit: function(e) {
                 this.$.spinner.active = true;
                 this.$.contactFormSubmit.disabled = false;
             },
-            ready: function () {
+            ready: function() {
                 var form = this.$.contactForm;
                 this._validateForm(form);
                 form.addEventListener('iron-form-submit', this._onSubmit.bind(this));
             },
-            _reset: function (event) {
+            _reset: function(event) {
                 var form = Polymer.dom(event).localTarget.parentElement.parentElement;
                 form.reset();
                 this.$.preferSelect.selected = 'email';
