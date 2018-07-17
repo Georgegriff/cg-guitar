@@ -19,7 +19,7 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
 
 <link rel="import" href="shared-styles.html">
 
-<dom-module id="my-lessons">
+<dom-module id="cg-lessons">
     <template>
     <style include="shared-styles">
        :host {
@@ -84,7 +84,7 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
     </style>
     <div class="flex-push-wrap">
       <div class="max-card">
-      <paper-card class="big-card" id="sign" image="images/pageimages/lessons.jpg">
+      <paper-card class="big-card" id="sign" image="images/pageimages/lessons.jpg" alt="Group Lessons">
         <div class="card-content">
                <div class="card-header">{{data.lessonCard.name}}</div>
           <p class="card-light">{{data.lessonCard.text}}</p>
@@ -145,7 +145,7 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
 
     <script>
         Polymer({
-            is: 'my-lessons',
+            is: 'cg-lessons',
             properties: {
                 apiKey: {
                     type: String,

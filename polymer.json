@@ -8,16 +8,16 @@
         ]
     },
     "entrypoint": "index.html",
-    "shell": "src/my-app.html",
+    "shell": "src/cg-app.html",
     "fragments": [
-        "src/my-about.html",
-        "src/my-lessons.html",
-        "src/my-contact.html",
-        "src/my-videos.html",
-        "src/my-testimonials.html",
-        "src/my-photos.html",
-        "src/my-session.html",
-        "src/my-view404.html"
+        "src/cg-about.html",
+        "src/cg-lessons.html",
+        "src/cg-contact.html",
+        "src/cg-videos.html",
+        "src/cg-testimonials.html",
+        "src/cg-photos.html",
+        "src/cg-session.html",
+        "src/cg-view404.html"
     ],
     "sources": [
         "src/**",

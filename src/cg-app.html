@@ -29,9 +29,9 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
 
 <link rel="import" href="cg-sidebar.html">
 <link rel="import" href="./components/cg-icons.html">
-<link rel="import" href="my-icons.html">
+<link rel="import" href="cg-icons.html">
 
-<dom-module id="my-app">
+<dom-module id="cg-app">
     <template>
         <style>
           
@@ -250,7 +250,7 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
                     
                     <app-header slot="header" class="collapse-header" effects=" waterfall resize-snapped-title" condenses fixed>
                                 <app-toolbar class="top-toolbar">
-                                    <paper-icon-button class="drawer-tog" icon="my-icons:menu" drawer-toggle></paper-icon-button>
+                                    <paper-icon-button class="drawer-tog" icon="cg-icons:menu" drawer-toggle></paper-icon-button>
                                     <div condensed-title>
                                         <div class="title-contents">
                                             <img class="logo" src="../images/cg-logo.svg" alt=""/>
@@ -289,15 +289,15 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
 
                 <neon-animated-pages id="animPages" selected="[[page]]" attr-for-selected="name" fallback-selection="view404" entry-animation="slide-from-left-animation"
                     exit-animation="slide-right-animation" role="main">
-                    <my-lessons data="{{data.lessons}}" id="lessons" name="lessons"></my-lessons>
-                    <my-about data="{{data.about}}" id="about" name="about"></my-about>
-                    <my-session data="{{data.session}}" id="session" name="session"></my-session>
-                    <my-testimonials data="{{data.testimonials}}" testimonials="{{_testimonials}}" id="testimonials" name="testimonials"></my-testimonials>
-                    <my-contact id="contact" name="contact"></my-contact>
-                    <my-photos scroll-pos="{{scrollPos}}" id="photos" name="photos"></my-photos>
-                    <my-videos scroll-pos="{{scrollPos}}" id="videos" name="videos"></my-videos>
+                    <cg-lessons data="{{data.lessons}}" id="lessons" name="lessons"></cg-lessons>
+                    <cg-about data="{{data.about}}" id="about" name="about"></cg-about>
+                    <cg-session data="{{data.session}}" id="session" name="session"></cg-session>
+                    <cg-testimonials data="{{data.testimonials}}" testimonials="{{_testimonials}}" id="testimonials" name="testimonials"></cg-testimonials>
+                    <cg-contact id="contact" name="contact"></cg-contact>
+                    <cg-photos scroll-pos="{{scrollPos}}" id="photos" name="photos"></cg-photos>
+                    <cg-videos scroll-pos="{{scrollPos}}" id="videos" name="videos"></cg-videos>
 
-                    <my-view404 id="view404" name="view404"></my-view404>
+                    <cg-view404 id="view404" name="view404"></cg-view404>
                 </neon-animated-pages>
             </app-header-layout>
         </app-drawer-layout>
@@ -305,7 +305,7 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
 
     <script>
         Polymer({
-            is: 'my-app',
+            is: 'cg-app',
 
             properties: {
                 page: {
@@ -386,21 +386,21 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
             // for cache busting with my hashed files #lame
             _lookUpPages: function(name) {
                 var pages = {
-                    "my-lessons.html": "src/my-lessons.html",
-                    "my-about.html": "src/my-about.html",
-                    "my-session.html": "src/my-session.html",
-                    "my-testimonials.html": "src/my-testimonials.html",
-                    "my-contact.html": "src/my-contact.html",
-                    "my-photos.html": "src/my-photos.html",
-                    "my-view404.html": "src/my-view404.html",
-                    "my-videos.html": "src/my-videos.html",
+                    "cg-lessons.html": "src/cg-lessons.html",
+                    "cg-about.html": "src/cg-about.html",
+                    "cg-session.html": "src/cg-session.html",
+                    "cg-testimonials.html": "src/cg-testimonials.html",
+                    "cg-contact.html": "src/cg-contact.html",
+                    "cg-photos.html": "src/cg-photos.html",
+                    "cg-view404.html": "src/cg-view404.html",
+                    "cg-videos.html": "src/cg-videos.html",
                 };
                 var page = pages[name] || name;
                 return page.replace("src/", "");
             },
             _pageChanged: function(page) {
                 // Load page import on demand. Show 404 page if fails
-                var resolvedPageUrl = this.resolveUrl(this._lookUpPages('my-' + page + '.html'));
+                var resolvedPageUrl = this.resolveUrl(this._lookUpPages('cg-' + page + '.html'));
                 this.importHref(resolvedPageUrl, null, this._showPage404, true);
             },
 

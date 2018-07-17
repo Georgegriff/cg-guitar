@@ -14,7 +14,7 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
 <link rel="import" href="shared-styles.html">
 
 
-<dom-module id="my-about">
+<dom-module id="cg-about">
     <template>
     <style include="shared-styles">
        :host {
@@ -37,7 +37,7 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
           <div class="text-flex-cards">
              <template is="dom-repeat" items={{data.infoCards}} 
             as=item index-as=index>
-            <paper-card image="{{item.image}}" class="text-card wide-card" animated-shadow="false">
+            <paper-card image="{{item.image}}" class="text-card wide-card" animated-shadow="false" alt="CG Guitar Live">
              <div class="card-content">
             <div class="card-header">{{item.name}}</div>
 
@@ -51,7 +51,7 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
 
     </div>
 
-    <paper-card class="big-card" id="sign" image="images/pageimages/about-card.jpg">
+    <paper-card class="big-card" id="sign" image="images/pageimages/about-card.jpg" alt="Session Performance">
         <div class="card-content">
             <div class="card-header">Band & Session Work</div>
             <p class="card-light">
@@ -77,7 +77,7 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
 
     <script>
         Polymer({
-            is: 'my-about',
+            is: 'cg-about',
             properties: {
                 data: {
                     type: Object,
