@@ -50,7 +50,7 @@
             }
         </style>
         <iron-form id="contactForm">
-            <form method="post" action="[[api]]"  content-type="application/json">
+            <form method="post" action="[[api]]"  enctype="application/json">
                 <paper-input name="name" label="Name" required auto-validate></paper-input>
                 <paper-input id="email" on-change="_emailMatch" name="email-address" label="Email" type="email" required></paper-input>
                 <paper-input id="cEmail" on-change="_emailMatch" name="confirm-email-address" label="Confirm Email" type="email" required></paper-input>
