@@ -23,6 +23,7 @@
              :host .flex-wrapper {
                 display: flex;
                 align-items: center;
+                justify-content: center;
             }
 
             .yt-card {
@@ -116,7 +117,7 @@
                 <div class="flex-wrapper">
                     <div class="video-cards">
                         <template is="dom-repeat" items="{{videos}}" sort="sortItems">
-                            <youtube-player-card class="yt-card" duration="[[item.contentDetails.duration]]" view-count="[[item.statistics.viewCount]]"
+                            <youtube-player-card id="playerCard" class="yt-card" duration="[[item.contentDetails.duration]]" view-count="[[item.statistics.viewCount]]"
                                 video-title="[[item.snippet.title]]" channel-title="[[item.snippet.channelTitle]]" thumbnail="[[_getThumb(item)]]"
                                 video-id="[[item.id]]"></youtube-player-card>
                         </template>
@@ -251,10 +252,14 @@
             _showNext: function() {
                 if (!this._atBottom) {
                     //TODO:: when resize window reset transform
-                    var height = this.$$('youtube-player-card').offsetHeight,
+                    var card = this.$$('#playerCard');
+                    if (!card) {
+                        return;
+                    }
+                    var height = card.offsetHeight,
                         animateHeight = this.$.videoAnim.offsetHeight,
                         THRESHOLD = height * 2;
-                    var currentTranslate = parseInt(this.customStyle['--youtube-videos-translatey'], 10);
+                    var currentTranslate = parseInt(this.getComputedStyleValue('--youtube-videos-translatey'), 10);
                     currentTranslate = !currentTranslate ? 0 : currentTranslate;
                     currentTranslate -= height;
                     this._atTop = false;
@@ -278,8 +283,12 @@
             _showPrevious: function() {
                 if (!this._atTop) {
                     this._atBottom = false;
-                    var height = this.$$('youtube-player-card').offsetHeight;
-                    var currentTranslate = parseInt(this.customStyle['--youtube-videos-translatey'], 10);
+                    var card = this.$$('#playerCard');
+                    if (!card) {
+                        return;
+                    }
+                    var height = card.offsetHeight;
+                    var currentTranslate = parseInt(this.getComputedStyleValue('--youtube-videos-translatey'), 10);
                     currentTranslate = !currentTranslate ? 0 : currentTranslate;
                     currentTranslate = !currentTranslate ? 0 : currentTranslate + height;
                     if (currentTranslate === 0) {
@@ -291,8 +300,9 @@
 
             },
             _navigate: function(updated) {
-                this.customStyle['--youtube-videos-translatey'] = updated + 'px';
-                this.updateStyles();
+                this.updateStyles({
+                    '--youtube-videos-translatey': updated + 'px'
+                })
             },
             _handleResponse: function(response) {
                 var noStats,

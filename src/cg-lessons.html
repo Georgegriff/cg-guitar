@@ -35,7 +35,8 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
         padding:0 !important;
       }
       :host .p-top {
-        padding-top:16px;
+        padding-top:7px;
+        color: var(--app-primary-color);
       }
 
       :host .bottom-cont {
@@ -49,8 +50,8 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
 
       }
 
-        :host .card-top p{
-          padding-bottom:8px;
+        :host .card-top p {
+          padding-bottom:4px;
         }
 
         :host .levels {
@@ -69,15 +70,29 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
              --youtube-video-navigator-height:40vh;
            }
         }
+        @media (max-width: 650px) {
+
+            
+            .card-header {
+              font-size: 1.2em;
+            }
+           
+            
+          
+        }
         @media (min-width: 650px)  and (orientation: landscape) {
           :host .max-card {
             min-width: 400px;
             }
             
-           }
+          }
 
           
-
+           #sign {
+            --paper-card-header-image : {
+              max-height: 240px;
+            };
+           }
        
       
       
@@ -101,8 +116,8 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
           </div>
         </div>
       </paper-card>
+      <youtube-videos has-navigation id="lessons-playlist" search-url="https://www.googleapis.com/youtube/v3/playlistItems" order="viewCount" playlist-id="PLA0cAQ-2uoeo4d-k69kkTkekL300dFIwl" api-key="[[apiKey]]" max-results="10"></youtube-videos>
 
-        <youtube-videos has-navigation id="lessons-playlist" search-url="https://www.googleapis.com/youtube/v3/playlistItems" order="viewCount" playlist-id="PLA0cAQ-2uoeo4d-k69kkTkekL300dFIwl" api-key="[[apiKey]]" max-results="10"></youtube-videos>
 
       
       <div class="flex-push"></div>
