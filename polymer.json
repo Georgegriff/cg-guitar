@@ -17,6 +17,7 @@
         "src/cg-testimonials.html",
         "src/cg-photos.html",
         "src/cg-session.html",
+        "src/cg-privacy.html",
         "src/cg-view404.html"
     ],
     "sources": [

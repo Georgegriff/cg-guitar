@@ -4,6 +4,7 @@
 <link rel="import" href="../../bower_components/paper-spinner/paper-spinner-lite.html">
 <link rel="import" href="../../bower_components/paper-input/paper-textarea.html">
 <link rel="import" href="../../bower_components/paper-button/paper-button.html">
+<link rel="import" href="../../bower_components/paper-checkbox/paper-checkbox.html">
 <link rel="import" href="../../bower_components/paper-radio-group/paper-radio-group.html">
 
 <link rel="import" href="../shared-styles.html">
@@ -24,6 +25,10 @@
             #prefer,
             .buttons {
                 margin-top: 10px;
+            }
+
+            .buttons {
+                flex-wrap: wrap;
             }
 
             .buttons {
@@ -48,11 +53,25 @@
             paper-spinner-lite {
                 --paper-spinner-color: var(--primary-color);
             }
+
+            .policy {
+                display: flex;
+                font-size: 14px;
+                width: 100%;
+                flex-direction: row;
+                justify-content: center;
+                align-items: center;
+                margin-bottom: 8px;
+            }
+            paper-checkbox {
+                margin-left: 5px;
+                --paper-checkbox-unchecked-color : var(--app-primary-color) !important;
+            }
         </style>
         <iron-form id="contactForm">
             <form method="post" action="[[api]]"  enctype="application/json">
                 <paper-input name="name" label="Name" required auto-validate></paper-input>
-                <paper-input id="email" on-change="_emailMatch" name="email-address" label="Email" type="email" required></paper-input>
+                <paper-input autocomplete="email" id="email" on-change="_emailMatch" name="email-address" label="Email" type="email" required></paper-input>
                 <paper-input id="cEmail" on-change="_emailMatch" name="confirm-email-address" label="Confirm Email" type="email" required></paper-input>
                 <paper-input id="telephone" on-change="_validateTelephone" name="telephone-no" label="Telephone" type="telephone"></paper-input>
     
@@ -71,6 +90,10 @@
                 </template>
     <div class="buttons">
         <paper-spinner-lite id="spinner"></paper-spinner-lite>
+        <div class="policy">
+            <paper-checkbox required name="acceptPrivacyPolicy"><span>Please confirm that you have read and accept our <a on-tap="_priv" href="/privacy" target="_blank">Privacy Policy</a>.</span></paper-checkbox>
+        </div>
+        <br/>
         <paper-button raised on-click="_submit" disabled id="contactFormSubmit">
             Submit</paper-button>
         <paper-button raised on-click="_reset">Reset</paper-button>
@@ -116,6 +139,9 @@
                     value: false,
                     reflectToAttribute: true
                 }
+            },
+            _priv : function(e) {
+                e.stopPropagation();
             },
             _onResponse: function(e) {
                 var status = e.detail.status;

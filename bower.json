@@ -28,10 +28,14 @@
     "paper-input": "PolymerElements/paper-input#^2.2.3",
     "paper-radio-group": "PolymerElements/paper-radio-group#^2.2.0",
     "paper-spinner": "PolymerElements/paper-spinner#^2.1.0",
-    "web-animations-js": "^2.3.1"
+    "web-animations-js": "^2.3.1",
+    "paper-checkbox": "PolymerElements/paper-checkbox#^2.0.0"
   },
   "devDependencies": {
     "web-component-tester": "^4.0.0"
   },
-  "private": true
+  "private": true,
+  "resolutions": {
+    "paper-checkbox": "^2.0.1"
+  }
 }
