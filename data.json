@@ -3,10 +3,11 @@
     "lessons": {
         "lessonCard": {
             "name": "Kickstart Your Guitar Lessons Today",
-            "text": "Whether you're looking to start guitar lessons for the first time or you need help and advice on how to develop your playing, CG Guitar is the right place for you! 1:1, group classes and workshops available.",
+            "text": "Whether you're looking to start guitar lessons for the first time or you need help and advice on how to develop your playing, CG Guitar is the right place for you! 1:1, group classes and workshops available. <p class='card-medium'>Lessons are held on Mondays & Wednesdays at St John’s Church, Farncombe and Tuesdays, Thursdays, Fridays at Snoxhall Pavilion, Cranleigh.</p>",
             "footer": "If you wish to enquire about guitar lessons then please get in touch by clicking the button below."
         },
-        "lessonTypes": [{
+        "lessonTypes": [
+            {
                 "name": "Beginners",
                 "text": "Play music from the first lesson! Kick start your guitar playing with enjoyable and frustration free methods."
             },
@@ -25,22 +26,33 @@
     "testimonials": {
         "title": "What do people have to say about CG Guitar?",
         "data": {
-            "Beginners": [{
-                "image": "/images/testimonials/annep.jpg",
-                "name": "Anne Poulter",
-                "text": "Since he started taking lessons from Charlie, my son's love of the guitar and music, in general, has grown and grown. Charlie's energy and enthusiasm are infectious, and I have been so impressed by my son's progress. He is working through the Rock School grades and is also learning to play popular songs, both alone and with other students. We feel very lucky to have discovered CG Guitar Tuition."
-            }],
-            "Intermediates": [{
-                "name": "Stuart Pett",
-                "image": "/images/testimonials/sepett.jpg",
-                "text": "Charlie has been teaching my son for about 5 years, taking him from complete novice through to playing some pretty impressive rock songs as well as a couple of music gradings. Charlie is patient when necessary and tailors his tuition to the tastes, needs and aspirations of his students. Charlie initially taught face-to-face but now lessons are conducted via Skype to surprisingly good effect. I cannot recommend CG Guitar highly enough!"
-            }],
-            "Advanced": [{
-                "name": "Johno Madgwick",
-                "image": "/images/testimonials/johno.jpg",
-                "text": "I've been having lessons with CG Guitar for a few months now. I considered myself a proficient player but wanted to progress to a higher standard. <br/> Charlie has tailored the lessons to cover advanced topics such as, playing with odd time signatures, music theory (extended chords, modal theory) and improvisation skills (playing over changes, modal interchange, arpeggio development). It has been great to solidify my previous/current knowledge and help fill in any gaps as well as getting me to tackle any subjects I'm struggling with. His supporting resources such as transcriptions are always flawless. Charlie has a great understanding of music and imparting that information to his students."
-            }],
-            "General": [{
+            "Beginners": [
+                {
+                    "image": "/images/testimonials/annep.jpg",
+                    "name": "Anne Poulter",
+                    "text": "Since he started taking lessons from Charlie, my son's love of the guitar and music, in general, has grown and grown. Charlie's energy and enthusiasm are infectious, and I have been so impressed by my son's progress. He is working through the Rock School grades and is also learning to play popular songs, both alone and with other students. We feel very lucky to have discovered CG Guitar Tuition."
+                }
+            ],
+            "Intermediates": [
+                {
+                    "name": "Stuart Pett",
+                    "image": "/images/testimonials/sepett.jpg",
+                    "text": "Charlie has been teaching my son for about 5 years, taking him from complete novice through to playing some pretty impressive rock songs as well as a couple of music gradings. Charlie is patient when necessary and tailors his tuition to the tastes, needs and aspirations of his students. Charlie initially taught face-to-face but now lessons are conducted via Skype to surprisingly good effect. I cannot recommend CG Guitar highly enough!"
+                }
+            ],
+            "Advanced": [
+                {
+                    "name": "Johno Madgwick",
+                    "image": "/images/testimonials/johno.jpg",
+                    "text": "I've been having lessons with CG Guitar for a few months now. I considered myself a proficient player but wanted to progress to a higher standard. <br/> Charlie has tailored the lessons to cover advanced topics such as, playing with odd time signatures, music theory (extended chords, modal theory) and improvisation skills (playing over changes, modal interchange, arpeggio development). It has been great to solidify my previous/current knowledge and help fill in any gaps as well as getting me to tackle any subjects I'm struggling with. His supporting resources such as transcriptions are always flawless. Charlie has a great understanding of music and imparting that information to his students."
+                }
+            ],
+            "General": [
+                {
+                    "name": "Dawn Greenall",
+                    "text": "My 13 year old son Alex loves Charlie's lessons, even choosing to go on his birthday instead of going out with his mates! We've always struggled with getting him to practice outside of class with music lessons in the past but we haven't needed to ask once since he started learning with Charlie. Highly recommended."
+                },
+                {
                     "image": "/images/testimonials/vhicks.jpg",
                     "name": "Victoria Hicks",
                     "text": "Charlie has been teaching my son Joe for 5 years(!), so I can vouch for his stamina, as well as his ambition for his students. Joe achieved merits in his first 2 rock school grades, and has since chosen to follow Charlie's more 'independent' syllabus in a group lesson which he really enjoys. Charlie is a great teacher, and particularly proactive and organised."
@@ -65,7 +77,7 @@
                 },
                 {
                     "name": "Natalia Littman",
-                    "text": "Charlie has been teaching our8 year old each week since moving here at Easter. This is the only activity he NEVER wants to miss!! Great group session."
+                    "text": "Charlie has been teaching our 8 year old each week since moving here at Easter. This is the only activity he NEVER wants to miss!! Great group session."
                 },
                 {
                     "name": "Emma Hill",
@@ -179,7 +191,8 @@
                 {
                     "name": "Patrick Mair",
                     "text": "Lessons with Charlie are fun! "
-                }, {
+                },
+                {
                     "name": "Sarah Bryans",
                     "image": "/images/testimonials/sbryans.jpg",
                     "text": "My son has been having guitar lessons from Charlie, for the past 5-6 years. Charlie has taken him through Grade 1, 2 and 3, and he passed all exams with a Merit. Charlie is professional in his teaching, and my son listens to his advice. My son has recently changed his guitar, and Charlie was on hand to help and advise us. I would highly recommend Charlie as a guitar teacher."
@@ -192,7 +205,8 @@
                 {
                     "name": "Lucy Ford",
                     "text": "Charlie has been a fantastic teacher to our 7 year old son over the last year. Lessons are always fun and relaxed and they have a great rapport. He is learning songs across many different genres, as well as any current tracks my son requests. Charlie has the patience of a Saint and we trust him implicitly. I would not hesitate at all in recommending him to anyone looking for a great teacher."
-                }, {
+                },
+                {
                     "name": "Elliot Pett",
                     "image": "/images/testimonials/sepett.jpg",
                     "text": "Charlie is really patient. If you don't understand he's happy to go over it again and again at your speed until you get the hang of it."
@@ -201,14 +215,17 @@
                     "image": "/images/testimonials/cbking.jpg",
                     "name": "Becky King",
                     "text": "Charlie has been teaching my son (aged seven), for just over 12 months. He always customises the lessons to capture his interest with a wide range of music adjusted to his level of skill. This combined with a great balance of patience, talent, enthusiasm and humour has completely inspired him and kept him engaged and motivated. My son sums up the lessons perfectly (below)."
-                }, {
+                },
+                {
                     "image": "/images/testimonials/cbking.jpg",
                     "name": "Charlie King",
                     "text": "Charlie is epic, guitar is awesome."
-                }, {
+                },
+                {
                     "name": "Jody Cooksley",
                     "text": "Charlie’s easy and enthusiastic teaching style has completely transformed my son’s playing and reawakened his love of the guitar. Previous lessons had left him uninspired but he now needs no prompting to practise. I would highly recommend Charlie as a teacher"
-                }, {
+                },
+                {
                     "name": "Ben Cooksley",
                     "text": "I really enjoy my lessons with Charlie, he chooses great songs for us to learn and he is very kind and patient"
                 }
@@ -216,11 +233,13 @@
         }
     },
     "about": {
-        "infoCards": [{
+        "infoCards": [
+            {
                 "name": "Who is CG Guitar?",
                 "image": "/images/pageimages/about.jpg",
                 "text": "CG Guitar is the creation of guitarist Charlie Griffiths. Charlie started playing guitar at the age of 13, since then he has performed in a number of bands that have required him to play a variety of genres, blues, jazz, soul, funk, rock, all the way to the extreme sides of metal. This brings tons of experience, knowledge and advice for Charlie to share."
-            }, {
+            },
+            {
                 "name": "A little bit more...",
                 "text": "Charlie graduated from The Academy of Contemporary Music as a Bachelor of Music with a First Class Honours in Professional Music Performance in 2013. <br/><br/> During his degree in 2012 he started teaching at Goodall Guitar School in which has now led him on to running his own teaching business, CG Guitar. As well as running CG Guitar he is an active member of the band <a href='https://www.facebook.com/harbingerriffs/'>Harbinger</a>."
             },
@@ -228,10 +247,7 @@
                 "name": "Looking for guitar lessons?",
                 "text": " I offer lessons for students of all standards, find out more information on the <a href='/lessons'>Lessons</a> page.<br/>To check out what my students have to say about the guitar lessons, please visit the <a href='/testimonials'>Testimonials</a> page."
             }
-
         ]
-
-
     },
     "session": {
         "quotes": {

@@ -9,18 +9,18 @@
 <dom-module id="youtube-videos">
     <template>
         <style>
-             :host {
+            :host {
                 display: block;
             }
 
-             :host .video-cards {
+            :host .video-cards {
                 max-width: var(--youtube-videos-container-max-width, 100%);
                 display: flex;
                 flex-wrap: wrap;
                 justify-content: center;
             }
 
-             :host .flex-wrapper {
+            :host .flex-wrapper {
                 display: flex;
                 align-items: center;
                 justify-content: center;
@@ -33,18 +33,18 @@
 
 
 
-             :host([has-navigation]) .video-wrap {
+            :host([has-navigation]) .video-wrap {
                 height: var(--youtube-video-navigator-height, 270px);
                 overflow: hidden;
             }
 
-             :host .nav-wrap {
+            :host .nav-wrap {
                 display: flex;
                 justify-content: center;
                 align-items: center;
             }
 
-             :host .nav-text {
+            :host .nav-text {
                 text-align: center;
             }
 
@@ -65,13 +65,13 @@
                 text-decoration: underline;
             }
 
-             :host .spin-wrap {
+            :host .spin-wrap {
                 position: relative;
                 z-index: 101;
                 pointer-events: none;
             }
 
-             :host #spins {
+            :host #spins {
                 position: absolute;
                 ;
                 width: 100%;
@@ -90,16 +90,17 @@
             }
 
             @media (max-width: 650px) and (orientation: portrait) {
-                
+
                 .yt-card {
                     --youtube-player-card-width: var(--youtube-videos-width, 80vw);
                     --youtube-player-card-height: var(--youtube-videos-height, 45vw);
                 }
 
-                 :host([has-navigation]) .video-wrap {
+                :host([has-navigation]) .video-wrap {
                     height: var(--youtube-video-navigator-height, 79vw);
                 }
-                 :host #spins {
+
+                :host #spins {
                     height: var(--youtube-video-navigator-height, 79vw);
                 }
             }
@@ -111,27 +112,33 @@
         </div>
         <div class="video-wrap">
             <div id="videoAnim" class="video-transition">
-                <iron-ajax id="ajaxRequest" auto url="[[searchUrl]]" params='[[_buildParams(pageToken,_part,apiKey,channelId,query,order,types,maxResults, playlistId)]]'
+                <iron-ajax id="ajaxRequest" auto url="[[searchUrl]]"
+                    params='[[_buildParams(pageToken,_part,apiKey,channelId,query,order,types,maxResults, playlistId)]]'
                     handle-as="json"></iron-ajax>
-                <iron-ajax id="ajaxVideos" url="[[videoUrl]]" params='[[_buildVideoParams(_videoIds,_part,apiKey,types)]]' handle-as="json"></iron-ajax>
+                <iron-ajax id="ajaxVideos" url="[[videoUrl]]"
+                    params='[[_buildVideoParams(_videoIds,_part,apiKey,types)]]' handle-as="json"></iron-ajax>
                 <div class="flex-wrapper">
                     <div class="video-cards">
                         <template is="dom-repeat" items="{{videos}}" sort="sortItems">
-                            <youtube-player-card id="playerCard" class="yt-card" duration="[[item.contentDetails.duration]]" view-count="[[item.statistics.viewCount]]"
-                                video-title="[[item.snippet.title]]" channel-title="[[item.snippet.channelTitle]]" thumbnail="[[_getThumb(item)]]"
+                            <youtube-player-card id="playerCard" class="yt-card"
+                                duration="[[item.contentDetails.duration]]" view-count="[[item.statistics.viewCount]]"
+                                channel-id="[[item.snippet.channelId]]" video-title="[[item.snippet.title]]"
+                                channel-title="[[item.snippet.channelTitle]]" thumbnail="[[_getThumb(item)]]"
                                 video-id="[[item.id]]"></youtube-player-card>
                         </template>
-    </div>
-    </div>
-    </div>
-    </div>
-    <template is="dom-if" if={{hasNavigation}}>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <template is="dom-if" if={{hasNavigation}}>
             <div class="nav-wrap">
-                <paper-icon-button disabled$=[[_atTop]] on-click="_showPrevious" icon="av:skip-previous" title="Previous"></paper-icon-button>
+                <paper-icon-button disabled$=[[_atTop]] on-click="_showPrevious" icon="av:skip-previous"
+                    title="Previous"></paper-icon-button>
                 <a disabled$=[[_atTop]] on-click="_showPrevious" class="nav-text">[[previousText]]</a>
                 <span>&nbsp; | &nbsp; </span>
                 <a disabled$=[[_atBottom]] on-click="_showNext" class="nav-text">[[nextText]]</a>
-                <paper-icon-button disabled$=[[_atBottom]] on-click="_showNext" icon="av:skip-next" title="Next"></paper-icon-button>
+                <paper-icon-button disabled$=[[_atBottom]] on-click="_showNext" icon="av:skip-next" title="Next">
+                </paper-icon-button>
 
 
             </div>
@@ -229,27 +236,27 @@
                     value: "maxres"
                 }
             },
-            sortItems: function(a, b) {
+            sortItems: function (a, b) {
                 if (a.statistics && b.statistics) {
                     return parseInt(a.statistics.viewCount) <= parseInt(b.statistics.viewCount) ? 1 : -1;
                 } else {
                     return 0;
                 }
             },
-            _getThumb: function(item) {
+            _getThumb: function (item) {
                 var thumb = item.snippet.thumbnails[this.thumbQuality];
                 if (thumb) {
                     return thumb.url;
                 }
                 return undefined;
             },
-            _onHasNav: function() {
+            _onHasNav: function () {
                 if (this.hasNavigation) {
                     // need to force for decent lazy loading of pages
                     this.maxResults = '10';
                 }
             },
-            _showNext: function() {
+            _showNext: function () {
                 if (!this._atBottom) {
                     //TODO:: when resize window reset transform
                     var card = this.$$('#playerCard');
@@ -280,7 +287,7 @@
                 }
 
             },
-            _showPrevious: function() {
+            _showPrevious: function () {
                 if (!this._atTop) {
                     this._atBottom = false;
                     var card = this.$$('#playerCard');
@@ -299,12 +306,12 @@
 
 
             },
-            _navigate: function(updated) {
+            _navigate: function (updated) {
                 this.updateStyles({
                     '--youtube-videos-translatey': updated + 'px'
                 })
             },
-            _handleResponse: function(response) {
+            _handleResponse: function (response) {
                 var noStats,
                     items;
                 if (response && (response.items || response.snippet)) {
@@ -322,7 +329,7 @@
                     }
                 }
             },
-            _extractId: function(items) {
+            _extractId: function (items) {
                 // need to update for playlists
                 ids = '';
 
@@ -349,7 +356,7 @@
                 return ids;
 
             },
-            _buildVideoParams: function() {
+            _buildVideoParams: function () {
                 if (this.apiKey) {
                     let output = {
                         'key': this.apiKey,
@@ -362,7 +369,7 @@
                     console.warn('No attribute "key" provided: API Key');
                 }
             },
-            _buildParams: function() {
+            _buildParams: function () {
                 if (this.apiKey) {
                     let output = {
                         'key': this.apiKey,
@@ -388,43 +395,43 @@
                     console.warn('No attribute "key" provided: API Key');
                 }
             },
-            loadMore: function() {
+            loadMore: function () {
                 this.nextPage();
             },
-            nextPage: function() {
+            nextPage: function () {
                 this.pageToken = this._nextPageToken;
             },
-            previousPage: function() {
+            previousPage: function () {
                 // doesnt work properly
                 this.pageToken = this._prevPageToken;
             },
-            onResize: function() {
+            onResize: function () {
                 this.updateStyles();
             },
-            attached: function() {
+            attached: function () {
                 this.listen(this.$.ajaxVideos, 'iron-ajax-request', '_onRequest');
                 this.listen(this.$.ajaxRequest, 'iron-ajax-response', '_onResponse');
                 this.listen(this.$.ajaxVideos, 'iron-ajax-response', '_updateWithStats');
                 this.listen(window, 'resize', 'onResize');
 
             },
-            detached: function() {
+            detached: function () {
                 this.unlisten(this.$.ajaxRequest, 'iron-ajax-response', '_onResponse');
                 this.unlisten(this.$.ajaxVideoss, 'iron-ajax-response', '_updateWithStats');
                 this.unlisten(window, 'resize', 'onResize');
             },
-            _updateWithStats: function(e) {
+            _updateWithStats: function (e) {
                 var response = e.target.lastResponse;
                 if (response && response.items && response.items.length) {
                     this.videos = this._noStats.concat(response.items);
                 }
             },
-            _onRequest: function() {
+            _onRequest: function () {
                 this.$.spinner.active = true;
                 this.$.spinner.hidden = false;
 
             },
-            _onResponse: function(e) {
+            _onResponse: function (e) {
                 var response = e.target.lastResponse;
                 if (response) {
                     this._handleResponse(response);
