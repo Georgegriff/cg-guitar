@@ -557,7 +557,7 @@
                     "name": "scroll-target",
                     "description": "Specifies the element that will handle the scroll event\non the behalf of the current element. This is typically a reference to an element,\nbut there are a few more posibilities:\n\n### Elements id\n\n```html\n<div id=\"scrollable-element\" style=\"overflow: auto;\">\n <x-element scroll-target=\"scrollable-element\">\n   <!-- Content-->\n </x-element>\n</div>\n```\nIn this case, the `scrollTarget` will point to the outer div element.\n\n### Document scrolling\n\nFor document scrolling, you can use the reserved word `document`:\n\n```html\n<x-element scroll-target=\"document\">\n  <!-- Content -->\n</x-element>\n```\n\n### Elements reference\n\n```js\nappHeader.scrollTarget = document.querySelector('#scrollable-element');\n```",
                     "sourceRange": {
-                        "file": "..\\bower_components\\iron-scroll-target-behavior\\iron-scroll-target-behavior.html",
+                        "file": "..\\node_modules\\iron-scroll-target-behavior\\iron-scroll-target-behavior.html",
                         "start": {
                             "line": 63,
                             "column": 6
@@ -664,7 +664,7 @@
                     "description": "Specifies the element that will handle the scroll event\non the behalf of the current element. This is typically a reference to an element,\nbut there are a few more posibilities:\n\n### Elements id\n\n```html\n<div id=\"scrollable-element\" style=\"overflow: auto;\">\n <x-element scroll-target=\"scrollable-element\">\n   <!-- Content-->\n </x-element>\n</div>\n```\nIn this case, the `scrollTarget` will point to the outer div element.\n\n### Document scrolling\n\nFor document scrolling, you can use the reserved word `document`:\n\n```html\n<x-element scroll-target=\"document\">\n  <!-- Content -->\n</x-element>\n```\n\n### Elements reference\n\n```js\nappHeader.scrollTarget = document.querySelector('#scrollable-element');\n```",
                     "privacy": "public",
                     "sourceRange": {
-                        "file": "..\\bower_components\\iron-scroll-target-behavior\\iron-scroll-target-behavior.html",
+                        "file": "..\\node_modules\\iron-scroll-target-behavior\\iron-scroll-target-behavior.html",
                         "start": {
                             "line": 63,
                             "column": 6
@@ -685,7 +685,7 @@
                     "description": "True if the event listener should be installed.",
                     "privacy": "protected",
                     "sourceRange": {
-                        "file": "..\\bower_components\\iron-scroll-target-behavior\\iron-scroll-target-behavior.html",
+                        "file": "..\\node_modules\\iron-scroll-target-behavior\\iron-scroll-target-behavior.html",
                         "start": {
                             "line": 78,
                             "column": 4
@@ -706,7 +706,7 @@
                     "description": "",
                     "privacy": "protected",
                     "sourceRange": {
-                        "file": "..\\bower_components\\iron-scroll-target-behavior\\iron-scroll-target-behavior.html",
+                        "file": "..\\node_modules\\iron-scroll-target-behavior\\iron-scroll-target-behavior.html",
                         "start": {
                             "line": 80,
                             "column": 4
@@ -727,7 +727,7 @@
                     "description": "Runs on every scroll event. Consumer of this behavior may override this method.",
                     "privacy": "protected",
                     "sourceRange": {
-                        "file": "..\\bower_components\\iron-scroll-target-behavior\\iron-scroll-target-behavior.html",
+                        "file": "..\\node_modules\\iron-scroll-target-behavior\\iron-scroll-target-behavior.html",
                         "start": {
                             "line": 114,
                             "column": 4
@@ -748,7 +748,7 @@
                     "description": "The default scroll target. Consumers of this behavior may want to customize\nthe default scroll target.",
                     "privacy": "protected",
                     "sourceRange": {
-                        "file": "..\\bower_components\\iron-scroll-target-behavior\\iron-scroll-target-behavior.html",
+                        "file": "..\\node_modules\\iron-scroll-target-behavior\\iron-scroll-target-behavior.html",
                         "start": {
                             "line": 122,
                             "column": 4
@@ -769,7 +769,7 @@
                     "description": "Shortcut for the document element",
                     "privacy": "protected",
                     "sourceRange": {
-                        "file": "..\\bower_components\\iron-scroll-target-behavior\\iron-scroll-target-behavior.html",
+                        "file": "..\\node_modules\\iron-scroll-target-behavior\\iron-scroll-target-behavior.html",
                         "start": {
                             "line": 131,
                             "column": 4
@@ -790,7 +790,7 @@
                     "description": "Gets the number of pixels that the content of an element is scrolled upward.",
                     "privacy": "protected",
                     "sourceRange": {
-                        "file": "..\\bower_components\\iron-scroll-target-behavior\\iron-scroll-target-behavior.html",
+                        "file": "..\\node_modules\\iron-scroll-target-behavior\\iron-scroll-target-behavior.html",
                         "start": {
                             "line": 140,
                             "column": 4
@@ -811,7 +811,7 @@
                     "description": "Gets the number of pixels that the content of an element is scrolled to the left.",
                     "privacy": "protected",
                     "sourceRange": {
-                        "file": "..\\bower_components\\iron-scroll-target-behavior\\iron-scroll-target-behavior.html",
+                        "file": "..\\node_modules\\iron-scroll-target-behavior\\iron-scroll-target-behavior.html",
                         "start": {
                             "line": 152,
                             "column": 4
@@ -832,7 +832,7 @@
                     "description": "Scrolls the content to a particular place.",
                     "privacy": "public",
                     "sourceRange": {
-                        "file": "..\\bower_components\\iron-scroll-target-behavior\\iron-scroll-target-behavior.html",
+                        "file": "..\\node_modules\\iron-scroll-target-behavior\\iron-scroll-target-behavior.html",
                         "start": {
                             "line": 192,
                             "column": 4
@@ -853,7 +853,7 @@
                     "description": "Gets the width of the scroll target.",
                     "privacy": "protected",
                     "sourceRange": {
-                        "file": "..\\bower_components\\iron-scroll-target-behavior\\iron-scroll-target-behavior.html",
+                        "file": "..\\node_modules\\iron-scroll-target-behavior\\iron-scroll-target-behavior.html",
                         "start": {
                             "line": 206,
                             "column": 4
@@ -874,7 +874,7 @@
                     "description": "Gets the height of the scroll target.",
                     "privacy": "protected",
                     "sourceRange": {
-                        "file": "..\\bower_components\\iron-scroll-target-behavior\\iron-scroll-target-behavior.html",
+                        "file": "..\\node_modules\\iron-scroll-target-behavior\\iron-scroll-target-behavior.html",
                         "start": {
                             "line": 218,
                             "column": 4
@@ -895,7 +895,7 @@
                     "description": "Returns true if the scroll target is a valid HTMLElement.",
                     "privacy": "protected",
                     "sourceRange": {
-                        "file": "..\\bower_components\\iron-scroll-target-behavior\\iron-scroll-target-behavior.html",
+                        "file": "..\\node_modules\\iron-scroll-target-behavior\\iron-scroll-target-behavior.html",
                         "start": {
                             "line": 230,
                             "column": 4
@@ -916,7 +916,7 @@
                     "description": "",
                     "privacy": "protected",
                     "sourceRange": {
-                        "file": "..\\bower_components\\iron-scroll-target-behavior\\iron-scroll-target-behavior.html",
+                        "file": "..\\node_modules\\iron-scroll-target-behavior\\iron-scroll-target-behavior.html",
                         "start": {
                             "line": 234,
                             "column": 4
@@ -937,7 +937,7 @@
                     "description": "Enables or disables the scroll event listener.",
                     "privacy": "public",
                     "sourceRange": {
-                        "file": "..\\bower_components\\iron-scroll-target-behavior\\iron-scroll-target-behavior.html",
+                        "file": "..\\node_modules\\iron-scroll-target-behavior\\iron-scroll-target-behavior.html",
                         "start": {
                             "line": 252,
                             "column": 4

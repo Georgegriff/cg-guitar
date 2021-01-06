@@ -1,0 +1,176 @@
+import '../../@polymer/polymer/polymer-legacy.js';
+import './components/cg-icons.js';
+import './cg-social.js';
+import './cg-links.js';
+import { Polymer } from '../../@polymer/polymer/lib/legacy/polymer-fn.js';
+import { html } from '../../@polymer/polymer/lib/utils/html-tag.js';
+Polymer({
+  _template: html`
+        <style>
+             :host {
+                display: block;
+                height: 100%;
+                overflow-y: auto;
+                color: var(--app-link-dark);
+                overflow-x: hidden;
+                background: var(--app-sidebar-color);
+            }
+
+            #pages {
+                padding-bottom: 10px;
+            }
+
+            .drawer-list a {
+                display: block;
+                padding: 0 16px;
+                text-decoration: none;
+                color: var(--app-white);
+                line-height: 40px;
+            }
+
+            #pagesSelector {
+                display: block;
+            }
+
+            .drawer-list a.iron-selected {
+                color: black;
+                font-weight: bold;
+            }
+
+            .info {
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                flex-direction: column;
+                margin-top:5px;
+                line-height: 1.5em;
+            }
+
+            .email a,
+            .tele a {
+                text-decoration: none;
+                color: var(--app-white);
+                font-weight: normal;
+            }
+
+            .top-info {
+                display: flex;
+                align-items: center;
+                flex-direction: column;
+                justify-content: center;
+                margin-bottom: 10px;
+            }
+
+            .side-bar-image {
+                margin: 10px 0 0 10px;
+                width: var(--cd-sidebar-img-size, 145px);
+                height: var(--cd-sidebar-img-size, 145px);
+                border: solid 2px white;
+                border-radius: 100%;
+                overflow: hidden;
+            }
+
+            .side-bar-image .div-img {
+                width: 100%;
+                height: 100%;
+                background-size: cover;
+                background-position-x: 50%;
+                background-color: var(--app-primary-color);
+                background-image: url('../images/thumb.jpg');
+            }
+
+            @media (max-height: 650px) and (orientation:portrait) {
+                    :host {
+                        --cd-sidebar-img-size: 100px;
+                    }
+                    cg-social {
+                        --cg-social-icon-size :  37px;
+                        --cg-social-icon-margin: 10px;
+                    }
+
+                #pagesSelector {
+                    padding-top: 0px;
+                    display: block;
+                }
+            }
+
+          
+        </style>
+        <div class="top-info">
+            <a href="/">
+                <div class="side-bar-image">
+                    <div class="div-img"></div>
+                </div>
+            </a>
+            <div class="info">
+                <div class="name">Charlie Griffiths</div>
+                <div class="email"><a href="mailto:charlie@cgguitar.co.uk" target="_top">charlie@cgguitar.co.uk</a></div>
+                <div class="tele"><a href="tel:+447861538564">+447861538564</a></div>
+            </div>
+        </div>
+
+        <iron-selector id="pagesSelector" selected="[[page]]" attr-for-selected="name" class="drawer-list" role="navigation">
+            <div id="pages" role="listbox">
+                <cg-links active="[[page]]" text="Guitar Lessons" href="/lessons" name="lessons" icon="cg:pick"></cg-links>
+                <cg-links active="[[page]]" text="About" href="/about" name="about" icon="info"></cg-links>
+                <cg-links active="[[page]]" text="Contact" href="/contact" name="contact" icon="communication:contact-phone"></cg-links>
+                <cg-links active="[[page]]" text="Photos" href="/photos" name="photos" icon="image:photo-library"></cg-links>
+                <cg-links active="[[page]]" text="Videos" href="/videos" name="videos" icon="av:videocam"></cg-links>
+                <cg-links active="[[page]]" text="Testimonials" href="/testimonials" name="testimonials" icon="maps:person-pin"></cg-links>
+                <cg-links active="[[page]]" text="Band/Sessions" href="/session" name="session" icon="image:audiotrack"></cg-links>
+            </div>
+
+
+
+
+        </iron-selector>
+        <cg-social></cg-social>
+`,
+
+  is: 'cg-sidebar',
+
+  properties: {
+      page: {
+          type: String,
+          reflectToAttribute: true,
+          notify: true
+      },
+      _names: {
+          type: Array,
+          value: []
+      }
+  },
+
+  nextPage: function() {
+      var current = this._names.indexOf(this.page),
+          newIndex = current + 1,
+          newPage = this._names[newIndex];
+      if (newIndex > this._names.length - 1) {
+          return current;
+
+      }
+      return newPage;
+  },
+
+  previousPage: function() {
+      var current = this._names.indexOf(this.page),
+          newIndex = current - 1,
+          newPage = this._names[newIndex];
+      if (newIndex < 0) {
+          return current;
+      }
+      return newPage;
+
+  },
+
+  ready: function() {
+      var pages = this.$.pages.querySelectorAll('cg-links'),
+          page;
+
+      for (i = 0; i < pages.length; ++i) {
+          page = pages[i];
+          this._names.push(page.getAttribute('name'));
+      }
+
+  }
+});

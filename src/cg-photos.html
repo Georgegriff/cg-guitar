@@ -7,10 +7,10 @@ The complete set of contributors may be found at http://polymer.github.io/CONTRI
 Code distributed by Google as part of the polymer project is also
 subject to an additional IP rights grant found at http://polymer.github.io/PATENTS.txt
 -->
-<link rel="import" href="./components/instagram-feed.html">
+<script type="module" src="./components/instagram-feed.js"></script>
 
-<link rel="import" href="../bower_components/polymer/polymer.html">
-<link rel="import" href="shared-styles.html">
+<script type="module" src="../../@polymer/polymer/polymer-legacy.js"></script>
+<script type="module" src="./shared-styles.js"></script>
 
 <dom-module id="cg-photos">
     <template>
@@ -25,28 +25,32 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
    
   </template>
 
-    <script>
-        Polymer({
-            is: 'cg-photos',
-            properties: {
-                scrollPos: {
-                    type: String,
-                    value: null,
-                    notify: true,
-                    reflectToAttribute: true,
-                    observer: '_loadMore'
-                }
-            },
-            ready: function() {
-                this.feed = this.$.feed;
-            },
-            _loadMore: function() {
-                if (this.feed && (this.scrollPos >= 0.7 || this.scrollPos === 'bottom')) {
-                    this.feed.next();
-                }
-            }
+    <script type="module">
+import './components/instagram-feed.js';
+import '../../@polymer/polymer/polymer-legacy.js';
+import './shared-styles.js';
+import { Polymer } from '../../@polymer/polymer/lib/legacy/polymer-fn.js';
+Polymer({
+    is: 'cg-photos',
+    properties: {
+        scrollPos: {
+            type: String,
+            value: null,
+            notify: true,
+            reflectToAttribute: true,
+            observer: '_loadMore'
+        }
+    },
+    ready: function() {
+        this.feed = this.$.feed;
+    },
+    _loadMore: function() {
+        if (this.feed && (this.scrollPos >= 0.7 || this.scrollPos === 'bottom')) {
+            this.feed.next();
+        }
+    }
 
 
-        });
-    </script>
+});
+</script>
 </dom-module>

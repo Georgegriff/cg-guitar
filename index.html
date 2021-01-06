@@ -76,66 +76,69 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
         </div>
     </noscript>
 
-    <script>
-        // Load pre-caching Service Worker
-        if ('serviceWorker' in navigator) {
-            window.addEventListener('load', function() {
-                navigator.serviceWorker.register('/service-worker.js');
-            });
-        }
-    </script>
-    <script>
-        (function(i, s, o, g, r, a, m) {
-            i['GoogleAnalyticsObject'] = r;
-            i[r] = i[r] || function() {
-                (i[r].q = i[r].q || []).push(arguments)
-            }, i[r].l = 1 * new Date();
-            a = s.createElement(o),
-                m = s.getElementsByTagName(o)[0];
-            a.async = 1;
-            a.src = g;
-            m.parentNode.insertBefore(a, m)
-        })(window, document, 'script', 'https://www.google-analytics.com/analytics.js', 'ga');
+    <script type="module">
+import '/src/cg-app.js';
+// Load pre-caching Service Worker
+if ('serviceWorker' in navigator) {
+    window.addEventListener('load', function() {
+        navigator.serviceWorker.register('/service-worker.js');
+    });
+}
+</script>
+    <script type="module">
+import '/src/cg-app.js';
+(function(i, s, o, g, r, a, m) {
+    i['GoogleAnalyticsObject'] = r;
+    i[r] = i[r] || function() {
+        (i[r].q = i[r].q || []).push(arguments)
+    }, i[r].l = 1 * new Date();
+    a = s.createElement(o),
+        m = s.getElementsByTagName(o)[0];
+    a.async = 1;
+    a.src = g;
+    m.parentNode.insertBefore(a, m)
+})(window, document, 'script', 'https://www.google-analytics.com/analytics.js', 'ga');
 
-        ga('create', 'UA-101880217-1', 'auto');
-        ga('send', 'pageview');
-    </script>
+ga('create', 'UA-101880217-1', 'auto');
+ga('send', 'pageview');
+</script>
 
     <!-- Facebook Pixel Code -->
 
-    <script defer>
-        ! function(f, b, e, v, n, t, s)
+    <script type="module">
+import '/src/cg-app.js';
+! function(f, b, e, v, n, t, s)
 
-        {
-            if (f.fbq) return;
-            n = f.fbq = function() {
-                n.callMethod ?
+{
+    if (f.fbq) return;
+    n = f.fbq = function() {
+        n.callMethod ?
 
-                    n.callMethod.apply(n, arguments) : n.queue.push(arguments)
-            };
+            n.callMethod.apply(n, arguments) : n.queue.push(arguments)
+    };
 
-            if (!f._fbq) f._fbq = n;
-            n.push = n;
-            n.loaded = !0;
-            n.version = '2.0';
+    if (!f._fbq) f._fbq = n;
+    n.push = n;
+    n.loaded = !0;
+    n.version = '2.0';
 
-            n.queue = [];
-            t = b.createElement(e);
-            t.async = !0;
+    n.queue = [];
+    t = b.createElement(e);
+    t.async = !0;
 
-            t.src = v;
-            s = b.getElementsByTagName(e)[0];
+    t.src = v;
+    s = b.getElementsByTagName(e)[0];
 
-            s.parentNode.insertBefore(t, s)
-        }(window, document, 'script',
+    s.parentNode.insertBefore(t, s)
+}(window, document, 'script',
 
-            'https://connect.facebook.net/en_US/fbevents.js');
+    'https://connect.facebook.net/en_US/fbevents.js');
 
 
-        fbq('init', '1349670541803535');
+fbq('init', '1349670541803535');
 
-        fbq('track', 'PageView');
-    </script>
+fbq('track', 'PageView');
+</script>
 
     <noscript>
 
@@ -146,9 +149,9 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
 	&noscript=1"/>
 
 	</noscript>
-    <script type="text/javascript" src="/bower_components/webcomponentsjs/webcomponents-loader.js"></script>
+    <script type="text/javascript" src="/node_modules/@webcomponents/webcomponentsjs/webcomponents-loader.js"></script>
 
-    <link rel="import" href="/src/cg-app.html">
+    <script type="module" src="/src/cg-app.js"></script>
 
     <style>
         body {

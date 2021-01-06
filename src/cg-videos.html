@@ -8,12 +8,12 @@ Code distributed by Google as part of the polymer project is also
 subject to an additional IP rights grant found at http://polymer.github.io/PATENTS.txt
 -->
 
-<link rel="import" href="../bower_components/polymer/polymer.html">
-<link rel="import" href="../bower_components/iron-ajax/iron-ajax.html">
-<link rel="import" href="./components/youtube-videos.html">
+<script type="module" src="../../@polymer/polymer/polymer-legacy.js"></script>
+<script type="module" src="../../@polymer/iron-ajax/iron-ajax.js"></script>
+<script type="module" src="./components/youtube-videos.js"></script>
 
 
-<link rel="import" href="shared-styles.html">
+<script type="module" src="./shared-styles.js"></script>
 
 <dom-module id="cg-videos">
     <template>
@@ -43,54 +43,59 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
     </div>
     </template>
 
-    <script>
-        Polymer({
-            is: 'cg-videos',
-            properties: {
-                channelId: {
-                    type: String,
-                    value: 'UCReQS8UwfrhDRGTowiXqVKg'
-                },
-                apiKey: {
-                    type: String,
-                    value: 'AIzaSyCJCokkQUEbcz2hUSzk3CtYU-g2v9CS-uM'
-                },
-                nextPageToken: {
-                    type: String,
-                    value: ''
-                },
-                scrollPos: {
-                    type: String,
-                    value: null,
-                    notify: true,
-                    observer: '_loadMore'
-                }
-            },
-            _filterPlaylists: function() {
-                // exluce the playlists on the band session page
-            },
-            _loadMore: function() {
-                if (this.scrollPos >= 0.7 || this.scrollPos === 'bottom') {
-                    //   this.$.videos.loadMore();
-                }
-            },
-            _buildParams: function() {
-                if (this.apiKey) {
-                    let output = {
-                        'key': this.apiKey,
-                        'part': 'snippet',
-                        'type': 'playlist',
-                        'maxResults': '50',
-                        'channelId': this.channelId
-                    };
-                    return output;
-                } else {
-                    console.warn('No attribute "key" provided: API Key');
-                }
-            }
+    <script type="module">
+import '../../@polymer/polymer/polymer-legacy.js';
+import '../../@polymer/iron-ajax/iron-ajax.js';
+import './components/youtube-videos.js';
+import './shared-styles.js';
+import { Polymer } from '../../@polymer/polymer/lib/legacy/polymer-fn.js';
+Polymer({
+    is: 'cg-videos',
+    properties: {
+        channelId: {
+            type: String,
+            value: 'UCReQS8UwfrhDRGTowiXqVKg'
+        },
+        apiKey: {
+            type: String,
+            value: 'AIzaSyCJCokkQUEbcz2hUSzk3CtYU-g2v9CS-uM'
+        },
+        nextPageToken: {
+            type: String,
+            value: ''
+        },
+        scrollPos: {
+            type: String,
+            value: null,
+            notify: true,
+            observer: '_loadMore'
+        }
+    },
+    _filterPlaylists: function() {
+        // exluce the playlists on the band session page
+    },
+    _loadMore: function() {
+        if (this.scrollPos >= 0.7 || this.scrollPos === 'bottom') {
+            //   this.$.videos.loadMore();
+        }
+    },
+    _buildParams: function() {
+        if (this.apiKey) {
+            let output = {
+                'key': this.apiKey,
+                'part': 'snippet',
+                'type': 'playlist',
+                'maxResults': '50',
+                'channelId': this.channelId
+            };
+            return output;
+        } else {
+            console.warn('No attribute "key" provided: API Key');
+        }
+    }
 
 
 
-        });
-    </script>
+});
+</script>
 </dom-module>

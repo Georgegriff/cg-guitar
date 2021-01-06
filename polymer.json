@@ -8,17 +8,17 @@
         ]
     },
     "entrypoint": "index.html",
-    "shell": "src/cg-app.html",
+    "shell": "src/cg-app.js",
     "fragments": [
-        "src/cg-about.html",
-        "src/cg-lessons.html",
-        "src/cg-contact.html",
-        "src/cg-videos.html",
-        "src/cg-testimonials.html",
-        "src/cg-photos.html",
-        "src/cg-session.html",
-        "src/cg-privacy.html",
-        "src/cg-view404.html"
+        "src/cg-about.js",
+        "src/cg-lessons.js",
+        "src/cg-contact.js",
+        "src/cg-videos.js",
+        "src/cg-testimonials.js",
+        "src/cg-photos.js",
+        "src/cg-session.js",
+        "src/cg-privacy.js",
+        "src/cg-view404.js"
     ],
     "sources": [
         "src/**",
@@ -28,6 +28,6 @@
     "extraDependencies": [
         "manifest.json",
         "data.json",
-        "bower_components/webcomponentsjs/*.js"
+        "node_modules/webcomponentsjs/*.js"
     ]
 }

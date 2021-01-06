@@ -8,10 +8,10 @@ Code distributed by Google as part of the polymer project is also
 subject to an additional IP rights grant found at http://polymer.github.io/PATENTS.txt
 -->
 
-<link rel="import" href="../bower_components/polymer/polymer.html">
-<link rel="import" href="../bower_components/paper-card/paper-card.html">
-<link rel="import" href="../bower_components/paper-button/paper-button.html">
-<link rel="import" href="shared-styles.html">
+<script type="module" src="../../@polymer/polymer/polymer-legacy.js"></script>
+<script type="module" src="../../@polymer/paper-card/paper-card.js"></script>
+<script type="module" src="../../@polymer/paper-button/paper-button.js"></script>
+<script type="module" src="./shared-styles.js"></script>
 
 
 <dom-module id="cg-about">
@@ -75,18 +75,23 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
 
     </template>
 
-    <script>
-        Polymer({
-            is: 'cg-about',
-            properties: {
-                data: {
-                    type: Object,
-                    value: null
-                }
-            },
-            _parseText: function(text) {
-                return text;
-            }
-        });
-    </script>
+    <script type="module">
+import '../../@polymer/polymer/polymer-legacy.js';
+import '../../@polymer/paper-card/paper-card.js';
+import '../../@polymer/paper-button/paper-button.js';
+import './shared-styles.js';
+import { Polymer } from '../../@polymer/polymer/lib/legacy/polymer-fn.js';
+Polymer({
+    is: 'cg-about',
+    properties: {
+        data: {
+            type: Object,
+            value: null
+        }
+    },
+    _parseText: function(text) {
+        return text;
+    }
+});
+</script>
 </dom-module>

@@ -17,7 +17,7 @@ module.exports = {
         'src/cg-lessons.html',
         '/manifest.json',
         '/images/**',
-        '/bower_components/webcomponentsjs/*'
+        '/node_modules/webcomponentsjs/*'
     ],
     navigateFallback: 'index.html',
 };

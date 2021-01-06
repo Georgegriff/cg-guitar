@@ -1,0 +1,216 @@
+import '../../@polymer/polymer/polymer-legacy.js';
+const $_documentContainer = document.createElement('template');
+
+$_documentContainer.innerHTML = `<dom-module id="shared-styles">
+    <template>
+    <style>
+      * {
+        font-family: Roboto, Noto, sans-serif;
+        color: rgb(55,55,55);
+      }
+
+
+      .quote {
+        font-style: italic;
+        width: 100%;
+        text-align: center;
+        margin:10px;
+      }
+
+
+      .page-info {
+        margin: 0 10px 10px 10px;
+      }
+
+      .card {
+        margin: 24px;
+        padding: 16px;
+        color: #757575;
+        border-radius: 5px;
+        background-color: #fff;
+        box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.14), 0 1px 5px 0 rgba(0, 0, 0, 0.12), 0 3px 1px -2px rgba(0, 0, 0, 0.2);
+      }
+
+      .circle {
+        display: inline-block;
+        width: 64px;
+        height: 64px;
+        text-align: center;
+        color: #555;
+        border-radius: 50%;
+        background: #ddd;
+        font-size: 30px;
+        line-height: 64px;
+      }
+
+      h1 {
+        margin: 16px 0;
+        color: #212121;
+        font-size: 22px;
+      }
+
+      h2 {
+        text-align: center;
+        margin: 0 0 0 5px;
+      }
+
+      a {
+        text-decoration: none;
+        color: var(--app-primary-color);
+        font-weight: normal;
+      }
+
+      a {
+        color: var(--app-primary-color);
+      }
+
+      paper-button a {
+        color: white;
+        text-decoration: none;
+      }
+      /* Pages styles */
+
+      .contact-btn {
+        background: var(--app-primary-color);
+        color: white;
+      }
+
+      .card-header {
+        @apply --paper-font-headline;
+        font-size:22px;
+      }
+
+      .card-light {
+        color: var(--paper-grey-600);
+        margin:2px;
+        font-size: 0.9em;
+      }
+
+      .card-medium {
+        color: rgb(55,55,55);
+        font-weight:500;
+      }
+
+      .card-actions {
+        font-size: 1em;
+      }
+
+      .card-location {
+        float: right;
+        font-size: 15px;
+        vertical-align: middle;
+      }
+
+      .wrap {
+        display: flex;
+        flex-direction: column;
+        flex-wrap: wrap;
+        justify-content: center;
+        align-items: center;
+      }
+
+      .flex-push-wrap {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+      }
+      .f-wrap {
+        display:flex;
+        flex-wrap: wrap;
+        flex-direction: column;
+        
+      }
+      .flex-push {
+        flex:1;
+      }
+
+      .flex-end {
+        display: flex;
+        justify-content: flex-end;
+      }
+
+      .levels {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        flex: 1;
+        margin: 10px;
+        flex-basis: 500px;
+      }
+
+
+
+
+      .text-card {
+        margin: 9px;
+        --paper-card-header-text: {
+          margin-left:16px;
+        }
+      }
+
+      paper-spinner-lite {
+        --paper-spinner-color: var(--primary-color);
+      }
+
+      .text-flex-cards {
+        display: flex;
+        flex-direction: column;
+        max-width: 100%;
+      }
+
+      #contact {
+        flex: 1;
+      }
+
+      youtube-videos {
+        --youtube-videos-container-max-width: 1300px;
+      }
+
+
+      .lvl-title {
+        padding-bottom: 3px;
+        text-align: left;
+        width: 100%;
+      }
+
+
+
+
+      .big-card {
+        max-width: 600px;
+        margin: 10px;
+        --paper-card-actions: {
+          bottom: 0;
+          margin-bottom: 10px;
+        };
+      
+      }
+
+      .btn-cnt {
+        margin-bottom: 10px;
+        font-size: 0.8em;
+      }
+
+      .flex-cont {
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        margin-right: 10px;
+        width: 100%;
+        height: 75px;
+      }
+
+      .scroller {
+        margin-bottom: 30px;
+      }
+
+      .heading {
+        text-align: center;
+        width: 100%;
+      }
+    </style>
+  </template>
+</dom-module>`;
+
+document.head.appendChild($_documentContainer.content);

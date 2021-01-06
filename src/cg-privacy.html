@@ -8,9 +8,9 @@ Code distributed by Google as part of the polymer project is also
 subject to an additional IP rights grant found at http://polymer.github.io/PATENTS.txt
 -->
 
-<link rel="import" href="../bower_components/polymer/polymer.html">
+<script type="module" src="../../@polymer/polymer/polymer-legacy.js"></script>
 
-<link rel="import" href="shared-styles.html">
+<script type="module" src="./shared-styles.js"></script>
 
 
 <dom-module id="cg-privacy">
@@ -54,15 +54,18 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
 
   </template>
 
-    <script>
-        Polymer({
-            is: 'cg-privacy',
-            properties: {
-                apiKey: {
-                    type: String,
-                    value: 'AIzaSyCJCokkQUEbcz2hUSzk3CtYU-g2v9CS-uM'
-                }
-            }
-        });
-    </script>
+    <script type="module">
+import '../../@polymer/polymer/polymer-legacy.js';
+import './shared-styles.js';
+import { Polymer } from '../../@polymer/polymer/lib/legacy/polymer-fn.js';
+Polymer({
+    is: 'cg-privacy',
+    properties: {
+        apiKey: {
+            type: String,
+            value: 'AIzaSyCJCokkQUEbcz2hUSzk3CtYU-g2v9CS-uM'
+        }
+    }
+});
+</script>
 </dom-module>

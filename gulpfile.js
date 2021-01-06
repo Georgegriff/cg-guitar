@@ -15,7 +15,7 @@ gulp.task("clean", function() {
 
 gulp.task("revision", ["clean"], function() {
     return gulp
-        .src(["build/es5-bundled/**/*.*", "!**/**/index.html", "!build/es5-bundled/service-worker.js", "!build/es5-bundled/images/manifest/*.*", "!build/es5-bundled/bower_components/**", "!build/es5-bundled/images/**"])
+        .src(["build/es5-bundled/**/*.*", "!**/**/index.html", "!build/es5-bundled/service-worker.js", "!build/es5-bundled/images/manifest/*.*", "!build/es5-bundled/node_modules/**", "!build/es5-bundled/images/**"])
         .pipe(rev())
         .pipe(gulp.dest(tmp))
         .pipe(rev.manifest())
@@ -42,7 +42,7 @@ gulp.task("default", [
     const manifest = gulp.src("./.tmp/rev-manifest.json");
 
     return gulp
-        .src(["build/es5-bundled/service-worker.js", "build/es5-bundled/bower_components/**", "build/es5-bundled/manifest.json", "build/es5-bundled/index.html"], { base: './build/es5-bundled' })
+        .src(["build/es5-bundled/service-worker.js", "build/es5-bundled/node_modules/**", "build/es5-bundled/manifest.json", "build/es5-bundled/index.html"], { base: './build/es5-bundled' })
         .pipe(revReplace({ manifest: manifest }))
         //       .pipe(gulpif(/\.html$/, htmlAutoprefixer()))
         .pipe(gulp.dest(dist));
