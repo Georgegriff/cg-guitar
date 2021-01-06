@@ -46,7 +46,8 @@
     "@polymer/polymer": "^3.0.0",
     "express": "^4.14.1",
     "instafeed": "^1.4.0",
-    "web-animations-js": "^2.3.1"
+    "web-animations-js": "^2.3.1",
+    "@webcomponents/webcomponentsjs": "^2.0.0"
   },
   "version": "",
   "resolutions": {

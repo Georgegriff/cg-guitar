@@ -28,6 +28,6 @@
     "extraDependencies": [
         "manifest.json",
         "data.json",
-        "node_modules/webcomponentsjs/*.js"
+        "node_modules/@webcomponents/webcomponentsjs/bundles/**"
     ]
 }
